@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClassificationToolsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DutyCalculatorFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SendDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="FullName" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.ExchangeRate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ExchangeRate">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="Rate" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Week" Type="date" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HitCounter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Counter" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HSCodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Heading" Type="varchar" MaxLength="50" />
+    <Property Name="Chapter" Type="int" Nullable="false" />
+    <Property Name="ImportDuty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VAT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NHIL" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ImportExcise" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OveragePenalty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ExportDuty" Type="varchar" MaxLength="50" />
+    <Property Name="StandardUOQ" Type="varchar" MaxLength="50" />
+    <Property Name="IsChapter" Type="bit" Nullable="false" />
+    <Property Name="IsSubChapter" Type="bit" Nullable="false" />
+    <Property Name="SectionId" Type="int" />
+    <Property Name="IsSubHeader" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.v_FreightOverage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_FreightOverage">
+    <Key>
+      <PropertyRef Name="typename" />
+    </Key>
+    <Property Name="typename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="overagename" Type="varchar" MaxLength="250" />
+    <Property Name="OverAgeRate" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="MinimumAge" Type="int" />
+    <Property Name="MaximumAge" Type="int" />
+    <Property Name="freightname" Type="varchar" MaxLength="250" />
+    <Property Name="freightrate" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="minimumcc" Type="int" />
+    <Property Name="maximumcc" Type="int" />
+    <Property Name="hscode" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.v_VehicleType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_VehicleType">
+    <Key>
+      <PropertyRef Name="typename" />
+    </Key>
+    <Property Name="typename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="enginecapacity" Type="int" />
+    <Property Name="assessedhscode" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.V_VehicleValue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_VehicleValue">
+    <Key>
+      <PropertyRef Name="vModel" />
+    </Key>
+    <Property Name="vModel" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="vMake" Type="varchar" MaxLength="150" />
+    <Property Name="vYear" Type="int" />
+    <Property Name="EngineCapacity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HDV" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VehicleType" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="10" />
+    <Property Name="Id" Type="int" />
+  </EntityType>
+  <Association Name="FK_HSCodes_HSCodes">
+    <End Role="HSCodes" Type="Self.HSCodes" Multiplicity="0..1" />
+    <End Role="HSCodes1" Type="Self.HSCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HSCodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HSCodes1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClassificationToolsModelStoreContainer">
+    <EntitySet Name="DutyCalculatorFeedback" EntityType="Self.DutyCalculatorFeedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HitCounter" EntityType="Self.HitCounter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HSCodes" EntityType="Self.HSCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ExchangeRate].[Id] AS [Id], 
+[ExchangeRate].[Week] AS [Week], 
+[ExchangeRate].[CurrencyCode] AS [CurrencyCode], 
+[ExchangeRate].[Rate] AS [Rate], 
+[ExchangeRate].[ModifiedDate] AS [ModifiedDate], 
+[ExchangeRate].[ModifiedBy] AS [ModifiedBy]
+FROM [dbo].[ExchangeRate] AS [ExchangeRate]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_FreightOverage" EntityType="Self.v_FreightOverage" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_FreightOverage].[typename] AS [typename], 
+[v_FreightOverage].[overagename] AS [overagename], 
+[v_FreightOverage].[OverAgeRate] AS [OverAgeRate], 
+[v_FreightOverage].[MinimumAge] AS [MinimumAge], 
+[v_FreightOverage].[MaximumAge] AS [MaximumAge], 
+[v_FreightOverage].[freightname] AS [freightname], 
+[v_FreightOverage].[freightrate] AS [freightrate], 
+[v_FreightOverage].[minimumcc] AS [minimumcc], 
+[v_FreightOverage].[maximumcc] AS [maximumcc], 
+[v_FreightOverage].[hscode] AS [hscode]
+FROM [dbo].[v_FreightOverage] AS [v_FreightOverage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_VehicleType" EntityType="Self.v_VehicleType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_VehicleType].[typename] AS [typename], 
+[v_VehicleType].[enginecapacity] AS [enginecapacity], 
+[v_VehicleType].[assessedhscode] AS [assessedhscode]
+FROM [dbo].[v_VehicleType] AS [v_VehicleType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_VehicleValue" EntityType="Self.V_VehicleValue" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[V_VehicleValue].[vModel] AS [vModel], 
+[V_VehicleValue].[vMake] AS [vMake], 
+[V_VehicleValue].[vYear] AS [vYear], 
+[V_VehicleValue].[EngineCapacity] AS [EngineCapacity], 
+[V_VehicleValue].[HDV] AS [HDV], 
+[V_VehicleValue].[VehicleType] AS [VehicleType], 
+[V_VehicleValue].[Currency] AS [Currency], 
+[V_VehicleValue].[Id] AS [Id]
+FROM [dbo].[V_VehicleValue] AS [V_VehicleValue]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_HSCodes_HSCodes" Association="Self.FK_HSCodes_HSCodes">
+      <End Role="HSCodes" EntitySet="HSCodes" />
+      <End Role="HSCodes1" EntitySet="HSCodes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

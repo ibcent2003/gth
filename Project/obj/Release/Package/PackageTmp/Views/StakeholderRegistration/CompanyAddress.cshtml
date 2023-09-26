@@ -1,0 +1,297 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Company Contact Information";
+    var db = new Project.DAL.PROEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Company Contact Information</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Company Contact Information</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Company Details
+                    </div>
+                    @using (Html.BeginForm("CompanyAddress", "StakeholderRegistration", FormMethod.Post))
+            {
+                        @Html.AntiForgeryToken()
+                        <div class="panel-body">
+
+                            <div class="col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="widget">
+                                        <div class="widget-title">                                           
+                                            <p class="lead">Company Details</p>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.CompanyRegFrom.CompanyName, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.organisation.Name, new { @class = "form-control", @placeholder = "Enter the Company Name exactly as on the Business Registration Certificate.", @readonly=true })
+                                                @Html.ValidationMessageFor(model => model.CompanyRegFrom.CompanyName, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.companyAddressform.Street, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.companyAddressform.Street, new { @class = "form-control", @placeholder = "Enter the Physical Business Address" })
+                                                @Html.ValidationMessageFor(model => model.companyAddressform.Street, null, new { @style = "color:red" })
+                                                @Html.HiddenFor(x=>x.organisation.TINNumber)
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-5">
+                                                <div>
+                                                    @Html.LabelFor(model => model.companyAddressform.regionId, new { @class = "required" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon">
+                                                        @Html.DropDownListFor(m => Model.companyAddressform.regionId, new SelectList(Model.region, "Value", "Text"), "Please Select a Region", new { @class = "form-control", onChange = "GetAllDistrict(this)" })
+                                                        @Html.ValidationMessageFor(model => model.companyAddressform.regionId, null, new { @style = "color:red" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-5">
+                                                <div>
+                                                    @Html.LabelFor(model => model.companyAddressform.districtId, new { @class = "required" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-icon">
+
+                                                        @Html.DropDownListFor(m => Model.companyAddressform.districtId, new SelectList(Model.district, "Value", "Text"), "Please Select a district", new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.companyAddressform.districtId, null, new { @style = "color:red" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.companyAddressform.EmailAddress, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.companyAddressform.EmailAddress, new { @class = "form-control", @placeholder = "Enter Company Email Address" })
+                                                @Html.ValidationMessageFor(model => model.companyAddressform.EmailAddress, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.companyAddressform.PhoneNumber, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.companyAddressform.PhoneNumber, new { maxlength = 10, @class = "form-control", @placeholder = "Enter the Phone Number" })                                                
+                                                @Html.ValidationMessageFor(model => model.companyAddressform.PhoneNumber, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="widget">
+                                        <div class="widget-title">                                          
+                                            <p class="lead">Company Contact Person</p>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.ContactPersonform.FirstName, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.ContactPersonform.FirstName, new { @class = "form-control", @placeholder = "Enter First Name of contact person." })
+                                                @Html.ValidationMessageFor(model => model.ContactPersonform.FirstName, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.ContactPersonform.LastName, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.ContactPersonform.LastName, new { @class = "form-control", @placeholder = "Enter Last Name of contact person." })
+                                                @Html.ValidationMessageFor(model => model.ContactPersonform.LastName, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.ContactPersonform.PhoneNumber, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.ContactPersonform.PhoneNumber, new { maxlength = 10, @class = "form-control", @placeholder = "Enter Mobile Number of contact person." })
+                                                @Html.ValidationMessageFor(model => model.ContactPersonform.PhoneNumber, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            @Html.LabelFor(model => model.ContactPersonform.EmailAddress, new { @class = "required" })
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                @Html.TextBoxFor(model => model.ContactPersonform.EmailAddress, new { @class = "form-control", @placeholder = "Enter Email Address of contact person." })
+                                                @Html.ValidationMessageFor(model => model.ContactPersonform.EmailAddress, null, new { @style = "color:red" })
+                                            </div>
+                                        </div>
+
+                                       
+                                       
+</div>
+                                </div>
+
+                                </div>
+                          
+
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div style="text-align: left;" class="col-md-6">
+                                    <a href="@Url.Action("CompanyInformation")" class="btn btn-sm btn-default" style="color:white">Back</a>
+                                </div>
+                                <div style="text-align: right;" class="col-md-6">
+                                    <input type="submit" value="Next" class="btn btn-sm btn-default" style="color:white">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+@section Scripts{
+    @Scripts.Render("~/Content/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js")
+    <script>
+        "use strict";
+        $(document).ready(function () {
+            $(".datepicker-issueddate").datepicker({
+                defaultDate: +7,
+                showOtherMonths: true,
+                autoSize: false,
+                maxDate: new Date(),
+                appendText: '<span class="help-block">(yyyy-mm-dd)</span>',
+                dateFormat: "yy-mm-dd"
+            });
+            //documentFormat($("#DocumentTypeId"));
+        });
+
+        function getDistrict(e) {
+            var regionId = $(e).val();
+            // console.log(stateId);
+            // Now execute the command using jQuery ajax.
+            var currentRequest = null;
+            var currentRequest = $.ajax({
+                url: '@Url.Action("GetDistrict", "StakeholderRegistration")',
+                dataType: 'json',
+                type: 'POST',
+                data: { RegionId: regionId },
+                beforeSend: function () {
+                    if (currentRequest != null) {
+                        currentRequest.abort();
+                    }
+                },
+                success: function (msg) {
+                    $("#companyAddressform_districtId").html("");
+                    $.each(msg, function (index, element) {
+                        $("#companyAddressform_districtId").append('<option  value="' + element.Value + '">' + element.Text + '</option>');
+                    });
+                },
+                error: function (errmsg) { }
+            });
+        }
+
+
+        function GetAllDistrict(e) {
+            getDistrict(e);
+
+        }
+
+    </script>
+}

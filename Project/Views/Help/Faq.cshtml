@@ -1,0 +1,107 @@
+﻿@model Project.Models.HelpViewModel
+@using System.Globalization;
+@{
+    ViewBag.Title = "FAQ";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">FAQ</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">FAQ</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="schedule" class="page-section schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-9">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-help"></i>Frequenty Asked Question</h3>
+                    </div>
+                </div>
+          
+
+                <div class="tabs">
+                    <div class="tab-content schedule-tab">
+                        <div class="tab-pane active fade in" id="day1">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                                @foreach(var item in Model.FAQList)
+                                    {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#@item.Id" aria-expanded="false" aria-controls="collapseOne">
+                                                    @item.Question
+
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="@item.Id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                @Html.Raw(item.Answer)
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    }
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-help-with-circle"></i>Help</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            <a href="@Url.Action("FAQ", "Help", new {area = "" })" class="list-group-item">FAQ</a>
+                            <a href="@Url.Action("TermsAndCondition", "Help", new {area = "" })" class="list-group-item">Tearms and Condition</a>
+                            <a href="@Url.Action("CommonlyUsedTerms", "Help", new {area = "" })" class="list-group-item">Commonly Used Terms</a>
+
+                            <a href="@Url.Action("Guideline", "Help", new {area = "" })" class="list-group-item">Guideline/Tutorial</a>
+                            <a href="@Url.Action("Contact", "Home", new {area = "" })" class="list-group-item">Contact Us</a>
+                            <a href="@Url.Action("UsefulLinks", "Help", new {area = "" })" class="list-group-item">Useful Links</a>
+                            <a href="https://desk.zoho.com/portal/westblueconsulting/home" target="_blank" class="list-group-item">GTH HelpDesk</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+           
+        </div> 
+</section>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}
+

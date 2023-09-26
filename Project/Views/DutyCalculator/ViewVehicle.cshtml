@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewVehicle</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="CityName" style="width:200px;" class="form-control" />
+    </div>
+</body>
+</html>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#CityName").autocomplete({
+                source: function (request,response) {
+                    $.ajax({
+                        url: "/DutyCalculator/GetRecord",
+                        type: "POST",
+                        dataType: "json",
+                        data: { prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+
+                                return { label: item.VehicleTypeName, value: item.VehicleTypeName };
+                            }))
+                        }
+                    })
+                },
+            });
+        });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>

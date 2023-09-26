@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9701d11ef40c47f39e05640bee4e5ea5" Name="Diagram1">
+        <EntityTypeShape EntityType="GNSWModel.AddressBook" Width="1.5" PointX="6" PointY="200.5" />
+        <EntityTypeShape EntityType="GNSWModel.AddressType" Width="1.5" PointX="3.75" PointY="212.75" />
+        <EntityTypeShape EntityType="GNSWModel.AgencyHsCodeMapping" Width="1.5" PointX="22.5" PointY="320" />
+        <EntityTypeShape EntityType="GNSWModel.Alert" Width="1.5" PointX="12.75" PointY="284.75" />
+        <EntityTypeShape EntityType="GNSWModel.AlertNotification" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.AlertNotificationTemplate" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GNSWModel.ApiResource" Width="1.5" PointX="7.75" PointY="9" />
+        <EntityTypeShape EntityType="GNSWModel.ApiUsers" Width="1.5" PointX="10" PointY="9.5" />
+        <EntityTypeShape EntityType="GNSWModel.Applications" Width="1.5" PointX="8.25" PointY="210.25" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalRegistration" Width="1.5" PointX="12.75" PointY="232.375" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalRegistrationActionLog" Width="1.5" PointX="15" PointY="415.375" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalRegistrationPayments" Width="1.5" PointX="15" PointY="213.75" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalStructure" Width="1.5" PointX="18.25" PointY="266.25" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalWorkFlow" Width="1.5" PointX="10.5" PointY="272.875" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalWorkFlowDocuments" Width="1.5" PointX="12.75" PointY="275.375" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalWorkFlowDocumentsCategory" Width="1.5" PointX="10.5" PointY="261.5" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalWorkFlowHSCode" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="GNSWModel.ApprovalWorkFlowHSCodeDump" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GNSWModel.Association" Width="1.5" PointX="11.25" PointY="198.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalCriteria" Width="1.5" PointX="20.5" PointY="271.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalInspection" Width="1.5" PointX="15" PointY="401.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalLaboratoryTests" Width="1.5" PointX="15" PointY="295.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalRegistraionNotificationTasks" Width="1.5" PointX="15.75" PointY="265.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalRegistrationNotification" Width="1.5" PointX="18" PointY="237.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ApprovalRegistrationPendingAction" Width="1.5" PointX="15" PointY="431.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_BiologicalProduct" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_BusinessClients" Width="1.5" PointX="21" PointY="220.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_BusinessClientType" Width="1.5" PointX="18.75" PointY="248.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_CompanyLegalStatus" Width="1.5" PointX="12.75" PointY="317.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_DocumentEndorsements" Width="1.5" PointX="15.75" PointY="268.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_DocumentEndorsementTypes" Width="1.5" PointX="13.5" PointY="289.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_EmployeeCount" Width="1.5" PointX="10.5" PointY="184.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_ExportStatus" Width="1.5" PointX="10.5" PointY="268.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsActiveConstituent" Width="1.5" PointX="21" PointY="241.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsContainerPack" Width="1.5" PointX="32.25" PointY="240.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsImporterRecords" Width="1.5" PointX="18" PointY="224.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsImportToCheck" Width="1.5" PointX="15.75" PointY="206.875" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsManufacturers" Width="1.5" PointX="29.25" PointY="238" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsRecords" Width="1.5" PointX="24" PointY="232.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDABiologicalProductsRecordsContact" Width="1.5" PointX="15.75" PointY="241.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDACosChemSubImporterRecords" Width="1.5" PointX="15" PointY="408.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDACosChemSubProductsImportToCheck" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAExistingOrganisations" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAExistingStorageFacilities" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAFoodAndDietaryNutritionalRecords" Width="1.5" PointX="15" PointY="345.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAHerbalMedProductIngredients" Width="1.5" PointX="18" PointY="231.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAHerbalMedProductIngredientType" Width="1.5" PointX="15.75" PointY="262.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAHerbalMedProductRecords" Width="1.5" PointX="27" PointY="225.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAMedDeviceImporterRecord" Width="1.5" PointX="15" PointY="405.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAMedDeviceProductInfo" Width="1.5" PointX="27" PointY="288.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAMedicalDeviceClassTypes" Width="1.5" PointX="24.75" PointY="291.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDARecords" Width="1.5" PointX="18" PointY="215" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDATobaccoProducts" Width="1.5" PointX="27" PointY="296.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_GNCCRecords" Width="1.5" PointX="21" PointY="226.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_GNCCStations" Width="1.5" PointX="13.5" PointY="206.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_GPHACompanyAgents" Width="1.5" PointX="15" PointY="418.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_GPHACompanyVehicles" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishApprovalRegistrationOnTypesOfProduct" Width="1.5" PointX="21" PointY="237.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishExporterRecords" Width="1.5" PointX="15" PointY="412.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishListOfProcessingPlants" Width="1.5" PointX="15" PointY="427.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishListOfVessels" Width="1.5" PointX="15" PointY="423.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishTypesOfProcess" Width="1.5" PointX="15" PointY="433.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAFishTypesOfProducts" Width="1.5" PointX="18.75" PointY="262.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAImporterBusinessCategories" Width="1.5" PointX="12.75" PointY="228.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAImporterBusinessCategoriesInApprovalRegistration" Width="1.5" PointX="15" PointY="232" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAInspectionApplication" Width="1.5" PointX="17.25" PointY="327.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAInspectionApplication_Audit" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAInspectionApplicationDel" Width="1.5" PointX="20.25" PointY="331.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAInspectionCategory" Width="1.5" PointX="15" PointY="330.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAInspectionType" Width="1.5" PointX="12.75" PointY="313.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAProductExportCertificationProducts" Width="1.5" PointX="31.5" PointY="300.625" />
+        <EntityTypeShape EntityType="GNSWModel.br_GSAProductExportCertificationRecords" Width="1.5" PointX="15" PointY="221.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_HSCodeTariff" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ImportedRegistrations" Width="1.5" PointX="18" PointY="244.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_IngredientType" Width="1.5" PointX="15.75" PointY="246.5" />
+        <EntityTypeShape EntityType="GNSWModel.br_ItemsToBeImported" Width="1.5" PointX="15" PointY="211" />
+        <EntityTypeShape EntityType="GNSWModel.br_NACOBBusinessCategories" Width="1.5" PointX="6" PointY="193.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_NacobEmployeeScreeningProcedures" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_NacobRecords" Width="1.5" PointX="35.25" PointY="214.25" />
+        <EntityTypeShape EntityType="GNSWModel.br_PaymentProduct" Width="1.5" PointX="20.25" PointY="252.875" />
+        <EntityTypeShape EntityType="GNSWModel.br_PPRSDPytosanitaryPermitRecords" Width="1.5" PointX="18" PointY="240.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductHouseholdChemical" Width="1.5" PointX="27" PointY="305.875" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductManufacturers" Width="1.5" PointX="10.5" PointY="188.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductQualityControllers" Width="1.5" PointX="27" PointY="299" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductRawMaterials" Width="1.5" PointX="31.5" PointY="297.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_Products" Width="1.5" PointX="29.25" PointY="293.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductSuppliers" Width="1.5" PointX="27" PointY="309.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_ProductType" Width="1.5" PointX="27" PointY="302.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_RejectionCriteria" Width="1.5" PointX="15" PointY="254.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_RentedStorageFacilities" Width="1.5" PointX="23.25" PointY="228.375" />
+        <EntityTypeShape EntityType="GNSWModel.br_StorageFacilities" Width="1.5" PointX="21" PointY="214.125" />
+        <EntityTypeShape EntityType="GNSWModel.br_VehicleEngineType" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_VSDRecords" Width="1.5" PointX="15" PointY="250.75" />
+        <EntityTypeShape EntityType="GNSWModel.CargoType" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GNSWModel.Categories" Width="1.5" PointX="6" PointY="189.25" />
+        <EntityTypeShape EntityType="GNSWModel.CategoryOfDistribution" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="GNSWModel.CHAGroupCover" Width="1.5" PointX="10.5" PointY="282.5" />
+        <EntityTypeShape EntityType="GNSWModel.CHALicenseApplication" Width="1.5" PointX="15.75" PointY="234.5" />
+        <EntityTypeShape EntityType="GNSWModel.CHALicenseType" Width="1.5" PointX="25.5" PointY="215.5" />
+        <EntityTypeShape EntityType="GNSWModel.CHAMemberGroupCover" Width="1.5" PointX="10.5" PointY="288.875" />
+        <EntityTypeShape EntityType="GNSWModel.CHAOutStationReport" Width="1.5" PointX="32.25" PointY="216" />
+        <EntityTypeShape EntityType="GNSWModel.Colour" Width="1.5" PointX="10.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GNSWModel.CommercialBanks" Width="1.5" PointX="11.25" PointY="210.5" />
+        <EntityTypeShape EntityType="GNSWModel.Consolidator" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GNSWModel.ContactInfo" Width="1.5" PointX="3" PointY="198.75" />
+        <EntityTypeShape EntityType="GNSWModel.ContactTag" Width="1.5" PointX="15.75" PointY="238.5" />
+        <EntityTypeShape EntityType="GNSWModel.ContainerType" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GNSWModel.ContractCarriageCondition" Width="1.5" PointX="14.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GNSWModel.Country" Width="1.5" PointX="0.75" PointY="201.625" />
+        <EntityTypeShape EntityType="GNSWModel.CRRIMSAgencyProduct" Width="1.5" PointX="24.75" PointY="310" />
+        <EntityTypeShape EntityType="GNSWModel.Currency" Width="1.5" PointX="24.75" PointY="268.125" />
+        <EntityTypeShape EntityType="GNSWModel.DataGenerator" Width="1.5" PointX="16.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GNSWModel.District" Width="1.5" PointX="3.75" PointY="191.875" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentFormat" Width="1.5" PointX="25.5" PointY="212.5" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentInfo" Width="1.5" PointX="30" PointY="224.5" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentRole" Width="1.5" PointX="30" PointY="214.125" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentType" Width="1.5" PointX="27.75" PointY="211.75" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentTypeExpiryPeriod" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.DocumentTypeUsedAsOptions" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentChannel" Width="1.5" PointX="13.5" PointY="264.375" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurpose" Width="1.5" PointX="15.75" PointY="273.75" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurposeActionLog" Width="1.5" PointX="18" PointY="271.375" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurposeExtraData" Width="1.5" PointX="18" PointY="285" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurposeItems" Width="1.5" PointX="18" PointY="253.75" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurposeTypes" Width="1.5" PointX="13.5" PointY="268" />
+        <EntityTypeShape EntityType="GNSWModel.ew_Payments" Width="1.5" PointX="30" PointY="246.375" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentsExtraData" Width="1.5" PointX="20.25" PointY="285.25" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentTerms" Width="1.5" PointX="18" PointY="282.5" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentTransactionStatus" Width="1.5" PointX="5.25" PointY="206.875" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentVoucherLog" Width="1.5" PointX="12.75" PointY="278.625" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_BillingFlatFee" Width="1.5" PointX="27" PointY="317.375" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_BillingRate" Width="1.5" PointX="27" PointY="267.75" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_BillingRateApproval" Width="1.5" PointX="32.25" PointY="292" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CatAgencyHSCodeApproval" Width="1.5" PointX="30" PointY="319.5" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_Category" Width="1.5" PointX="24.75" PointY="318.625" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CategoryCriterionValue" Width="1.5" PointX="33" PointY="317.625" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CategoryCriterionValueApproval" Width="1.5" PointX="30" PointY="314.25" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CategoryTarrif" Width="1.5" PointX="24.75" PointY="279.875" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CategoryTarrifApproval" Width="1.5" PointX="32" PointY="305.125" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_CatTariffHsCode" Width="1.5" PointX="27" PointY="281.75" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_Criterion" Width="1.5" PointX="24.75" PointY="314.125" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_HSCode" Width="1.5" PointX="24.75" PointY="283.75" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_HSCodeApproval" Width="1.5" PointX="27" PointY="330.125" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_ManufacturerApproval" Width="1.5" PointX="27" PointY="322.375" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_Manufacturers" Width="1.5" PointX="27" PointY="326.625" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_ProcessOrder" Width="1.5" PointX="22.5" PointY="315.125" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_RawMaterialsManu" Width="1.5" PointX="27" PointY="313.875" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_Transaction" Width="1.5" PointX="24" PointY="257.75" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_TransactionDetails" Width="1.5" PointX="29.25" PointY="259.375" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_VATPercent" Width="1.5" PointX="18.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GNSWModel.FDABill_VATPercentApproval" Width="1.5" PointX="18.75" PointY="10.75" />
+        <EntityTypeShape EntityType="GNSWModel.FormulationType" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="GNSWModel.GMDN_Categories" Width="1.5" PointX="24.75" PointY="288.375" />
+        <EntityTypeShape EntityType="GNSWModel.IDTypes" Width="1.5" PointX="0.75" PointY="198.5" />
+        <EntityTypeShape EntityType="GNSWModel.InvoiceDetails" Width="1.5" PointX="21" PointY="233" />
+        <EntityTypeShape EntityType="GNSWModel.InvoiceType" Width="1.5" PointX="18.75" PointY="258.75" />
+        <EntityTypeShape EntityType="GNSWModel.Languages" Width="1.5" PointX="18.75" PointY="17.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_Category" Width="1.5" PointX="21.75" PointY="275.5" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_CategoryApproval" Width="1.5" PointX="7.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_CategoryTarrif" Width="1.5" PointX="24" PointY="275.375" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_CategoryTarrifApproval" Width="1.5" PointX="24" PointY="294.5" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_Currency" Width="1.5" PointX="9.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_CurrentCurrency" Width="1.5" PointX="11.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_CurrentCurrencyApproval" Width="1.5" PointX="13.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_DeclarationDetails" Width="1.5" PointX="5.75" PointY="9.5" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_DeclarationDetailsItems" Width="1.5" PointX="8" PointY="12.875" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_HsCodeContainer" Width="1.5" PointX="26.25" PointY="275.375" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_HsCodeContainerApproval" Width="1.5" PointX="29.25" PointY="275" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_HSCodeContainerType" Width="1.5" PointX="24" PointY="271.875" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_Regime" Width="1.5" PointX="15.75" PointY="19.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_Transaction" Width="1.5" PointX="21" PointY="255.5" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_TransactionCategoryCost" Width="1.5" PointX="26.25" PointY="262.125" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_TransactionCategoryHscode" Width="1.5" PointX="26.25" PointY="257.25" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_VATPercent" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.LCB_VATPercentApproval" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GNSWModel.LoadStatus" Width="1.5" PointX="2.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GNSWModel.LPCOIDFDocumentUpload" Width="1.5" PointX="10.5" PointY="193.25" />
+        <EntityTypeShape EntityType="GNSWModel.LPCOIDFDocumentUploadLog" Width="1.5" PointX="32.25" PointY="211.875" />
+        <EntityTypeShape EntityType="GNSWModel.MasterDataActions" Width="1.5" PointX="5.75" PointY="5.5" />
+        <EntityTypeShape EntityType="GNSWModel.MasterDataSubscription" Width="1.5" PointX="8" PointY="5" />
+        <EntityTypeShape EntityType="GNSWModel.Memberships" Width="1.5" PointX="18" PointY="200.375" />
+        <EntityTypeShape EntityType="GNSWModel.Memberships_Audit" Width="1.5" PointX="20.25" PointY="202.125" />
+        <EntityTypeShape EntityType="GNSWModel.Memberships2" Width="1.5" PointX="20.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GNSWModel.MemberShipStatus" Width="1.5" PointX="8.25" PointY="194.25" />
+        <EntityTypeShape EntityType="GNSWModel.MessageTemplate" Width="1.5" PointX="12.75" PointY="271" />
+        <EntityTypeShape EntityType="GNSWModel.MessageType" Width="1.5" PointX="10.5" PointY="264.375" />
+        <EntityTypeShape EntityType="GNSWModel.MMNetworks" Width="1.5" PointX="20.75" PointY="10.75" />
+        <EntityTypeShape EntityType="GNSWModel.Mobile_Registration" Width="1.5" PointX="20.75" PointY="13.75" />
+        <EntityTypeShape EntityType="GNSWModel.NCSUserDetails" Width="1.5" PointX="20.75" PointY="17.75" />
+        <EntityTypeShape EntityType="GNSWModel.Notification" Width="1.5" PointX="15.75" PointY="193.375" />
+        <EntityTypeShape EntityType="GNSWModel.NotificationStatus" Width="1.5" PointX="13.5" PointY="193.25" />
+        <EntityTypeShape EntityType="GNSWModel.NotificationTemplate" Width="1.5" PointX="20.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GNSWModel.NotificationType" Width="1.5" PointX="13.5" PointY="196" />
+        <EntityTypeShape EntityType="GNSWModel.NotifyParty" Width="1.5" PointX="17.75" PointY="21.75" />
+        <EntityTypeShape EntityType="GNSWModel.Organisation" Width="1.5" PointX="8.25" PointY="197.75" />
+        <EntityTypeShape EntityType="GNSWModel.OrganisationAssociation" Width="1.5" PointX="13.5" PointY="199.375" />
+        <EntityTypeShape EntityType="GNSWModel.OrganisationInCommercialBank" Width="1.5" PointX="13.5" PointY="202.25" />
+        <EntityTypeShape EntityType="GNSWModel.OrganisationScopeOfWork" Width="1.5" PointX="26.25" PointY="237.875" />
+        <EntityTypeShape EntityType="GNSWModel.OrganisationType" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.OrganizationDocumentInfoByTIN" Width="1.5" PointX="32.25" PointY="244.625" />
+        <EntityTypeShape EntityType="GNSWModel.PackingType" Width="1.5" PointX="22.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GNSWModel.Ports" Width="1.5" PointX="4.75" PointY="22.75" />
+        <EntityTypeShape EntityType="GNSWModel.ProfessionalMembership" Width="1.5" PointX="10.5" PointY="201.75" />
+        <EntityTypeShape EntityType="GNSWModel.Profiles" Width="1.5" PointX="18" PointY="209" />
+        <EntityTypeShape EntityType="GNSWModel.Region" Width="1.5" PointX="1.5" PointY="191.75" />
+        <EntityTypeShape EntityType="GNSWModel.RegStatus" Width="1.5" PointX="15" PointY="258.5" />
+        <EntityTypeShape EntityType="GNSWModel.Resource" Width="1.5" PointX="8.25" PointY="213.5" />
+        <EntityTypeShape EntityType="GNSWModel.Roles" Width="1.5" PointX="10.5" PointY="205.75" />
+        <EntityTypeShape EntityType="GNSWModel.ScopeOfWork" Width="1.5" PointX="18" PointY="275.125" />
+        <EntityTypeShape EntityType="GNSWModel.ShippersProduct" Width="1.5" PointX="27" PointY="293.625" />
+        <EntityTypeShape EntityType="GNSWModel.ShippingLineAgent" Width="1.5" PointX="22.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GNSWModel.sysdiagrams" Width="1.5" PointX="22.75" PointY="10.75" />
+        <EntityTypeShape EntityType="GNSWModel.Systems" Width="1.5" PointX="8.25" PointY="217.625" />
+        <EntityTypeShape EntityType="GNSWModel.TaxOffice" Width="1.5" PointX="22.75" PointY="13.75" />
+        <EntityTypeShape EntityType="GNSWModel.TermHandleReasons" Width="1.5" PointX="22.75" PointY="16.75" />
+        <EntityTypeShape EntityType="GNSWModel.TerminalHandling" Width="1.5" PointX="27" PointY="242.375" />
+        <EntityTypeShape EntityType="GNSWModel.TerminalHandlingTransmissionLog" Width="1.5" PointX="29.25" PointY="256.375" />
+        <EntityTypeShape EntityType="GNSWModel.THChargeItem" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="GNSWModel.THContainer" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="GNSWModel.THDetails" Width="1.5" PointX="29.25" PointY="253.625" />
+        <EntityTypeShape EntityType="GNSWModel.THPayment" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="GNSWModel.THPaymentLogs" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="GNSWModel.THWebAPIValidate" Width="1.5" PointX="10.5" PointY="286.125" />
+        <EntityTypeShape EntityType="GNSWModel.TransitShed" Width="1.5" PointX="22.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GNSWModel.TransmissionStatus" Width="1.5" PointX="24.75" PointY="254.375" />
+        <EntityTypeShape EntityType="GNSWModel.UnitOfMeasurement" Width="1.5" PointX="6.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.UnitOfMeasurement2" Width="1.5" PointX="8.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.UserDetails" Width="1.5" PointX="10.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.UserProfile" Width="1.5" PointX="12.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.Users" Width="1.5" PointX="15.75" PointY="201.75" />
+        <EntityTypeShape EntityType="GNSWModel.VehicleModelReference" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="GNSWModel.VehicleReference" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="GNSWModel.VerificationResult" Width="1.5" PointX="14.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.Vessel" Width="1.5" PointX="6" PointY="197.125" />
+        <EntityTypeShape EntityType="GNSWModel.VesselType" Width="1.5" PointX="3.75" PointY="195.5" />
+        <EntityTypeShape EntityType="GNSWModel.vts_Drivers" Width="1.5" PointX="18" PointY="219.75" />
+        <EntityTypeShape EntityType="GNSWModel.vts_GCDriverVehicleInfo" Width="1.5" PointX="27" PointY="207.25" />
+        <EntityTypeShape EntityType="GNSWModel.vts_TrackingServices" Width="1.5" PointX="24" PointY="218.875" />
+        <EntityTypeShape EntityType="GNSWModel.vts_TrackingServiceStatuses" Width="1.5" PointX="21.75" PointY="210.5" />
+        <EntityTypeShape EntityType="GNSWModel.vts_TrackingServiceStatusLog" Width="1.5" PointX="26.25" PointY="220.375" />
+        <EntityTypeShape EntityType="GNSWModel.vts_TrackingServiceTransport" Width="1.5" PointX="29.25" PointY="220.375" />
+        <EntityTypeShape EntityType="GNSWModel.vts_TrackingServiceTransportContainer" Width="1.5" PointX="31.5" PointY="220.375" />
+        <EntityTypeShape EntityType="GNSWModel.vts_VehicleInfo" Width="1.5" PointX="15" PointY="226.5" />
+        <EntityTypeShape EntityType="GNSWModel.vts_VTSInvoice" Width="1.5" PointX="15" PointY="216" />
+        <EntityTypeShape EntityType="GNSWModel.vts_Warehouses" Width="1.5" PointX="21.75" PointY="195.625" />
+        <EntityTypeShape EntityType="GNSWModel.vts_WarehouseStatuses" Width="1.5" PointX="19.5" PointY="196.125" />
+        <EntityTypeShape EntityType="GNSWModel.WorkFlowHSCode" Width="1.5" PointX="22.75" PointY="23.75" />
+        <EntityTypeShape EntityType="GNSWModel.AuditTrail" Width="1.5" PointX="24.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GNSWModel.br_FDAFoodAndDietaryNutritionalIngredients" Width="1.5" PointX="17.25" PointY="289.875" />
+        <EntityTypeShape EntityType="GNSWModel.CustomsOffice" Width="1.5" PointX="0.75" PointY="24.75" />
+        <EntityTypeShape EntityType="GNSWModel.ew_PaymentPurposePages" Width="1.5" PointX="24.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GNSWModel.OfficerRank" Width="1.5" PointX="24.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GNSWModel.Organisation_Audit" Width="1.5" PointX="24.75" PointY="11.75" />
+        <EntityTypeShape EntityType="GNSWModel.Resource_Audit" Width="1.5" PointX="16.75" PointY="24.75" />
+        <EntityTypeShape EntityType="GNSWModel.ResourcesInRole_Audit" Width="1.5" PointX="24.75" PointY="17.75" />
+        <EntityTypeShape EntityType="GNSWModel.Roles_Audit" Width="1.5" PointX="24.75" PointY="20.75" />
+        <EntityTypeShape EntityType="GNSWModel.Users_Audit" Width="1.5" PointX="24.75" PointY="24.75" />
+        <EntityTypeShape EntityType="GNSWModel.UsersInRoles_Audit" Width="1.5" PointX="18.75" PointY="25.75" />
+        <AssociationConnector Association="GNSWModel.FK_AddressBook_AddressType" />
+        <AssociationConnector Association="GNSWModel.FK_AddressBook_Country" />
+        <AssociationConnector Association="GNSWModel.FK_AddressBook_District" />
+        <AssociationConnector Association="GNSWModel.FK_AddressBook_Region" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CatAgencyHSCodeApproval_AgencyHsCodeMapping" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_HSCode_AgencyHsCodeMapping" />
+        <AssociationConnector Association="GNSWModel.FK_Alert_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.MembershipEntity_Application" />
+        <AssociationConnector Association="GNSWModel.MembershipEntity_Application_Old" />
+        <AssociationConnector Association="GNSWModel.MembershipEntity_Application2" />
+        <AssociationConnector Association="GNSWModel.RoleEntity_Application" />
+        <AssociationConnector Association="GNSWModel.User_Application" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalRegistration_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalRegistration_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalRegistrationActionLog_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalRegistrationPayments_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalInspection_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalLaboratoryTests_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalRegistrationNotification_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalRegistrationPendingAction_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_BusinessClients_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsConstituent_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsImporter_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDACosChemSubImporterRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAFoodAndDietaryNutritionalIngredients_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAFoodAndDietaryNutritionalRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductIngredients_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAMedDeviceImporterRecord_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDARecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GNCCRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GPHACompanyAgents_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAFishApprovalRegistrationOnTypesOfProduct_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAFishExporterRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAFishListOfProcessPlants_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAFishListOfVessels_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAImporterBusinessCategoriesInApprovalRegistration_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplication_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplicationDel_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAProductExportCertificationRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_ImportedRegistrations_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_PPRSDPytosanitary_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_RentedStorageFacilities_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_StorageFacilities_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_br_VSDRecords_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_Transaction_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_InvoiceDetails_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_Transaction_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationScopeOfWork_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_vts_Drivers_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServices_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_vts_VehicleInfo_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_vts_VTSInvoice_ApprovalRegistration" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalStructure_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalStructure_RegStatus" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalCriteria_ApprovalStructure" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalWorkFlow_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalWorkFlowDocuments_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalCriteria_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_DocumentEndorsements_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecordsPharmacist_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplication_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionType_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_ImportedRegistrations_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_br_RejectionCriteria_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_CHALicenseApplication_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentVoucherLog_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_Transaction_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_Transaction_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_MessageTemplate_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_RegStatus_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_ScopeOfWork_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_ApprovalWorkFlow" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalWorkFlowDocuments_ApprovalWorkFlowDocumentsCategory" />
+        <AssociationConnector Association="GNSWModel.FK_ApprovalWorkFlowDocuments_DocumentType" />
+        <AssociationConnector Association="GNSWModel.FK_Association_Categories" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationAssociation_Association" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalRegistrationNotification_br_ApprovalRegistraionNotificationTasks" />
+        <AssociationConnector Association="GNSWModel.FK_br_ApprovalRegistrationNotification_Notification" />
+        <AssociationConnector Association="GNSWModel.FK_br_BusinessClients_br_BusinessClientType" />
+        <AssociationConnector Association="GNSWModel.FK_br_BusinessClients_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_DocumentEndorsements_br_DocumentEndorsementTypes" />
+        <AssociationConnector Association="GNSWModel.FK_br_EmployeeCount_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_ExportStatus_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsActiveConstituent_br_FDABiologicalProductsRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsConstituent_br_FDABiologicalProductsManufacturers" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsConstituent_br_FDABiologicalProductsManufacturers1" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsConstituent_br_Products" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsContainerPack_br_FDABiologicalProductsRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsContainerPack_br_Products" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsImporter_ContactInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_br_FDABiologicalProductsRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_br_Products" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_DocumentInfo1" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_DocumentInfo2" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsManufacturers_DocumentInfo3" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_BioActiveConstDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ComparabilityDataDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ContactInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ContactInfo1" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_CultureTechniqueDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ExtractTechniqueDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_GHFDABioIngreImportPermitDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_InUseStabStudyDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_Label1DocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_Label2DocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_Label3DocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_Label4DocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_NonBioActiveConstDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_OtherConstDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_ProductDataDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_stabProtoDataDocId1" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_stabProtoDataDocId2" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_stabProtoDataDocId3" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_StorTemProfDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecords_VirusPathogenCertDocId" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDABiologicalProductsRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecordsPharmacist_br_FDABiologicalProductsRecordsPharmacist" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDABiologicalProductsRecordsPharmacist_ContactInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDACosChemSubImporterRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAFoodAndDietaryNutritionalIngredients_br_FDAFoodAndDietaryNutritionalRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDAFoodAndDietaryNutritionalRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductIngredients_br_FDAHerbalMedProductIngredientType" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductIngredients_br_FDAHerbalMedProductRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductIngredients_br_IngredientType" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo1" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo10" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo11" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo12" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo13" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo2" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo3" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo4" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo5" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo6" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo7" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo8" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_DocumentInfo9" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAHerbalMedProductRecords_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDAHerbalMedProductRecords" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAMedDeviceProductInfo_br_FDAMedicalDeviceClassTypes" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAMedDeviceProductInfo_GMDN_Categories" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDAMedDeviceProductInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDARecords_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_FDATobaccoProducts" />
+        <AssociationConnector Association="GNSWModel.FK_br_GNCCRecords_br_GNCCStations" />
+        <AssociationConnector Association="GNSWModel.FK_br_GNCCRecords_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAFishApprovalRegistrationOnTypesOfProduct_br_GSAFishTypesOfProducts" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAImporterBusinessCategoriesInApprovalRegistration_br_GSAImporterBusinessCategories" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplication_br_GSAInspectionCategory" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplication_br_GSAInspectionType" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAInspectionApplicationDel_br_GSAInspectionType" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAProductExportCertificationProducts_br_Products" />
+        <AssociationConnector Association="GNSWModel.FK_br_GSAProductExportCertificationRecords_Country" />
+        <AssociationConnector Association="GNSWModel.FK_br_ImportedRegistrations_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_FDAFoodAndDietaryNutritionalIngredients_br_IngredientType" />
+        <AssociationConnector Association="GNSWModel.FK_br_NacobRecords_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_NacobRecords_DocumentInfo1" />
+        <AssociationConnector Association="GNSWModel.FK_br_NacobRecords_DocumentInfo2" />
+        <AssociationConnector Association="GNSWModel.FK_br_NacobRecords_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_PaymentProduct_ew_PaymentPurposeItems" />
+        <AssociationConnector Association="GNSWModel.FK_br_PPRSDPytosanitary_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_ProductHouseholdChemical" />
+        <AssociationConnector Association="GNSWModel.FK_br_ProductManufacturers_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_ProductManufacturers" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_ProductQualityControllers" />
+        <AssociationConnector Association="GNSWModel.FK_br_ProductRawMaterials_br_Products" />
+        <AssociationConnector Association="GNSWModel.FK_br_ProductRawMaterials_br_Products1" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_ProductSuppliers" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_br_ProductType" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_Country" />
+        <AssociationConnector Association="GNSWModel.FK_br_Products_ShippersProduct" />
+        <AssociationConnector Association="GNSWModel.FK_Products_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_br_ProductType_br_ProductType" />
+        <AssociationConnector Association="GNSWModel.FK_br_RentedStorageFacilities_br_StorageFacilities" />
+        <AssociationConnector Association="GNSWModel.FK_br_StorageFacilities_ContactInfo" />
+        <AssociationConnector Association="GNSWModel.FK_br_StorageFacilities_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_CHAGroupCover_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_CHALicenseApplication_CHALicenseType" />
+        <AssociationConnector Association="GNSWModel.FK_CHALicenseApplication_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_CHAMemberGroupCover_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_CHAOutStationReport_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_CHAOutStationReport_DocumentType" />
+        <AssociationConnector Association="GNSWModel.FK_CHAOutStationReport_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_CommercialBanks_CommercialBanks" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationInCommercialBank_CommercialBanks" />
+        <AssociationConnector Association="GNSWModel.FK_ContactInfo_Country" />
+        <AssociationConnector Association="GNSWModel.FK_ContactInfo_IDTypes" />
+        <AssociationConnector Association="GNSWModel.FK_ContactInfo_Region" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentTransactionStatus_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_Vessel_Country" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_Currency" />
+        <AssociationConnector Association="GNSWModel.FK_District_Region" />
+        <AssociationConnector Association="GNSWModel.FK_DocumentInfo_DocumentType" />
+        <AssociationConnector Association="GNSWModel.FK_LPCOIDFDocumentUploadLog_DocumentInfo1" />
+        <AssociationConnector Association="GNSWModel.FK_OrganizationDocumentInfoByTIN_OrganizationDocumentInfoByTIN" />
+        <AssociationConnector Association="GNSWModel.FK_DocumentRole_DocumentType" />
+        <AssociationConnector Association="GNSWModel.FK_ew_Payments_ew_PaymentChannel" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentTransactionStatus_ew_PaymentChannel" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentPurpose_ew_PaymentPurposeTypes" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentPurposeActionLog_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentPurposeExtraData_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentPurposeItems_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_ew_Payments_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentTerms_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_Transaction_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_Transaction_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationScopeOfWork_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_ew_PaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentsExtraData_ew_PaymentPurposeExtraData" />
+        <AssociationConnector Association="GNSWModel.FK_ew_Payments_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_ew_PaymentVoucherLog_ew_Payments" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingFlatFee_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingFlatFee_FDABill_Criterion" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_TransactionDetails_FDABill_BillingFlatFee" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingRate_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingRate_FDABill_Criterion" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingRateApproval_FDABill_BillingRate" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_TransactionDetails_FDABill_BillingRate" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingRateApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_BillingRateApproval_FDABill_Criterion" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CatAgencyHSCodeApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryCriterionValue_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryCriterionValueApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryTarrif_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryTarrifApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CatTariffHsCode_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_HSCode_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_HSCodeApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_ManufacturerApproval_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_RawMaterialsManu_FDABill_Category" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryCriterionValue_FDABill_Criterion" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryCriterionValueApproval_FDABill_Criterion" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CategoryTarrifApproval_FDABill_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CatTariffHsCode_FDABill_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_CatTariffHsCode_FDABill_HSCode" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_TransactionDetails_FDABill_CatTariffHsCode" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_Criterion_FDABill_ProcessOrder" />
+        <AssociationConnector Association="GNSWModel.FK_FDABill_TransactionDetails_FDABill_Transaction" />
+        <AssociationConnector Association="GNSWModel.FK_GMDN_Categories_GMDN_Categories" />
+        <AssociationConnector Association="GNSWModel.FK_InvoiceDetails_InvoiceType" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_CategoryTarrif_LCB_Category" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_CategoryTarrifApproval_LCB_Category" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainer_LCB_Category" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainerApproval_LCB_Category" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainer_LCB_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainerApproval_LCB_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_TransactionCategoryCost_LCB_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_TransactionCategoryHscode_LCB_CategoryTarrif" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_DeclarationDetailsItems_LCB_DeclarationDetails" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainer_LCB_HSCodeContainerType" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_HsCodeContainerApproval_LCB_HSCodeContainerType" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_TransactionCategoryCost_LCB_Transaction" />
+        <AssociationConnector Association="GNSWModel.FK_LCB_TransactionCategoryHscode_LCB_Transaction" />
+        <AssociationConnector Association="GNSWModel.FK_LPCOIDFDocumentUpload_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_LPCOIDFDocumentUploadLog_DocumentInfo" />
+        <AssociationConnector Association="GNSWModel.FK_Memberships_Audit_Memberships" />
+        <AssociationConnector Association="GNSWModel.MembershipEntity_User" />
+        <AssociationConnector Association="GNSWModel.FK_ProfessionalMembership_MemberShipStatus" />
+        <AssociationConnector Association="GNSWModel.FK_MessageTemplate_MessageType" />
+        <AssociationConnector Association="GNSWModel.FK_Notification_NotificationStatus" />
+        <AssociationConnector Association="GNSWModel.FK_Notification_NotificationType" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationAssociation_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationInCommercialBank_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationScopeOfWork_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_ProfessionalMembership_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_THWebAPIValidate_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_vts_Drivers_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServices_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_vts_VehicleInfo_Organisation" />
+        <AssociationConnector Association="GNSWModel.FK_OrganisationScopeOfWork_ScopeOfWork" />
+        <AssociationConnector Association="GNSWModel.ProfileEntity_User" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandling_TransmissionStatus" />
+        <AssociationConnector Association="GNSWModel.FK_TerminalHandlingTransmissionLog_TerminalHandling" />
+        <AssociationConnector Association="GNSWModel.FK_THDetails_TerminalHandling" />
+        <AssociationConnector Association="GNSWModel.FK_THChargeItem_InvoiceId" />
+        <AssociationConnector Association="GNSWModel.FK_THContainer_InvoiceId" />
+        <AssociationConnector Association="GNSWModel.FK_THPayment_InvoiceId" />
+        <AssociationConnector Association="GNSWModel.FK_VehicleModelReference_VehicleReference" />
+        <AssociationConnector Association="GNSWModel.FK_Vessel_VesselType" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServiceTransport_vts_GCDriverVehicleList1" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServices_vts_TrackingServiceStatuses" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServices_vts_Warehouses" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServiceStatusLog_vts_TrackingServices" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServiceTransport_vts_TrackingServices" />
+        <AssociationConnector Association="GNSWModel.FK_vts_TrackingServiceTransportContainer_vts_TrackingServiceTransport" />
+        <AssociationConnector Association="GNSWModel.FK_vts_Warehouses_vts_WarehouseStatuses" />
+        <AssociationConnector Association="GNSWModel.ApiUsersInResources" />
+        <AssociationConnector Association="GNSWModel.ApprovalRegistrationStatus" />
+        <AssociationConnector Association="GNSWModel.ApprovalRegistsrsationInPaymentPurposeItem" />
+        <AssociationConnector Association="GNSWModel.ApprovalWorkFlowContactTags" />
+        <AssociationConnector Association="GNSWModel.br_ApprovalRegistrationRejectionCriteria" />
+        <AssociationConnector Association="GNSWModel.br_ApprovalWorkflowCompanyLegalStatuses" />
+        <AssociationConnector Association="GNSWModel.br_AprpovalRegistrationItemsToBeImported" />
+        <AssociationConnector Association="GNSWModel.br_FDABiologicalProductsImportCheckedSel" />
+        <AssociationConnector Association="GNSWModel.br_GSAApprovalRegistrationOnGSAFishTypesOfProcess" />
+        <AssociationConnector Association="GNSWModel.br_GSAFishTypesOfProductsInCategories" />
+        <AssociationConnector Association="GNSWModel.br_GSAInspectionPlantCheckSel" />
+        <AssociationConnector Association="GNSWModel.br_GSAInspectionPlantCheckSelDel" />
+        <AssociationConnector Association="GNSWModel.br_GSAInspectionVesselCheckSel" />
+        <AssociationConnector Association="GNSWModel.br_GSAInspectionVesselCheckSelDel" />
+        <AssociationConnector Association="GNSWModel.br_UsersInGNCCStations" />
+        <AssociationConnector Association="GNSWModel.CategoryDocuments" />
+        <AssociationConnector Association="GNSWModel.CHALicenseApplicationDocument" />
+        <AssociationConnector Association="GNSWModel.CHAWorkFlowDocument" />
+        <AssociationConnector Association="GNSWModel.ContactsInTags" />
+        <AssociationConnector Association="GNSWModel.CRRIMSProductAgencyHsCode" />
+        <AssociationConnector Association="GNSWModel.DocumentTypeFormat" />
+        <AssociationConnector Association="GNSWModel.ew_PaymentPurposeChannel" />
+        <AssociationConnector Association="GNSWModel.FDABill_CategoryAgencyHsCodeMap" />
+        <AssociationConnector Association="GNSWModel.FDABill_CategoryManufacturer" />
+        <AssociationConnector Association="GNSWModel.OrganisationAddressBook" />
+        <AssociationConnector Association="GNSWModel.OrganisationCategory" />
+        <AssociationConnector Association="GNSWModel.OrganisationContactInfo" />
+        <AssociationConnector Association="GNSWModel.OrganisationLegalStatus" />
+        <AssociationConnector Association="GNSWModel.OrganisationRoles" />
+        <AssociationConnector Association="GNSWModel.OrganisationUsers" />
+        <AssociationConnector Association="GNSWModel.OrganizationDocumentInfo" />
+        <AssociationConnector Association="GNSWModel.OrgnainsationNACOBBusinessCategories" />
+        <AssociationConnector Association="GNSWModel.ResourcesInRole" />
+        <AssociationConnector Association="GNSWModel.RolesInSystems" />
+        <AssociationConnector Association="GNSWModel.UserContactInfo" />
+        <AssociationConnector Association="GNSWModel.UsersInRoles" />
+        <AssociationConnector Association="GNSWModel.WorkFlowPaymentPurpose" />
+        <AssociationConnector Association="GNSWModel.MasterDataSubscriberActions" />
+        <AssociationConnector Association="GNSWModel.ScopeOfWorkPaymentPurpose" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

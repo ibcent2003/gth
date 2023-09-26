@@ -1,0 +1,70 @@
+﻿@model Project.Models.HelpViewModel
+@{
+    ViewBag.Title = "Terms & Conditions";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Terms & Conditions</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+
+                <li class="active" style="color:white">Terms & Conditions</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-9">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-mobile9"></i>Terms & Conditions</h3>
+                    </div>
+                </div>
+
+                @Html.Raw(Model.TermsCondition.Terms)
+
+            </div>
+
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-help-with-circle"></i>Help</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            <a href="@Url.Action("FAQ", "Help", new {area = "" })" class="list-group-item">FAQ</a>
+                            <a href="@Url.Action("TermsAndCondition", "Help", new {area = "" })" class="list-group-item">Tearms and Condition</a>
+                            <a href="@Url.Action("CommonlyUsedTerms", "Help", new {area = "" })" class="list-group-item">Commonly Used Terms</a>
+
+                            <a href="@Url.Action("Guideline", "Help", new {area = "" })" class="list-group-item">Guideline/Tutorial</a>
+                            <a href="@Url.Action("Contact", "Home", new {area = "" })" class="list-group-item">Contact Us</a>
+                            <a href="@Url.Action("UsefulLinks", "Help", new {area = "" })" class="list-group-item">Useful Links</a>
+                            <a href="https://desk.zoho.com/portal/westblueconsulting/home" target="_blank" class="list-group-item">GTH HelpDesk</a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}
+

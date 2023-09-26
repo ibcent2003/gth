@@ -1,0 +1,57 @@
+﻿@model Project.Models.DutyCalculatorModel
+@{
+    ViewBag.Title = "Duty Calculator";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Duty Calculator</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Duty Calculator</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top:50px;">
+    <div class="col-md-12">
+        <h3 style="text-transform:uppercase;"><center><strong>Used Vehicle &amp; General Goods</strong> Duty Calculator Tool</center></h3>
+        <p></p><center>Use this useful tool to Calculate your Import Duty and Taxes for both General Goods and Used Vehicle.</center><p></p>
+        
+    </div>
+</div>
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    <div class="container">
+        <div class="row" style="text-align:center">
+            <div class="col-md-6">
+            
+                    <a href="@Url.Action("GeneralGood", "DutyCalculator", new {area = "" })">
+                        <img src="~/Content/Frontend/light/img/sections/portfolio/generalgoods.png">
+                    </a>
+            </div>
+            <div class="col-md-6">
+                
+                    <a href="@Url.Action("UsedVehicle", "DutyCalculator", new {area = "" })">
+                        <img src="~/Content/Frontend/light/img/sections/portfolio/UsedVehicles.png">
+                    </a>
+            </div>
+        </div>
+
+
+</div>
+    </section>
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+
+

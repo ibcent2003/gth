@@ -1,0 +1,98 @@
+﻿@model Project.Models.IndexViewModel
+@{
+    ViewBag.Title = "Contact Us";
+    
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Contact Us</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section id="contact-us" class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 contact-info">
+                <div class="row text-center">
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-map-marker i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Address</div>
+                        Ghana Revenue Authority (Customs Division)
+                        P.O.box 68
+                        HQ
+                        Accra,Ghana. 
+                    </address>
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-microphone i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Phones</div>
+                        <div>+233 242 435 663</div>
+                        <div>+233 800 111 222</div>
+                    </address>
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-envelope i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Email Addresses</div>
+                        <div>Support1: <a href="mailto:support@ghanastradinghub.gov.gh">support@ghanastradinghub.gov.gh</a></div>
+                        <div>Support2: <a href="mailto:support@ghanastradinghub.com">support@ghanastradinghub.com</a></div>
+
+                        
+
+                    </address>
+                </div>
+            </div>
+        </div>
+        <hr class="pad-10">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="form-message" style="display: none;"></p>
+                <div class="contact-form">
+                    <!-- Form Begins -->
+                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new {@class = "form-horizontal row-border", role = "form", name = "contactform", id = "contactform" }))
+                    { 
+                            <!-- Field 1 -->
+                            <div class="input-text form-group">
+                                @*<input type="text" name="contact_name" class="" placeholder="Full Name" />*@
+                                @Html.TextBoxFor(x => x.feedbackform.full_name, new { @class = "input-name form-control", name="contact_name" , placeholder = "Full Name" })
+                            </div>
+                            <!-- Field 2 -->
+                            <div class="input-email form-group">
+                                @*<input type="email" name="contact_email" class="input-email form-control" placeholder="Email" />*@
+                                @Html.TextBoxFor(x => x.feedbackform.Email, new { @class = "input-email form-control", name = "contact_email", placeholder = "Email Address" })
+                            </div>
+                            <!-- Field 3 -->
+                            <div class="input-email form-group">
+                               
+                                @Html.TextBoxFor(x => x.feedbackform.MobileNumber, new { @class = "input-phone form-control", name = "contact_phone", placeholder = "Mobile No" })
+                            </div>
+                            <!-- Field 4 -->
+                            <div class="textarea-message form-group">                                
+                                @*<textarea name="contact_message" class="textarea-message hight-82 form-control" placeholder="Message" rows="2"></textarea>*@
+                                @Html.TextAreaFor(x => x.feedbackform.MessageInput, new { @class = "textarea-message hight-82 form-control", name = "contact_message", placeholder = "Message" })
+                            </div>
+                            <!-- Button -->
+                            <button class="btn btn-default btn-block" type="submit" style="color:white">Send Now <i class="icon-paper-plane"></i></button>
+                    }
+                        <!-- Form Ends -->
+</div>
+            </div>
+            <div class="col-md-8">
+                <div class="map-section">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.1126481445067!2d-0.19713968523410044!3d5.550313995975714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf908fa5312b3f%3A0xe68f5085a55482e3!2sGhana+Revenue+Authority+%EF%BC%88HeadOffice%EF%BC%89!5e0!3m2!1sen!2sgh!4v1538651953430" width="800" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    
+                </div>
+            </div><!-- map -->
+        </div>
+    </div>
+</section>
+

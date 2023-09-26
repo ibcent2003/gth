@@ -1,0 +1,80 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Freight Rates";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Freight Rates</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Freight Rates</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 post-list">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">General Cargo</h3>
+                    </div>
+                    @using (Html.BeginForm("FreightRatesResult", "EServices", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        <div>
+
+                            <div class="editor-field">
+                                @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.CountryList, "Value", "Text"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.CountryId)
+                                @Html.HiddenFor(x => x.CountryId)
+                            </div>
+
+                            <input type="submit" class="btn btn-success pull-right" value="Submit" />
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class="sidebar col-sm-12 col-md-6">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Used Vehicle</h3>
+                    </div>
+
+                    @using (Html.BeginForm("VehicleFreightRates", "EServices", FormMethod.Post, new { @class = "form-horizontal", Id = "form1" }))
+                    {
+                        <div>
+
+                            <div class="editor-field">
+                                @Html.DropDownListFor(m => m.VehicleCategoryId, new SelectList(Model.VehicleTypeList, "Value", "Text"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.VehicleCategoryId)
+                            </div>
+
+                            <input type="submit" class="btn btn-success pull-right" value="Submit" />
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+ <div role="alert" class="alert alert-warning" >
+        <strong>Disclaimer! </strong>Ghana Revenue Authority further does not warrant the accuracy or completeness of the information, text, graphics,links or other items contained within these materials. The information above are subject to changes without prior notification.
+    </div>
+
+

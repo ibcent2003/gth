@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9822fe53d7b94922882b32f8bc96c74a" Name="Diagram1">
+        <EntityTypeShape EntityType="PAARv2Model.ExchangeRate" Width="2.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAARv2Model.ExchangeRateView" Width="2.5" PointX="8.75" PointY="21" />
+        <EntityTypeShape EntityType="PAARv2Model.ValuationTPD" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PAARv2Model.sid_FreightRates" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="PAARv2Model.sid_VehicleCategory" Width="1.5" PointX="6.25" PointY="5.25" />
+        <AssociationConnector Association="PAARv2Model.FK_sid_FreightRates_sid_FreightRates" />
+        <EntityTypeShape EntityType="PAARv2Model.sid_VehicleTypes" Width="1.5" PointX="8.875" PointY="5.5" />
+        <AssociationConnector Association="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory" />
+        <EntityTypeShape EntityType="PAARv2Model.HSCodeTariff" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="PAARv2Model.TariffBenchmark" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

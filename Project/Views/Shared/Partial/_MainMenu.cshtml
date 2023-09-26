@@ -1,0 +1,394 @@
+﻿<header id="sticker" class="sticky-navigation">
+    <!-- Sticky Menu -->
+    <div class="sticky-menu relative">
+        <!-- navbar -->
+        <div class="navbar navbar-default navbar-bg-light" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <!-- Button For Responsive toggle -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- Logo -->
+                            <a class="navbar-brand" href="/">
+                         <br />
+                                <img class="site_logo" alt="Ghana's Trading Hub" src="~/Content/Frontend/light/img/logo.png" width="190" height="86">
+                            </a>
+                        </div>
+                        <!-- Navbar Collapse -->
+                        <div class="navbar-collapse collapse">
+                            <!-- nav -->
+                            <ul class="nav navbar-nav">
+                                <!-- Home  Mega Menu -->
+                                <li class="">
+                                    <a href="/">Home</a>
+                                </li>
+                                <!-- Mega Menu Ends -->
+                                <!-- Pages Mega Menu -->
+                                <li class="">
+                                       <a href="@Url.Action("About", "Home", new { Area = ""})">About Us</a>                              
+                                </li>
+
+                                <li class="">
+                                 @*   <a href="@Url.Action("AllNews", "Home", new { Area = ""})">News</a>*@
+                                </li>
+                             
+                                <li class="mega-menu">
+                                    <a href="#">E-Services</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <!-- Home Mage Menu grids Begins -->
+                                            <div class="row">
+                                                <!-- Home Variation 1 Block -->
+                                                <div class="col-sm-3">
+                                                    <!-- Title -->
+                                                    <h6 class="title">Useful Tools</h6>
+                                                    <!-- Links -->
+                                                    <div class="page-links">
+                                                        <div>
+                                                      
+                                                            <a href="@Url.Action("AgencyFeesList", "EServices", new { Area = ""})">Agencies Fees & Charges</a>
+                                                        </div>
+                                                        <div>                                                           
+                                                            <a href="@Url.Action("PhysicaExaminationTool", "EServices", new { Area = ""})">Physical Examination Tool</a>
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("CurrencyConverter", "Home", new { Area = ""})">Currency Converter</a>
+                                                        </div>
+
+                                                        <div>
+                                                            <a href="@Url.Action("ConsigmentTracking", "EServices", new { Area = ""})">Consigment Tracking</a>
+                                                        </div>
+
+                                                        <div>
+                                                            <a href="@Url.Action("CpcList", "Home", new { Area = ""})">Customs Regimes Code</a>
+                                                         
+                                                        </div>                                                      
+                                                        <div>
+                                                            <a href="@Url.Action("Index", "DutyCalculator", new { Area = ""})">Duty Calculator</a>
+                                                        </div>                                                       
+                                                         <div>
+                                                          
+                                                             <a href="@Url.Action("FreightRates", "EServices", new { Area = ""})">Freight Rates</a>
+                                                        </div>
+                                                          <div>                                                       
+                                                              <a href="@Url.Action("ImportClassification", "Home", new { Area = ""})">Import Classification Tool</a>
+                                                        </div>
+                                                          <div>
+                                                            <a href="https://wits.worldbank.org/trade-visualization.aspx" target="_blank">Trade Data Visualization Tool</a>
+                                                        </div>
+                                                        <div>
+                                                            @*<a href="http://www.marinetraffic.com" target="_blank"></a>*@
+
+                                                            <a href="@Url.Action("MarineTraffic", "EServices", new { Area = ""})">Marine Traffic</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Home Variation 1 Block -->
+                                     
+                                                <div class="col-sm-3">
+                                                    <!-- Title -->
+                                                    <h6 class="title">Ghana National Single Window</h6>
+                                                    <!-- Links -->
+                                                    <div class="page-links">
+                                                        
+                                                        <div>
+                                                            <a href="@Url.Action("DocumentsList", "EServices", new {Area = "", Id=9})">Appeals Procedure</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="http://ghananationalsinglewindowevents.com/" target="_blank">Events</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="@Url.Action("DocumentsList", "EServices", new {Area = "", Id=10})">Enabling Law</a>
+                                                        </div>
+                                                        
+                                                        <div>
+                                                            <a href="@Url.Action("GovernanceStructure", "EServices", new {Area = ""})">Governance Structure</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="@Url.Action("SmartPorts", "EServices", new {Area = ""})">Smart Ports</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="/Content/Frontend/light/img/sections/Documents/Process Manual.pdf" target="_blank">Import, Export & Transit Process Manual</a>
+                                                        </div>
+                                                          <div>
+                                                            <a href="/Content/Frontend/light/img/sections/Documents/1E2EC473F6D1481439810943FE7F64560.pdf" target="_blank">Strategic Action Plan & Roadmap</a>
+                                                        </div>
+                                                          <div>
+                                                            <a href="http://www.doingbusiness.org/en/data/exploretopics/trading-across-borders/reforms" target="_blank">Doing Business Reforms</a>
+                                                        </div>
+                                                          <div>
+                                                            <a href="http://www.doingbusiness.org/en/data/exploreeconomies/ghana" target="_blank">Indictors Summary</a>
+                                                        </div>
+                                                           <div>
+                                                               <a href="@Url.Action("DocumentsList", "EServices", new {Area = "", Id=14})">Paperless Port Roadmap</a>
+                                                        </div>
+                                                           <div>
+                                                               <a href="@Url.Action("DocumentsList", "EServices", new {Area = "", Id=11})">WCO Magazine</a>
+                                                        </div>
+
+                                                       
+                                                    </div>
+                                                </div>  
+                                                <!-- Home Variation 2 Block -->
+                                                <div class="col-sm-3">
+                                                    <!-- Title -->
+                                                    <h6 class="title">Trade Procedures</h6>
+                                                    <!-- Links -->
+                                                    <div class="page-links">
+
+                                                        @*<div>
+                                                            <a href="@Url.Action("ImportProcess","EServices", new { Area = "" })">Import Procedures</a>
+
+                                                        </div>
+
+                                                        <div>
+                                                            <a href="@Url.Action("ExportProcess","EServices", new { Area = "" })">Export Procedures</a>
+
+                                                        </div>
+
+                                                        <div>
+                                                            <a href="@Url.Action("TransitProcess","EServices", new { Area = "" })">Transit Procedures</a>
+
+                                                        </div>*@
+                                                        <div>
+                                                            <a href="@Url.Action("ImportSpecificCommodities","EServices", new { Area = "" })">Import Procedures for Specific Commodities</a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="@Url.Action("ExportSpecificCommodities","EServices", new { Area = "" })">Export Procedures for Specific Commodities</a>
+
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                                <!-- One Page variation 1 -->
+                                                <div class="col-sm-3">
+                                                    <!-- Title -->
+                                                    <h6 class="title">Market Place</h6>
+                                                    <!-- Links -->
+                                                    <div class="page-links">
+                                                        <div>
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=1, ProductId=1,Area = ""})">Agricultural Products (Cereals)</a>                                                            
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=2, ProductId=7,Area = ""})">Coffee/Tea/Mate/Spices</a>                                                            
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=3, ProductId=13,Area = ""})">Dairy Products (Raw)</a>                                                            
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=6, ProductId=24,Area = ""})">Horticultural Products</a>                                                            
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=7, ProductId=50,Area = ""})">Meat and Meat Offal</a>                                                            
+                                                        </div>
+
+                                                         <div>                                                            
+                                                             <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=12, ProductId=82,Area = ""})">Processed & Semi-Processed Alumi</a>                                                            
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=13, ProductId=95,Area = ""})">Animal Feed</a>  
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=15, ProductId=111,Area = ""})">Articles for Printing</a>  
+                                                        </div>
+                                                        <div>                                                            
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=18, ProductId=174,Area = ""})">Chemical or Industriak Prepations NES</a> 
+                                                        </div>
+                                                        <div>
+                                                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {Area = ""})">More product category</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                      
+                                                 
+                                            </div>
+                                            <!-- Ends Home Mage Menu Block -->
+
+
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                      @*<li class="mega-menu">
+                                    <a href="#">Trader Registration</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                         
+                                            <div class="row">
+                                               
+                                                <div class="col-sm-3">
+                                                
+                                                    <h6 class="title">Ghana Exports Promotion Authority (GEPA)</h6>
+                                                  
+                                                    <div class="page-links">
+                                                        <div>
+                                                            <a href="#"></a>
+                                                            <a href="@Url.Action("TradeRegistration","EServices", new { Area = "", Id="31" })">GEPA Business Registration</a>
+                                                        </div>                                                       
+                                                    </div>
+                                                </div>
+                                               
+                                     
+                                                <div class="col-sm-3">
+                                                  
+                                                    <h6 class="title">Ghana National Chamber of Commerce</h6>
+                                                   
+                                                    <div class="page-links">                                                                                                            
+                                                           <div>
+                                                            <a href="@Url.Action("TradeRegistration", "EServices", new {Area = "", Id="20"})">GNCCI Exporter Registration</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="col-sm-3">
+                                             
+                                                    <h6 class="title">Ghana Standard Authority (GSA)</h6>
+                                                 
+                                                    <div class="page-links">                                                                                                            
+                                                           <div>
+                                                            <a href="@Url.Action("TradeRegistration", "EServices", new {Area = "", Id="36"})">GSA Registration Of Importers</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                  
+                                                 
+                                            </div>
+                                          
+
+
+                                        </li>
+                                    </ul>
+                                </li>*@
+                           
+
+                                      <li>
+                                    <a href="#">News & Events</a>
+                                    <ul class="dropdown-menu">                                     
+                                        <li>
+                                            <a href="@Url.Action("Index","RecentNews", new { Area = "" })">News</a>
+                                           
+                                        </li>
+                                        <li>
+                                            <a href="http://ghananationalsinglewindowevents.com/"  target="_blank">Events</a>
+                                        </li>
+                                                                             
+                                    </ul>
+                                </li>
+
+                                     
+
+                              
+
+                                <li>
+                                    <a href="#">Library</a>
+                                    <!-- Features Dropdown Menu -->
+                                    <ul class="dropdown-menu">
+                                       
+                                        <li>
+                                            <a href="#">Documents</a>
+                                            <ul class="dropdown-menu">
+                                                <li>                                                  
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=13, area = "" })" >Air Cargo Manifest</a>
+                                                </li>
+                                                <li>                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=10, area = "" })" >Amendment</a>
+                                                </li>
+                                                <li>                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=9, area = "" })">Appeals</a>
+                                                </li>
+                                                <li>
+                                                
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=14, area = "" })">Paperless Port RoadMap</a>
+                                                </li>
+                                                <li>                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=1, area = "" })">Presentations</a>
+                                                </li>
+                                                <li>
+                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=8, area = "" })">Process Manual</a>
+                                                </li>
+                                                <li>
+                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=2, area = "" })">Publications</a>
+                                                </li>
+                                                <li>                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=5, area = "" })">Reference Materials</a>
+                                                </li>
+                                                <li>                                                    
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=4, area = "" })">Speechs</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Id=11, area = "" })">WCO Magazines</a>                                                  
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("DocumentsList", "EServices", new {Area = "", Id=12})">ICC Incoterms 2020</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="https://www.flickr.com/photos/westblueconsulting/albums" target="_blank">Photo Gallery</a>
+                                            
+                                        </li>                                      
+                                            <li>
+                                                <a href="https://www.youtube.com/c/GhanastradinghubGovGhverified" target="_blank">Video Gallery</a>
+                                            </li>
+
+
+                                      
+                                    </ul>
+                                    <!-- Ends Features Dropdown Menu -->
+                                </li>
+
+
+                                <li>
+                                    <a href="#">Help</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("FAQ","Help", new { Area = "" })">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("TermsAndCondition","Help", new { Area = "" })">Terms and Conditions</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CommonlyUsedTerms","Help", new { Area = "" })">Commonly Used Terms</a>
+                                        </li>
+                                         <li>
+                                            <a href="@Url.Action("Guideline","Help", new { Area = "" })">Guideline/Tutorial</a>
+                                        </li>
+                                          <li>
+                                            <a href="@Url.Action("Index","ContactUs", new { Area = "" })">Contact Us</a>
+                                        </li>
+                                           <li>
+                                            <a href="@Url.Action("UsefulLinks","Help", new { Area = "" })">Useful Links</a>
+                                        </li>
+                                           <li>
+                                            <a href="https://desk.zoho.com/portal/westblueconsulting/home" target="_blank">GTH Helpdesk</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- Right nav -->
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.col-md-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- navbar -->
+    </div>
+    <!-- Sticky Menu -->
+</header>

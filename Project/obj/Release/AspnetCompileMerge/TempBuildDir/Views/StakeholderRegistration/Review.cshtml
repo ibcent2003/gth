@@ -1,0 +1,511 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Review";
+    var db = new Project.DAL.PROEntities();
+    var swdb = new GNSW.DAL.GNSWEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Review</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Review</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Review Registration
+                    </div>
+          
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="panel-body">
+                          
+                         <div class="col-sm-12 col-md-12">
+                         <div class="widget">
+                                                    <div class="widget-title">
+                                                        <h3 class="title"><i class="icon-mobile9"></i>Company Information</h3>
+                                                    </div>
+                                                    <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                                        <thead>
+                                                            <tr style="font-size: 12px;">
+                                                               
+                                                                <th>Name</th>
+                                                                <th>TIN</th>
+                                                                
+                                                                <th>Registration No</th>
+                                                                <th>Tax Office</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.organisation != null)
+                                                            {
+                                                                var GetTaxOfficer = swdb.TaxOffice.Where(x => x.Code == Model.organisation.TaxOfficeCode).FirstOrDefault();
+                                                                    <tr style="font-size: 12px;">
+                                                                       
+                                                                        <td>@Model.organisation.Name</td>
+                                                                        <td><span>@Model.organisation.TINNumber</span></td>
+                                                                        
+                                                                        <td><span>@Model.organisation.RCNumber</span></td>
+                                                                        <td><span>@Model.organisation.TaxOfficeCode</span></td>
+
+
+                                                                    </tr>
+                                                                
+                                                            }
+                                                            else
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="8">No Records Found!...</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+
+
+
+                                                </div>
+                             <br />
+                             <div class="widget">
+                                 <div class="widget-title">
+                                     <h3 class="title"><i class="icon-mobile9"></i>Company Address</h3>
+                                 </div>
+                                 <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                     <thead>
+                                         <tr style="font-size: 12px;">
+                                             <th>S/N</th>
+                                             <th>Type</th>
+                                             <th>Address</th>
+                                             <th>Email</th>
+                                             <th>Phone No</th>
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                         @if (Model.CompanyAddress.Count != 0)
+                                         {
+                                             int i = 0;
+                                             foreach (var item in Model.CompanyAddress)
+                                             {
+                                                 ++i;
+                                                 <tr style="font-size: 12px;">
+                                                     <td>
+                                                         @i
+                                                     </td>
+                                                     <td>@item.AddressType.Name</td>
+                                                     <td>@item.Street,@item.District.Name, @item.Region.Name</td>
+                                                   
+                                                     <td>
+                                              
+                                                         
+                                                    @item.EmailAddress
+                                                     </td>
+                                                     <td>@item.PhoneNumber</td>
+
+                                                 </tr>
+                                             }
+                                         }
+                                         else
+                                         {
+                                             <tr>
+                                                 <td colspan="8">No Records Found!...</td>
+                                             </tr>
+                                         }
+                                     </tbody>
+                                 </table>
+
+
+
+                             </div>
+                             <br />
+                             <div class="widget">
+                                 <div class="widget-title">
+                                     <h3 class="title"><i class="icon-mobile9"></i>Company Contact Person</h3>
+                                 </div>
+                                 <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                     <thead>
+                                         <tr style="font-size: 12px;">
+                                             <th>S/N</th>
+                                             <th>First Name</th>
+                                             <th>Last Name</th>
+                                             <th>Email</th>
+                                             <th>Phone No</th>
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                         @if (Model.ContactInfo.Count != 0)
+                                         {
+                                             int i = 0;
+                                             foreach (var item in Model.ContactInfo)
+                                             {
+                                                 ++i;
+                                                 <tr style="font-size: 12px;">
+                                                     <td>
+                                                         @i
+                                                     </td>
+                                                     <td>@item.FirstName</td>
+                                                     <td>@item.LastName</td>
+
+                                                     <td>
+
+
+                                                         @item.EmailAddress
+                                                     </td>
+                                                     <td>@item.MobileNumber</td>
+
+                                                 </tr>
+                                             }
+                                         }
+                                         else
+                                         {
+                                             <tr>
+                                                 <td colspan="8">No Records Found!...</td>
+                                             </tr>
+                                         }
+                                     </tbody>
+                                 </table>
+
+
+
+                             </div>
+                             <br />
+                             <div class="widget">
+                                 <div class="widget-title">
+                                     <h3 class="title"><i class="icon-mobile9"></i>Documen</h3>
+                                 </div>
+                                 <table class="table table-striped table-bordered table-hover table-checkable table-condensed">
+                                     <thead>
+                                         <tr>
+                                             <th>
+                                                 NO.
+                                             </th>
+                                             <th>
+                                                 Document Name
+                                             </th>
+                                             @*<th>
+                            Issued Date
+                        </th>*@
+
+                                             <th>
+                                                 Action
+                                             </th>
+
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                         @if (Model.UploadedDoc.Count != 0)
+                                         {
+
+
+
+                                             int l = 0;
+                                             foreach (var item in Model.UploadedDoc)
+                                             {
+                                                 ++l;
+
+
+                                                 var hrefstr = Url.Content("~/Documents/OrganisationDocuments/" + item.Path);
+                                                 if (null != item.IsLink)
+                                                 {
+                                                     hrefstr = Url.Content(item.Path);
+                                                 }
+                                                 // var classn = "error";
+
+                                                 <tr>
+                                                     <td>
+                                                         @l
+                                                     </td>
+                                                     <td>
+                                                         @item.DocumentType.Name
+                                                     </td>
+                                                     @*<td>
+                                    @item.IssuedDate.Value.ToShortDateString()
+                                </td>*@
+
+
+
+                                                     <td>
+
+
+                                                         <a target="_blank" href="@Url.Action("DocumentsUploadedPath", new { Path = (Model.newDocumentPath) + item.Path })"><i class="icon-download"></i></a>
+                                                         @Html.HiddenFor(m => item.Id)
+
+                                                     </td>
+
+
+                                                 </tr>
+
+                                             }
+
+                                         }
+                                         else
+                                         {
+                                             <tr>
+                                                 <td colspan="99">No Records Found!...</td>
+
+                                             </tr>
+                                         }
+                                     </tbody>
+                                 </table>
+
+
+
+
+                             </div> 
+
+                             <br />
+                             <div class="widget">
+                                 <div class="widget-title">
+                                     <h3 class="title"><i class="icon-mobile9"></i>User Account</h3>
+                                 </div>
+                                 <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                     <thead>
+                                         <tr style="font-size: 12px;">
+
+                                             <th>Username</th>
+                                             <th>Password</th>
+
+                                        
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                         @if (Model.tempUser  != null)
+                                         {
+                                            
+                                             <tr style="font-size: 12px;">
+
+                                                 <td>@Model.tempUser.Tin</td>
+                                                 <td><span>***************</span></td>
+
+                                              
+
+                                             </tr>
+
+                                         }
+                                         else
+                                         {
+                                             <tr>
+                                                 <td colspan="8">No Records Found!...</td>
+                                             </tr>
+                                         }
+                                     </tbody>
+                                 </table>
+
+
+
+                             </div>
+
+                             <br />
+                               <div class="col-sm-6 col-md-6">
+                                 <div class="widget">
+                                     <div class="widget-title">
+                                      
+                                         <h3 class="title"><i class="icon-mobile9"></i>Area of Business</h3>
+                                     </div>
+
+                                     <div class="form-group">                                                                           
+
+                                         <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                             <thead>
+                                                 <tr style="font-size: 12px;">
+                                                     <th>S/N</th>
+                                                     <th>Name</th>
+                                                    
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+                                                 @if (Model.organisation.Categories != null)
+                                                 {
+                                                     int i = 0;
+                                                     foreach (var item in Model.organisation.Categories.ToList())
+                                                     {
+                                                         ++i;
+                                                         <tr style="font-size: 12px;">
+                                                             <td>
+                                                                 @i
+                                                             </td>
+                                                             <td>@item.Category</td>
+                                                             
+
+
+                                                         </tr>
+                                                     }
+                                                 }
+                                                 else
+                                                 {
+                                                     <tr>
+                                                         <td colspan="8">No Records Found!...</td>
+                                                     </tr>
+                                                 }
+                                             </tbody>
+                                         </table>
+
+
+                                     </div>
+                                 </div>
+                             </div>
+
+
+                             <div class="col-sm-6 col-md-6">
+            <div class="widget">
+                <div class="widget-title">
+                
+                    <h3 class="title"><i class="icon-mobile9"></i>Professional Membership </h3>
+                </div>
+
+            
+                    <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                        <thead>
+                            <tr style="font-size: 12px;">
+                                <th>S/N</th>
+                                <th>Assocaition</th>
+                                <th>Membership Number</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.organisation.OrganisationAssociation.Count != 0)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.organisation.OrganisationAssociation.ToList())
+                                {
+                                    ++i;
+                                    <tr style="font-size: 12px;">
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>@item.Association.Name</td>
+                                        <td>@item.MembershipNumber</td>
+
+
+
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="8">No Records Found!...</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+              
+              
+
+
+
+            </div>
+        </div>
+                             <br /><br />
+                         
+                             <br />
+                           
+                             <br />
+                              <br />
+                                            
+                         </div>
+
+                                           
+                                       
+                          
+
+                            
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div style="text-align: left;" class="col-md-6">
+                                    @Html.ActionLink("Back", "AccountInformation", new { Id = Model.Id }, new { @class = "btn btn-sm btn-default pull-left", style = "color:white" })
+                                </div>
+                                <div style="text-align: right;" class="col-md-6">
+                                    @Html.HiddenFor(x => x.Id)
+                                    @Html.ActionLink("Submit Registration", "SubmitRegistration", "StakeholderRegistration", new { Id = Model.Id }, new { @class = "btn btn-sm btn-default", style = "color:white" })
+                                </div>
+                            </div>
+                        </div>
+                          
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+

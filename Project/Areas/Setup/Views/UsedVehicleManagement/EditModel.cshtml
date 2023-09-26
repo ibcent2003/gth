@@ -1,0 +1,136 @@
+﻿@model Project.Areas.Setup.Models.UsedVehicleManagementViewModel
+@{
+    ViewBag.Title = "Edit Model Entry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.IsGreetings = "true";
+}
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/vendors/tinymce/tinymce.min.js")
+    <script>
+
+
+        "use strict";
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                defaultDate: +7,
+                showOtherMonths: true,
+                autoSize: true,
+                appendText: '<span class="help-block">(yyyy-mm-dd)</span>',
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+}
+@section Crumbs{
+    <div class="crumbs">
+
+        <ul class="breadcrumb" id="breadcrumbs">
+            <li><i class="icon-home"></i><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Dashboard</a> </li>
+            <li><i class="current"></i><a href="javascript: return void(0)">Edit Model Entry</a> </li>
+
+
+        </ul>
+    </div>
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr style="font-size: 12px;">
+            <th>S/N</th>
+            <th>Make</th>
+            <th>No of Model</th>
+            <th>Modified By</th>
+            <th>Modified Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.VehicleReference != null)
+        {
+
+            <tr style="font-size: 12px;">
+                <td>
+                    <p>1</p>
+                </td>
+                <td>@Model.VehicleReference.Name</td>
+                <td>
+                    <span class="label label-danger"> <strong>@Model.VehicleReference.VehicleModelReference.Count()</strong></span>
+
+                </td>
+                <td>@Model.VehicleReference.ModifiedBy</td>
+                <td>@Model.VehicleReference.ModifiedDate.ToShortDateString()</td>
+
+            </tr>
+
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">No Records Found!...</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>
+                    <i class="icon-reorder"></i>
+                    Edit Model Entry
+                </h4>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("EditModel", "UsedVehicleManagement", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal row-border" }))
+                {
+                    @Html.HiddenFor(x => x.modelform.Id)
+                    @Html.HiddenFor(x => x.modelform.MakeId)
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.Label("Name", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.modelform.ModelName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.modelform.ModelName)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.Label("Category", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(m => m.modelform.MakeId, new SelectList(Model.MakeList, "Value", "Text"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.modelform.MakeId)
+                        </div>
+                    </div>
+                    <div class="form-actions">
+
+                        <a href="@Url.Action("ModelList", "UsedVehicleManagement", new { Id = Model.modelform.MakeId,  @area="Setup" })" class="btn btn-success"><< Back to List</a>
+                        <input type="submit" class="btn btn-warning pull-right" value="Save" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

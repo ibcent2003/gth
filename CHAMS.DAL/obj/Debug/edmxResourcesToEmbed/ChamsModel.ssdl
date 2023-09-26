@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CHAMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alert">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkFlowId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CCSms" Type="varchar" MaxLength="50" />
+    <Property Name="CCEmail" Type="varchar" MaxLength="50" />
+    <Property Name="CCNotification" Type="varchar" MaxLength="50" />
+    <Property Name="SubjectSms" Type="varchar" MaxLength="50" />
+    <Property Name="SubjectEmail" Type="varchar" MaxLength="150" />
+    <Property Name="SubjectNotification" Type="varchar" MaxLength="150" />
+    <Property Name="Sms" Type="nvarchar" MaxLength="160" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Notification" Type="nvarchar(max)" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="EndDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="AlertNotification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sender" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Receiver" Type="varchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Message" Type="varchar(max)" Nullable="false" />
+    <Property Name="SentDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CC" Type="varchar(max)" />
+    <Property Name="BBC" Type="varchar(max)" />
+    <Property Name="Attachments" Type="varchar(max)" />
+    <Property Name="AlertType" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="EndDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityContainer Name="CHAMSModelStoreContainer">
+    <EntitySet Name="Alert" EntityType="Self.Alert" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlertNotification" EntityType="Self.AlertNotification" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,174 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Company Information";
+    var db = new Project.DAL.PROEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Company Information</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Company Information</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Verification
+                    </div>
+                    @using (Html.BeginForm("CompanyInformation", "StakeholderRegistration", FormMethod.Post))
+            {
+                        @Html.AntiForgeryToken()
+                        <div class="panel-body">
+
+                            <div class="content col-sm-12 col-md-8">
+
+
+
+
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.CompanyRegFrom.CompanyName, new { @class = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icon">
+                                        @Html.TextBoxFor(model => model.CompanyRegFrom.CompanyName, new { @class = "form-control", @placeholder = "Enter the Company Name exactly as on the Business Registration Certificate." })
+                                        @Html.ValidationMessageFor(model => model.CompanyRegFrom.CompanyName, null, new { @style = "color:red" })
+                                    </div>
+                                </div>
+
+
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.CompanyRegFrom.RegistrationNumber, new { @class = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icon">
+                                        @Html.TextBoxFor(m => Model.CompanyRegFrom.RegistrationNumber, new { @class = "form-control", @placeholder = "Enter Company Registration Number." })
+                                        @Html.ValidationMessageFor(model => model.CompanyRegFrom.RegistrationNumber, null, new { @style = "color:red" })
+                                    </div>
+                                </div>
+
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.CompanyRegFrom.TIN, new { @class = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icon">
+                                        @Html.TextBoxFor(m => Model.CompanyRegFrom.TIN, new { @class = "form-control" , @placeholder = "Enter your Company TIN" })
+                                        @Html.ValidationMessageFor(model => model.CompanyRegFrom.TIN, null, new { @style = "color:red" })
+                                    </div>
+                                </div>
+
+
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.CompanyRegFrom.OlTIN)
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icon">
+                                        @Html.TextBoxFor(m => Model.CompanyRegFrom.OlTIN, new { @class = "form-control", @placeholder = "Enter old Company TIN. This is Optional" })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.CompanyRegFrom.TaxOfficeId, new { @class = "required" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-icon">
+                                        @Html.DropDownListFor(m => Model.CompanyRegFrom.TaxOfficeId, new SelectList(Model.TaxOfficeList, "Value", "Text"), "Please select your Tax Office", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CompanyRegFrom.TaxOfficeId, null, new { @style = "color:red" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div style="text-align: left;" class="col-md-6">
+                                    <a href="@Url.Action("Index")" class="btn btn-sm btn-default" style="color:white">Back</a>
+                                </div>
+                                <div style="text-align: right;" class="col-md-6">
+                                    <input type="submit" value="Next" class="btn btn-sm btn-default" style="color:white">
+                                </div>
+                            </div>
+                        </div>
+            }
+                </div>
+            </div>
+        </div>
+
+</div></section>

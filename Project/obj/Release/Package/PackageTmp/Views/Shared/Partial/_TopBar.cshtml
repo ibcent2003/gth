@@ -1,0 +1,40 @@
+﻿<!-- Top Bar -->
+<div id="top-bar" class="top-bar-section top-bar-bg-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Top Contact -->
+                <div class="top-contact link-hover-black">
+                    <a href="#"><i class="fa fa-phone"></i>+233 242 435 663</a>
+                    <a href="#"><i class="fa fa-envelope"></i>support@ghanastradinghub.gov.gh</a>
+                </div>
+                <!-- Top Social Icon -->
+                <div class="top-social-icon icons-hover-black">
+                    <a href="https://www.facebook.com/Ghanatradehub" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/Ghanatradehub" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCuYvjrmO8zlodFTcSmklAug" target="_blank"><i class="fa fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/ghanatradehub" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://plus.google.com/wm/trollface-meme_www.trollize.com_viral-videos-funny-lol/+GhanastradinghubGovGhverified/videos" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Index", "StakeholderRegistration", new { Area = ""})"><i class="fa fa-anchor"></i> Register</a>
+                        <a href="@Url.Action("Login", "SGAccount", new { Area = ""})"><i class="fa fa-sign-in"></i> Login</a>
+                    }
+                    else
+                    {                    
+                        <a href="@Url.Action("Index", "Dashboard", new { Area = "Admin"})"><i class="fa fa-male"></i> My Account</a>
+
+                        using (Html.BeginForm("LogOff", "SGAccount", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", style = "display: inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                <i class="fa fa-unlock-alt"></i> Log Out (@User.Identity.Name)
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar -->

@@ -1,0 +1,27 @@
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll.config
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.pdb
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.dll
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.xml
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csprojResolveAssemblyReference.cache
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.dll
+C:\Vhost\New GTH\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.pdb
+E:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll.config
+E:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll
+E:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.pdb
+E:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.dll
+E:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.xml
+E:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csprojAssemblyReference.cache
+E:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csproj.CoreCompileInputs.cache
+E:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csproj.CopyComplete
+E:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.dll
+E:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.pdb
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll.config
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\GNSW.DAL.pdb
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Debug\EntityFramework.xml
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csproj.CoreCompileInputs.cache
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.csproj.CopyComplete
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Debug\GNSW.DAL.pdb

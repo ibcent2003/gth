@@ -1,0 +1,171 @@
+﻿@model Project.Models.EServicesViewModel
+    @{
+        ViewBag.Title = Model.VehicleTypeName + " Freight Rate";
+    }
+
+        <div class="page-header page-title-left mini">
+            <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+            <div class="container">
+                <div class="col-md-12">
+                    <h1 class="title" style="color:white">@Model.VehicleTypeName Freight Rates</h1>
+                    <ul class="breadcrumb" style="color:white">
+                        <li style="color:white">
+                            <a href="@Url.Action("Classic", "Home", new { area = "" })" style="color:white">Home</a>
+                        </li>
+
+                        <li style="color:white">
+                            <a href="@Url.Action("FreightRates", "EServices", new { area = "" })" style="color:white">Freight Rates</a>
+                        </li>
+
+                        <li class="active" style="color:white">@Model.VehicleTypeName Freight Rates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 post-list">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h3 class="title">Freight Rates Values</h3>
+                            </div>
+                            <div>
+
+                                <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable">
+                                    <thead>
+                                        <tr style="font-size: 12px;">
+                                            <th>S/N</th>
+                                            <th>Category</th>
+                                            <th>Freight Value</th>
+                                            <th>CC From</th>
+                                            <th>To CC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.FreightValueList.Count != 0)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.FreightValueList)
+                                            {
+                                                ++i;
+                                                <tr style="font-size: 12px;">
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.FreightValues</td>
+                                                    <td>@item.MinimumCC</td>
+                                                    <td>@item.MaximumCC</td>
+
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="8">No Records Found!...</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="sidebar col-sm-12 col-md-6">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h3 class="title">Overage Vehicle Penalty</h3>
+                            </div>
+
+                            <div>
+                                <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable">
+                                    <thead>
+                                        <tr style="font-size: 12px;">
+                                            <th>S/N</th>
+                                            <th>Category</th>
+                                            <th>Overage Value</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.OverageRatesList.Count != 0)
+                                        {
+                                            int i = 0;
+                                            foreach (var item in Model.OverageRatesList)
+                                            {
+                                                ++i;
+                                                <tr style="font-size: 12px;">
+                                                    <td>
+                                                        @i
+                                                    </td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Overage</td>
+                                                    <td>@item.MinimumAge</td>
+                                                    <td>@item.MaximumAge</td>
+
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="8">No Records Found!...</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        @section Styles {
+            @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/jquery.dataTables.css")
+            @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css")
+        }
+
+
+        @section Scripts{
+            @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/jquery.dataTables.js")
+            @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js")
+
+
+            <script>
+        var oTable1 =
+            $('#regimes')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .DataTable({
+                    bAutoWidth: false,
+                    bServerSide: true,
+                    sAjaxSource: "@Url.Action("Search")",
+                    bProcessing: false,
+                    aoColumns: [
+                        { mData: "Drescription" },
+                        { mData: "Code" }
+                    ]
+                });
+            </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+        }
+
+        

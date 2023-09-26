@@ -1,0 +1,52 @@
+﻿<!-- Top Bar -->
+<div id="top-bar" class="top-bar-section top-bar-bg-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Top Contact -->
+                <div class="top-contact link-hover-black">                   
+                    <img src="~/Content/Frontend/light/img/Coat_of_arms_of_Ghana.svg.png" width="30" height="30">
+                    <a href="http://www.ghana.gov.gh/" target="_blank">Republic of Ghana</a>
+                    <a href="#"><i class="fa fa-phone"></i>+233 242 435 663</a>
+                    <a href="mailto:support@ghanastradinghub.com"><i class="fa fa-envelope"></i>support@ghanastradinghub.com</a>
+                </div>
+
+                <div class="top-contact link-hover-black">                                      
+                    <a href="https://itunes.apple.com/gh/app/ghana-trade-hub/id1459979649?mt=8" target="_blank"><img src="~/Content/Frontend/light/img/appstore.jpg" width="100" height="100"> </a> <a href="https://bit.ly/2YTRJkR" target="_blank">  <img src="~/Content/Frontend/light/img/playstore.jpg" width="100" height="70"></a>
+                </div>
+                <!-- Top Social Icon -->
+                <div class="top-social-icon icons-hover-black">
+                    <a href="https://www.facebook.com/Ghanatradehub" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/Ghanatradehub" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCuYvjrmO8zlodFTcSmklAug" target="_blank"><i class="fa fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/ghanatradehub" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    @*<a href="https://plus.google.com/wm/trollface-meme_www.trollize.com_viral-videos-funny-lol/+GhanastradinghubGovGhverified/videos" target="_blank"><i class="fa fa-google-plus"></i></a>*@
+                    <a href="https://www.flickr.com/photos/westblueconsulting/albums" target="_blank" style="color:white"><i class="icon-flickr4"></i></a>
+
+                    @*<a href="@Url.Action("Index", "StakeholderRegistration", new { Area = ""})"><i class="fa fa-anchor"></i> Create An Account</a>                 
+                    <a href="https://nsw.ghanastradinghub.com/Account/Login?ReturnUrl=%2f" target="_blank"><i class="fa fa-sign-in"></i> Login</a>*@
+
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Index", "StakeholderRegistration", new { Area = ""})"><i class="fa fa-anchor"></i> Register</a>                       
+                        <a href="@Url.Action("Login", "SGAccount", new { Area = ""})" target="_blank"><i class="fa fa-sign-in"></i> Login</a>
+                    }
+                    else
+                    {
+
+                        <a href="@Url.Action("Index", "Dashboard", new { Area = "Admin"})"><i class="fa fa-male"></i> My Account</a>
+
+                        using (Html.BeginForm("LogOff", "SGAccount", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", style = "display: inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                <i class="fa fa-unlock-alt"></i> Log Out (@User.Identity.Name)
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar -->

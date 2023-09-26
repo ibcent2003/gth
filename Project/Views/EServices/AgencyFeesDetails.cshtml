@@ -1,0 +1,160 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Agencies Fees & Charges";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">@Model.organisation.ShortName Fees & Charges</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("AgencyFeesList", "EServices", new {area = "" })" style="color:white">Agencies Fees & Charges</a>
+                </li>
+
+                <li class="active" style="color:white">@Model.organisation.ShortName Fees & Charges</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-9">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-mobile9"></i>@Model.organisation.Name (@Model.organisation.ShortName)</h3>
+                    </div>
+                </div>
+                <!-- Image -->
+              
+                <img src="~/Content/Frontend/light/img/sections/Logo/@Model.organisation.Logo" class="pull-right" width="120" height="90" alt="" />  
+                <p>@Html.Raw(@Model.organisation.Description)  </p>
+                <br />
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-attach-money"></i> Fees and Charges</h3>
+                    </div>
+                    <i class="fa fa-file-pdf-o" style="font-size:15px;color:red"></i> <a target="_blank" href="~/Content/Frontend/light/img/sections/Documents/@Model.organisation.OrganizationFee.FirstOrDefault().PDFFormat">Download PDF Version</a>
+                    <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                        <thead>
+                            <tr style="font-size: 12px;">
+                                <th>S/N</th>
+                                <th>Process Name</th>
+                                <th>Fees</th>
+                                <th>Dollars</th>
+                                <th>Ghana Cedis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.organisationFee.Count != 0)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.organisationFee)
+                                {
+                                    ++i;
+                                    <tr style="font-size: 12px;">
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>@item.ProcessName</td>
+                                        <td>@item.FeesPurpose</td>
+                                        <td>@item.AmountInDollar</td>
+                                        <td>@item.AmountIdCedis</td>
+
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="8">No Records Found!...</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                    @*<table id="mining-title-table" class="table table-striped table-bordered table-hover table-checkable table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Process Name</th>
+                                <th>Fees</th>
+                                <th>Dollars</th>
+                                <th>Ghana Cedis</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="99">Fetching data...</td></tr>
+                        </tbody>
+                    </table>*@
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-building-o"></i> Other Agencies</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            @foreach (var item in Model.orgId.Distinct())
+                            {
+                            var GetOrg = db.Organization.Where(o => o.Id == item).FirstOrDefault();                                
+                                <a href="@Url.Action("AgencyFeesDetails", "EServices", new {Id=item, area = "" })" class="list-group-item" >@GetOrg.Name</a>
+                                    }
+
+</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Styles {
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/jquery.dataTables.css")
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css")
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/jquery.dataTables.js")
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js")
+     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+    <script>
+        var oTable1 =
+            $('#fees')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .DataTable({
+                    bAutoWidth: false,
+                    bServerSide: true,
+                    sAjaxSource: "@Url.Action("Search")",
+                    bProcessing: false,
+                    aoColumns: [
+                        { mData: "ProcessName" },
+                        { mData: "FeesPurpose" },
+                        { mData: "AmountInDollar" },
+                         { mData: "AmountIdCedis" }
+                    ]
+                });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}
+
+

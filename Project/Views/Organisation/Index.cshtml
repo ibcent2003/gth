@@ -1,0 +1,91 @@
+﻿@model Project.Models.OrganisationViewModel
+@{
+    ViewBag.Title = "Organisation Type";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Organisation Type</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+             
+
+                <li class="active" style="color:white">Organisation Type</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-code"></i> Organisation Types</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            @foreach (var item in Model.OrganizationTypeList.Distinct())
+                            {                                
+                                <a href="@Url.Action("OrganisationList", "Organisation", new {Id=item.Id, area = "" })" class="list-group-item">@item.Name</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-9 col-md-9">
+              
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+
+@section Styles {
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/jquery.dataTables.css")
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css")
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/jquery.dataTables.js")
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js")
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+    <script>
+        var oTable1 =
+            $('#fees')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .DataTable({
+                    bAutoWidth: false,
+                    bServerSide: true,
+                    sAjaxSource: "@Url.Action("Search")",
+                    bProcessing: false,
+                    aoColumns: [
+                        { mData: "ProcessName" },
+                        { mData: "FeesPurpose" },
+                        { mData: "AmountInDollar" },
+                         { mData: "AmountIdCedis" }
+                    ]
+                });
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}
+
+
+
+

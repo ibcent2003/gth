@@ -1,0 +1,179 @@
+﻿@model Project.Models.ContactUsViewModel
+@{
+    ViewBag.Title = "Contact Us";
+
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Contact Us</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section id="contact-us" class="page-section">
+    <div class="container">
+        <div class="row">
+            @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                <div class="alert @alertType fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    @Html.Raw(TempData["Message"])
+                </div>
+            }
+            <div class="col-md-12 contact-info">
+                <div class="row text-center">
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-map-marker i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Address</div>
+                        Ghana Revenue Authority (Customs Division)
+                        P.O.box 68
+                        HQ
+                        Accra,Ghana.
+                    </address>
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-microphone i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Phones</div>
+                        <div>+233 242 435 663</div>                 
+                    </address>
+                    <address class="col-sm-4 col-md-4">
+                        <i class="fa fa-envelope i-9x icons-circle text-color light-bg hover-black"></i>
+                        <div class="title">Email Addresses</div>                        
+                        <div>Support: <a href="mailto:support@ghanastradinghub.com">support@ghanastradinghub.com</a></div>
+
+
+
+                    </address>
+                </div>
+            </div>
+        </div>
+        <hr class="pad-10">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="form-message" style="display: none;"></p>
+                <div class="contact-form">
+                    <!-- Form Begins -->
+                  @using (Html.BeginForm("Index", "ContactUs", FormMethod.Post, new { @class = "form-horizontal row-border", role = "form", name = "contactform", id = "contactform" }))
+                  {
+                                <!-- Field 1 -->
+                        <div class="input-text form-group">                            
+                            @Html.TextBoxFor(x => x.contactusform.fullname, new { @class = "input-name form-control", name = "contact_fullname", placeholder = "Full Name" })
+                            @Html.ValidationMessageFor(model => model.contactusform.fullname, null, new { @style = "color:red" })
+                        </div>
+
+
+                           <!-- Field 3 -->
+                        <div class="input-email form-group">
+                            @Html.TextBoxFor(x => x.contactusform.MobileNumber, new { maxlength = 10, @class = "input-phone form-control", name = "contact_MobileNumber", placeholder = "Mobile No" })
+                            @Html.ValidationMessageFor(model => model.contactusform.MobileNumber, null, new { @style = "color:red" })
+                        </div>
+
+                            <!-- Field 2 -->
+                            <div class="input-email form-group">                                
+                                @Html.TextBoxFor(x => x.contactusform.EmailAddress, new { @class = "input-email form-control", name = "contact_emailaddress", placeholder = "Email Address" })
+                                @Html.ValidationMessageFor(model => model.contactusform.EmailAddress, null, new { @style = "color:red" })
+                            </div>
+                         
+                            <!-- Field 4 -->
+                            <div class="textarea-message form-group">                                
+                                @Html.TextAreaFor(x => x.contactusform.Message, new { @class = "textarea-message hight-82 form-control", name = "contact_message", placeholder = "Message" })
+                                @Html.ValidationMessageFor(model => model.contactusform.Message, null, new { @style = "color:red" })
+                            </div>
+                            <!-- Button -->
+                            <button class="btn btn-default" type="submit" style="color:white" onclick="return validate();">Send Now <i class="icon-paper-plane"></i></button>
+                    }
+                    <!-- Form Ends -->
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="map-section">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.1126481445067!2d-0.19713968523410044!3d5.550313995975714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf908fa5312b3f%3A0xe68f5085a55482e3!2sGhana+Revenue+Authority+%EF%BC%88HeadOffice%EF%BC%89!5e0!3m2!1sen!2sgh!4v1538651953430" width="800" height="340" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                </div>
+            </div><!-- map -->
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    function validate() {
+
+
+        if (document.getElementById("contactusform_fullname").value == "") {
+             alert("Please enter your full name!");
+             document.getElementById("contactusform_fullname").focus();
+             return false;
+        }
+
+
+        if (document.getElementById("contactusform_MobileNumber").value == "") {
+            alert("Please enter your Mobile Number!");
+            document.getElementById("contactusform_MobileNumber").focus();
+            return false;
+        }
+
+        var val = document.getElementById("contactusform_MobileNumber").value
+        if (/^\d{10}$/.test(val)) {
+            // value is ok, use it
+        } else {
+            alert("Invalid Mobile number, This must contain only 10 digits")
+            return false
+        }
+
+
+        if (document.getElementById("contactusform_EmailAddress").value == "") {
+            alert("Please enter your email address!");
+            document.getElementById("contactusform_EmailAddress").focus();
+             return false;
+        }
+
+        var emailPat = /^(\w+([-+.']\w+)*)@@(\[\d{1,3}(\.\d{1,3}){3}]|[A-Za-z]\w*(\.[A-Za-z]\w*)+)$/;
+        var emailid = document.getElementById("contactusform_EmailAddress").value;
+        var matchArray = emailid.match(emailPat);
+        if (matchArray == null) {
+            alert("Your email address seems incorrect. Please try again.");
+            document.getElementById("contactusform_EmailAddress").focus();
+            return false;
+        }
+
+
+
+
+        if (document.getElementById("contactusform_Message").value == "") {
+            alert("Please enter your message");
+            document.getElementById("contactusform_Message").focus();
+            return false;
+        }
+
+        return true;
+
+
+
+
+    }
+
+</script>
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+
+}

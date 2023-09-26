@@ -1,0 +1,94 @@
+@model SecurityGuard.ViewModels.LogOnViewModel
+@{
+    ViewBag.Title = "Log On";
+    //Layout = "~/Views/Shared/_AuthenticationLayout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/SecurityGuard/scripts/jquery-1.6.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/SecurityGuard/scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/SecurityGuard/scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/SecurityGuard/scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Login</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Login</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+ <!-- page-header -->
+ <section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora.</div>
+        </div>
+        <hr />
+        <div class="row">
+
+            <!-- .content -->
+            <div class="col-sm-12 col-md-4">
+                @using (Html.BeginForm((string)ViewBag.FormAction, "SGAccount", new { returnUrl = Request.QueryString["ReturnUrl"], @class = "light-bg contact-form pad-40" }))
+                {
+                    <h3 class="title">Log On Credentials</h3>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div id="success"></div>
+
+
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "User Name *" })
+                    @Html.ValidationMessageFor(model => model.UserName, null, new { @style = "color:red" })
+
+
+
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password *" })
+                    @Html.ValidationMessageFor(model => model.Password, null, new { @style = "color:red" })
+
+                    <label>
+                        @Html.CheckBoxFor(model => model.RememberMe, new { @class = "uniform" })
+                        Keep me signed in
+                    </label>
+
+
+                    <div class="clearfix"></div>
+                        <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                        <span class="pull-right">
+                            @if (Model.EnablePasswordReset)
+                            {
+                                <a href="#" class="text-success">Forgot Password?</a>
+                            }
+                        </span>
+
+
+                }
+
+
+            </div>
+
+            <div class="content col-sm-12 col-md-8" style="text-align:right">
+                <img src="~/Content/Frontend/light/img/loginicon.jpg" />
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#UserName").focus();
+    });
+</script>
+ 
+

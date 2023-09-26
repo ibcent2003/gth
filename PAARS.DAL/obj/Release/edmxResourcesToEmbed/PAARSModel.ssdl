@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAARv2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ExchangeRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Week" Type="date" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="sid_FreightRates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleCategoryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="FreightRate" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="MinimumCC" Type="int" />
+    <Property Name="MaximumCC" Type="int" />
+  </EntityType>
+  <EntityType Name="sid_VehicleCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="sid_VehicleTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="150" />
+    <Property Name="VehicleCategoryId" Type="int" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ValuationTPD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Importer" Type="varchar" MaxLength="50" />
+    <Property Name="ImporterTIN" Type="varchar" MaxLength="50" />
+    <Property Name="Exporter" Type="varchar" MaxLength="200" />
+    <Property Name="DeclarationDate" Type="datetime" />
+    <Property Name="Model" Type="varchar" MaxLength="50" />
+    <Property Name="Make" Type="varchar" MaxLength="50" />
+    <Property Name="ChassisNo" Type="varchar" MaxLength="50" />
+    <Property Name="AssessedHSCode" Type="varchar" MaxLength="50" />
+    <Property Name="Condition" Type="varchar" MaxLength="50" />
+    <Property Name="SpecialFeatures" Type="varchar" MaxLength="50" />
+    <Property Name="NoOfDoors" Type="int" />
+    <Property Name="ManufactureYear" Type="varchar" MaxLength="50" />
+    <Property Name="EngineCapacity" Type="varchar" MaxLength="50" />
+    <Property Name="HDV" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VehicleType" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="PAARNo" Type="varchar" MaxLength="50" />
+    <Property Name="PAARIssueDate" Type="date" />
+    <Property Name="SeatingCapacity" Type="int" />
+    <Property Name="FuelType" Type="varchar" MaxLength="20" />
+    <Property Name="Colour" Type="varchar" MaxLength="30" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PAARv2.dbo.ExchangeRateView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ExchangeRateView">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="Rate" />
+    </Key>
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="CurrencyName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Week" Type="date" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_sid_FreightRates_sid_FreightRates">
+    <End Role="sid_VehicleCategory" Type="Self.sid_VehicleCategory" Multiplicity="1" />
+    <End Role="sid_FreightRates" Type="Self.sid_FreightRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sid_VehicleCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sid_FreightRates">
+        <PropertyRef Name="VehicleCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sid_VehicleTypes_sid_VehicleCategory">
+    <End Role="sid_VehicleCategory" Type="Self.sid_VehicleCategory" Multiplicity="0..1" />
+    <End Role="sid_VehicleTypes" Type="Self.sid_VehicleTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sid_VehicleCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sid_VehicleTypes">
+        <PropertyRef Name="VehicleCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PAARv2ModelStoreContainer">
+    <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sid_FreightRates" EntityType="Self.sid_FreightRates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sid_VehicleCategory" EntityType="Self.sid_VehicleCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sid_VehicleTypes" EntityType="Self.sid_VehicleTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ValuationTPD" EntityType="Self.ValuationTPD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeRateView" EntityType="Self.ExchangeRateView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ExchangeRateView].[CurrencyCode] AS [CurrencyCode], 
+[ExchangeRateView].[CurrencyName] AS [CurrencyName], 
+[ExchangeRateView].[Week] AS [Week], 
+[ExchangeRateView].[Rate] AS [Rate]
+FROM [dbo].[ExchangeRateView] AS [ExchangeRateView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_sid_FreightRates_sid_FreightRates" Association="Self.FK_sid_FreightRates_sid_FreightRates">
+      <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+      <End Role="sid_FreightRates" EntitySet="sid_FreightRates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sid_VehicleTypes_sid_VehicleCategory" Association="Self.FK_sid_VehicleTypes_sid_VehicleCategory">
+      <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+      <End Role="sid_VehicleTypes" EntitySet="sid_VehicleTypes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ClassificationToolsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DutyCalculatorFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.ExchangeRate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="Rate" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Week" Type="date" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HitCounter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Counter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HSCodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Heading" Type="varchar" MaxLength="50" />
+          <Property Name="Chapter" Type="int" Nullable="false" />
+          <Property Name="ImportDuty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NHIL" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ImportExcise" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OveragePenalty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ExportDuty" Type="varchar" MaxLength="50" />
+          <Property Name="StandardUOQ" Type="varchar" MaxLength="50" />
+          <Property Name="IsChapter" Type="bit" Nullable="false" />
+          <Property Name="IsSubChapter" Type="bit" Nullable="false" />
+          <Property Name="SectionId" Type="int" />
+          <Property Name="IsSubHeader" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.v_FreightOverage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_FreightOverage">
+          <Key>
+            <PropertyRef Name="typename" />
+          </Key>
+          <Property Name="typename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="overagename" Type="varchar" MaxLength="250" />
+          <Property Name="OverAgeRate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MinimumAge" Type="int" />
+          <Property Name="MaximumAge" Type="int" />
+          <Property Name="freightname" Type="varchar" MaxLength="250" />
+          <Property Name="freightrate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="minimumcc" Type="int" />
+          <Property Name="maximumcc" Type="int" />
+          <Property Name="hscode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.v_VehicleType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_VehicleType">
+          <Key>
+            <PropertyRef Name="typename" />
+          </Key>
+          <Property Name="typename" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="enginecapacity" Type="int" />
+          <Property Name="assessedhscode" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ClassificationTools.dbo.V_VehicleValue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_VehicleValue">
+          <Key>
+            <PropertyRef Name="vModel" />
+          </Key>
+          <Property Name="vModel" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="vMake" Type="varchar" MaxLength="150" />
+          <Property Name="vYear" Type="int" />
+          <Property Name="EngineCapacity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HDV" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleType" Type="varchar" MaxLength="50" />
+          <Property Name="Currency" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" />
+        </EntityType>
+        <Association Name="FK_HSCodes_HSCodes">
+          <End Role="HSCodes" Type="Self.HSCodes" Multiplicity="0..1" />
+          <End Role="HSCodes1" Type="Self.HSCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HSCodes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HSCodes1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClassificationToolsModelStoreContainer">
+          <EntitySet Name="DutyCalculatorFeedback" EntityType="Self.DutyCalculatorFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HitCounter" EntityType="Self.HitCounter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HSCodes" EntityType="Self.HSCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ExchangeRate].[Id] AS [Id], 
+[ExchangeRate].[Week] AS [Week], 
+[ExchangeRate].[CurrencyCode] AS [CurrencyCode], 
+[ExchangeRate].[Rate] AS [Rate], 
+[ExchangeRate].[ModifiedDate] AS [ModifiedDate], 
+[ExchangeRate].[ModifiedBy] AS [ModifiedBy]
+FROM [dbo].[ExchangeRate] AS [ExchangeRate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_FreightOverage" EntityType="Self.v_FreightOverage" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[v_FreightOverage].[typename] AS [typename], 
+[v_FreightOverage].[overagename] AS [overagename], 
+[v_FreightOverage].[OverAgeRate] AS [OverAgeRate], 
+[v_FreightOverage].[MinimumAge] AS [MinimumAge], 
+[v_FreightOverage].[MaximumAge] AS [MaximumAge], 
+[v_FreightOverage].[freightname] AS [freightname], 
+[v_FreightOverage].[freightrate] AS [freightrate], 
+[v_FreightOverage].[minimumcc] AS [minimumcc], 
+[v_FreightOverage].[maximumcc] AS [maximumcc], 
+[v_FreightOverage].[hscode] AS [hscode]
+FROM [dbo].[v_FreightOverage] AS [v_FreightOverage]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_VehicleType" EntityType="Self.v_VehicleType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[v_VehicleType].[typename] AS [typename], 
+[v_VehicleType].[enginecapacity] AS [enginecapacity], 
+[v_VehicleType].[assessedhscode] AS [assessedhscode]
+FROM [dbo].[v_VehicleType] AS [v_VehicleType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_VehicleValue" EntityType="Self.V_VehicleValue" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_VehicleValue].[vModel] AS [vModel], 
+[V_VehicleValue].[vMake] AS [vMake], 
+[V_VehicleValue].[vYear] AS [vYear], 
+[V_VehicleValue].[EngineCapacity] AS [EngineCapacity], 
+[V_VehicleValue].[HDV] AS [HDV], 
+[V_VehicleValue].[VehicleType] AS [VehicleType], 
+[V_VehicleValue].[Currency] AS [Currency], 
+[V_VehicleValue].[Id] AS [Id]
+FROM [dbo].[V_VehicleValue] AS [V_VehicleValue]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_HSCodes_HSCodes" Association="Self.FK_HSCodes_HSCodes">
+            <End Role="HSCodes" EntitySet="HSCodes" />
+            <End Role="HSCodes1" EntitySet="HSCodes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClassificationToolsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ClassificationToolsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DutyCalculatorFeedback" EntityType="ClassificationToolsModel.DutyCalculatorFeedback" />
+          <EntitySet Name="HitCounter" EntityType="ClassificationToolsModel.HitCounter" />
+          <EntitySet Name="HSCodes" EntityType="ClassificationToolsModel.HSCodes" />
+          <EntitySet Name="ExchangeRate" EntityType="ClassificationToolsModel.ExchangeRate" />
+          <EntitySet Name="v_FreightOverage" EntityType="ClassificationToolsModel.v_FreightOverage" />
+          <EntitySet Name="v_VehicleType" EntityType="ClassificationToolsModel.v_VehicleType" />
+          <EntitySet Name="V_VehicleValue" EntityType="ClassificationToolsModel.V_VehicleValue" />
+          <AssociationSet Name="FK_HSCodes_HSCodes" Association="ClassificationToolsModel.FK_HSCodes_HSCodes">
+            <End Role="HSCodes" EntitySet="HSCodes" />
+            <End Role="HSCodes1" EntitySet="HSCodes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DutyCalculatorFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HitCounter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Counter" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HSCodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chapter" Type="Int32" Nullable="false" />
+          <Property Name="ImportDuty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NHIL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ImportExcise" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OveragePenalty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExportDuty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StandardUOQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsChapter" Type="Boolean" Nullable="false" />
+          <Property Name="IsSubChapter" Type="Boolean" Nullable="false" />
+          <Property Name="SectionId" Type="Int32" />
+          <Property Name="IsSubHeader" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HSCodes1" Relationship="ClassificationToolsModel.FK_HSCodes_HSCodes" FromRole="HSCodes" ToRole="HSCodes1" />
+          <NavigationProperty Name="HSCodes2" Relationship="ClassificationToolsModel.FK_HSCodes_HSCodes" FromRole="HSCodes1" ToRole="HSCodes" />
+        </EntityType>
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="Rate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Week" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_FreightOverage">
+          <Key>
+            <PropertyRef Name="typename" />
+          </Key>
+          <Property Name="typename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="overagename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OverAgeRate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MinimumAge" Type="Int32" />
+          <Property Name="MaximumAge" Type="Int32" />
+          <Property Name="freightname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="freightrate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="minimumcc" Type="Int32" />
+          <Property Name="maximumcc" Type="Int32" />
+          <Property Name="hscode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_VehicleType">
+          <Key>
+            <PropertyRef Name="typename" />
+          </Key>
+          <Property Name="typename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="enginecapacity" Type="Int32" />
+          <Property Name="assessedhscode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_VehicleValue">
+          <Key>
+            <PropertyRef Name="vModel" />
+          </Key>
+          <Property Name="vModel" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="vMake" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="vYear" Type="Int32" />
+          <Property Name="EngineCapacity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HDV" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_HSCodes_HSCodes">
+          <End Type="ClassificationToolsModel.HSCodes" Role="HSCodes" Multiplicity="0..1" />
+          <End Type="ClassificationToolsModel.HSCodes" Role="HSCodes1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HSCodes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HSCodes1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClassificationToolsModelStoreContainer" CdmEntityContainer="ClassificationToolsEntities">
+          <EntitySetMapping Name="DutyCalculatorFeedback">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.DutyCalculatorFeedback">
+              <MappingFragment StoreEntitySet="DutyCalculatorFeedback">
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HitCounter">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.HitCounter">
+              <MappingFragment StoreEntitySet="HitCounter">
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HSCodes">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.HSCodes">
+              <MappingFragment StoreEntitySet="HSCodes">
+                <ScalarProperty Name="IsSubHeader" ColumnName="IsSubHeader" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="IsSubChapter" ColumnName="IsSubChapter" />
+                <ScalarProperty Name="IsChapter" ColumnName="IsChapter" />
+                <ScalarProperty Name="StandardUOQ" ColumnName="StandardUOQ" />
+                <ScalarProperty Name="ExportDuty" ColumnName="ExportDuty" />
+                <ScalarProperty Name="OveragePenalty" ColumnName="OveragePenalty" />
+                <ScalarProperty Name="ImportExcise" ColumnName="ImportExcise" />
+                <ScalarProperty Name="NHIL" ColumnName="NHIL" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="ImportDuty" ColumnName="ImportDuty" />
+                <ScalarProperty Name="Chapter" ColumnName="Chapter" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeRate">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.ExchangeRate">
+              <MappingFragment StoreEntitySet="ExchangeRate">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_FreightOverage">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.v_FreightOverage">
+              <MappingFragment StoreEntitySet="v_FreightOverage">
+                <ScalarProperty Name="hscode" ColumnName="hscode" />
+                <ScalarProperty Name="maximumcc" ColumnName="maximumcc" />
+                <ScalarProperty Name="minimumcc" ColumnName="minimumcc" />
+                <ScalarProperty Name="freightrate" ColumnName="freightrate" />
+                <ScalarProperty Name="freightname" ColumnName="freightname" />
+                <ScalarProperty Name="MaximumAge" ColumnName="MaximumAge" />
+                <ScalarProperty Name="MinimumAge" ColumnName="MinimumAge" />
+                <ScalarProperty Name="OverAgeRate" ColumnName="OverAgeRate" />
+                <ScalarProperty Name="overagename" ColumnName="overagename" />
+                <ScalarProperty Name="typename" ColumnName="typename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_VehicleType">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.v_VehicleType">
+              <MappingFragment StoreEntitySet="v_VehicleType">
+                <ScalarProperty Name="assessedhscode" ColumnName="assessedhscode" />
+                <ScalarProperty Name="enginecapacity" ColumnName="enginecapacity" />
+                <ScalarProperty Name="typename" ColumnName="typename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_VehicleValue">
+            <EntityTypeMapping TypeName="ClassificationToolsModel.V_VehicleValue">
+              <MappingFragment StoreEntitySet="V_VehicleValue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="HDV" ColumnName="HDV" />
+                <ScalarProperty Name="EngineCapacity" ColumnName="EngineCapacity" />
+                <ScalarProperty Name="vYear" ColumnName="vYear" />
+                <ScalarProperty Name="vMake" ColumnName="vMake" />
+                <ScalarProperty Name="vModel" ColumnName="vModel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

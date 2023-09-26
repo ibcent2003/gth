@@ -1,0 +1,136 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "General Good Freight";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">General Good Freight</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("FreightRates", "EServices", new {area = "" })" style="color:white">Freight Rates</a>
+                </li>
+
+                <li class="active" style="color:white">General Good Freight</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-rate-review"></i>List of Freight Rates</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+
+                            <a href="@Url.Action("GeneralGoods", "EServices", new {area = "" })" class="list-group-item">General Goods</a>
+
+                            <a href="@Url.Action("UsedVehicleFreight", "EServices", new {area = "" })" class="list-group-item">Used Vehicle</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+          
+                <div class="col-sm-9 col-md-9">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h3 class="title">General Cargo</h3>
+                        </div>
+                        @using (Html.BeginForm("GeneralGoods", "EServices", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            <div>
+
+                                <div class="editor-field">
+                                    @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.CountryList, "Value", "Text"), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.CountryId)
+                                    @Html.HiddenFor(x => x.CountryId)
+                                </div>
+
+                                <input type="submit" class="btn btn-default btn-xs pull-right" value="Submit" style="color:white" />
+                            </div>
+                        }
+                    </div>
+                    <br />
+                   @if (Model.hasSearch == true)
+                   {
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h3 class="title" style="color:darkred">Search Result for @Model.CountryName</h3>
+                        </div>
+
+
+                        <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable">
+                            <thead>
+                                <tr style="font-size: 12px;">
+                                    <th>S/N</th>
+                                    <th>Location/Port</th>
+                                    <th>Cargo</th>
+                                    <th>20 Footer(USD)</th>
+                                    <th>40 Footer(USD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.FreightRateList.Count != 0)
+                                {
+                                    int i = 0;
+                                    foreach (var item in Model.FreightRateList)
+                                    {
+                                        ++i;
+                                        <tr style="font-size: 12px;">
+                                            <td>
+                                                @i
+                                            </td>
+                                            <td>@item.Port</td>
+                                            <td>@item.CargoType.Name</td>
+                                            <td>@item.footer1</td>
+                                            <td>@item.footer2</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="8">No Records Found!...</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                   }
+                </div>
+         
+
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+
+
+

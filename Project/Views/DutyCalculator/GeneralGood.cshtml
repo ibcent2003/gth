@@ -1,0 +1,399 @@
+﻿@model Project.Models.DutyCalculatorModel
+@{
+    ViewBag.Title = "General Goods Duty Calculator";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;">
+
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">General Goods Duty Calculator</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "DutyCalculator", new {area = "" })" style="color:white">Duty Calculator</a>
+                </li>
+
+                <li class="active" style="color:white">General Goods</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    <div class="container" style="min-height:400px;">
+    @if (Model.hasBechMakeValue == true)
+    {
+        if (TempData["Message"] != null)
+        {
+            var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+            <div class="alert @alertType fade in">
+                @*<button type="button" class="close" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>*@
+                @Html.Raw(TempData["Message"])
+            </div>
+        }
+    }
+      
+
+        
+
+        <div class="row">
+            <div id="dnn_contentPane" class="col-md-12">
+                <div class="DnnModule DnnModule-DutyCalculator DnnModule-9010">
+                    <a name="9010"></a>
+                    <div class="DNNContainer_Title_h2 SpacingBottom">
+                        <h2>
+                            <span id="dnn_ctr9010_dnnTITLE_titleLabel" class="TitleH2"> </span>
+
+                        </h2>
+                        <div id="dnn_ctr9010_ContentPane">
+                            <!-- Start_Module_9010 --><div id="dnn_ctr9010_ModuleContent" class="DNNModuleContent ModDutyCalculatorC">
+
+                                <div class="row">
+                                @using (Html.BeginForm("GeneralGood", "DutyCalculator", FormMethod.Post))
+                                {
+                                    <div class="col-md-6">
+                                        <h4>
+                                            <span id="dnn_ctr9010_ViewDutyCalculator_Label4">Import Duties and Tax Form (Ghana)</span>
+                                        </h4>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-3">HS Code</div>
+                                            <div class="col-md-3">
+
+                                                @Html.TextBoxFor(x => x.generalform.HSCode, new { @class = "form-control", onblur = "FormatHSCode(e)" })
+                                            </div>
+                                            <div class="col-md-3">
+
+
+                                                <input type="submit" name="dnn$ctr9010$ViewDutyCalculator$Button3" value="Find My HScode" onclick="return Do3CEClassification();" id="dnn_ctr9010_ViewDutyCalculator_Button3" class="btn btn-primary">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">Item FOB</div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(x => x.generalform.ProductValue, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">Item Freight</div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(x => x.generalform.Freight, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">Insurance</div>
+                                            <div class="col-md-6">
+
+                                                @Html.TextBoxFor(x => x.generalform.Insurance, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">Currency</div>
+                                            <div class="col-md-6">                                               
+                                                @Html.DropDownListFor(x => x.generalform.CurrencyId, Model.CurrencyList, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+
+                                    
+
+                                      
+
+                                        @*<div class="row">
+                                            <div class="col-md-3">Ancillary Charges</div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(x => x.generalform.Ancillary, new { @class = "form-control" })
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-3">ExWorks</div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(x => x.generalform.ExWorks, new { @class = "form-control", placeholder="Don't Know my Exworks, enter 0" })
+
+
+                                            </div>
+                                        </div>*@
+                                        <div class="row">
+                                            <div class="col-md-3">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                  <input type="submit" name="dnn$ctr9010$ViewDutyCalculator$Button1" value="Calculate" onclick="return validate();" id="dnn_ctr9010_ViewDutyCalculator_Button1" class="btn btn-primary"> 
+                                  <input type="submit" name="dnn$ctr9010$ViewDutyCalculator$Button2" value="Cancel" id="dnn_ctr9010_ViewDutyCalculator_Button2" class="btn btn-info"></div>
+                                        </div>
+                                    </div>
+                                    }
+
+                                    <div class="col-md-6">
+                                        <h4>
+                                            <span id="dnn_ctr9010_ViewDutyCalculator_Label5">Calculated Duties and Taxes (Ghana)</span>
+                                        </h4>
+                                        <hr>
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr class="success">
+                                                    <td>Standard Unit of Quantity</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_quantity">@Model.resultform.UnitOfQuality</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>Import Duty</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_import_duty">@Model.resultform.ImportDuty</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>Import VAT</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_import_vat">@Model.resultform.ImportVat</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>Import NHIL</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_import_nhil">@Model.resultform.ImportNHIL</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>FOB</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_FOB">@Model.resultform.FOB</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>CIF</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_CIF">@Model.resultform.CIF</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>Exchange Rate</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.ExchangeRate</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Get Fund</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.GetFund</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Ecowas Levy</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.EcoLevy</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Cassete Levy</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.CasseteLevy</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Customs Inspection Fee</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.CustomsInspectionFee</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>IRS Tax Deposit</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.IRSTaxDeposit</span></td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>Import Levy</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.ImportLevey</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Enivronmental Excise</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.EnivronmentalExcise</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Special Import Levy</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.SIL</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>Exim</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.Exim</span></td>
+                                                </tr>
+
+                                                <tr class="success">
+                                                    <td>African Union Import Levy</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_rate">@Model.resultform.AfricanUnion</span></td>
+                                                </tr>
+
+
+                                                <tr class="warning">
+                                                    <td>Duty Payable (Import Duty)</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_importDutyAmount">@Model.resultform.DutyPayable</span></td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>VAT Payable</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_VatAmount">@Model.resultform.VatPayble</span></td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>NHIL Payable</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_NHIL">@Model.resultform.NHILPayble</span></td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>Total Duty Payable</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_totalDutyPayable">@Model.resultform.TotalDuty</span></td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <td>Total Duty Payable (Local Currency)</td>
+                                                    <td><span id="dnn_ctr9010_ViewDutyCalculator_totalDutyPayableLocalCurrency">@Model.resultform.TotalDutyPayable</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div><!-- End_Module_9010 -->
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+        <div role="alert" class="alert alert-warning">
+            <strong> DISCLAIMER OF WARRANTY </strong> THESE MATERIALS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+            <p> Ghana Revenue Authority further does not warrant the accuracy or completeness of the information, text, graphics, links or other items contained within these materials.</p>
+            <p> Ghana Revenue Authority shall not be liable for any special, indirect, incidental, or consequential damages, including without limitation, lost revenues or lost profits, which may result from the use of these materials. The information on this server is subject to change without notice and does not represent a commitment on the part of Ghana Revenue Authority in the future.</p>
+        </div>
+       
+       
+
+       
+
+       
+
+
+    </div>
+
+</section>
+<script type="text/javascript">
+    var openedWindow;
+
+    function ccceRequestDetailsCallback(tradeData) {
+
+        $("#Item_DutyRate").val(tradeData.dutyRate.replace(/%/g, ""));
+        $("#Item_ArticleDescription").val(tradeData.desc);
+        $("#Item_AssessedHSCode").val(tradeData.code);
+        $("#Item_VAT").val(tradeData.vat.replace(/%/g, ""));
+        $("#Item_NHIL").val(tradeData.nhil.replace(/%/g, ""));
+        $("#Item_AssessedHSCode").focus();
+        FormatHSCode($("#Item_AssessedHSCode"));
+
+        openedWindow.close();
+
+    }
+
+
+
+    var openedWindow;
+
+    function ccceRequestDetailsCallback(tradeData) {
+
+        $("#Item_DutyRate").val(tradeData.dutyRate.replace(/%/g, ""));
+        $("#Item_ArticleDescription").val(tradeData.desc);
+        $("#Item_AssessedHSCode").val(tradeData.code);
+        $("#Item_VAT").val(tradeData.vat.replace(/%/g, ""));
+        $("#Item_NHIL").val(tradeData.nhil.replace(/%/g, ""));
+        $("#Item_AssessedHSCode").focus();
+        FormatHSCode($("#Item_AssessedHSCode"));
+
+        openedWindow.close();
+
+    }
+
+
+    function Do3CEClassification() {
+
+        var windowName = "3CE Classification";
+        //url = "@System.Configuration.ConfigurationManager.AppSettings["3ceToolURL"]?desc=" + $("#Item_Product").val() + "&returnURL=" + returnURL;
+        url = "https://www.ghanastradinghub.gov.gh/ClassificationTool/Import";
+        openedWindow = window.open(url, windowName, "height=600,width=1000,scrollbars=yes");
+    }
+</script>
+
+<script type="text/javascript">
+    function validate() {
+
+
+        if (document.getElementById("generalform_HSCode").value == "") {
+             alert("The HSCode cannot be empty!");
+             document.getElementById("generalform_HSCode").focus();
+             return false;
+        }
+        if (document.getElementById("generalform_Insurance").value == "") {
+            alert("The insurance cannot be empty!");
+            document.getElementById("generalform_Insurance").focus();
+             return false;
+        }
+
+
+        if (document.getElementById("generalform_Freight").value == "") {
+            alert("The fright cannot be empty!");
+            document.getElementById("generalform_Freight").focus();
+            return false;
+        }
+
+        if (document.getElementById("generalform_ProductValue").value == "") {
+            alert("The product value cannot be empty!");
+            document.getElementById("generalform_ProductValue").focus();
+            return false;
+        }
+
+        if (document.getElementById("generalform_Ancillary").value == "") {
+            alert("The Ancillary Charges value cannot be empty!");
+            document.getElementById("generalform_Ancillary").focus();
+            return false;
+        }
+
+        if (document.getElementById("generalform_ExWorks").value == "") {
+            alert("The ExWorks value cannot be empty!");
+            document.getElementById("generalform_ExWorks").focus();
+            return false;
+        }
+
+         return true;
+    }
+
+
+    function ClassificationPostBack(hscode) {
+        // alert(hscode);
+      //  console.log("hs: " + hscode);
+        $('#generalform_HSCode').val(hscode);
+
+    }
+</script>
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}

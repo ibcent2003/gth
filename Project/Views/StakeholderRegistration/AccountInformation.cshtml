@@ -1,0 +1,263 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Account Information";
+    var db = new Project.DAL.PROEntities();
+    var swdb = new GNSW.DAL.GNSWEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Account Information</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Account Information</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Account Information
+                    </div>
+                 
+                   
+                        @using (Html.BeginForm("AccountInformation", "StakeholderRegistration", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.Id)
+                            @Html.AntiForgeryToken()
+                            <div class="panel-body">
+
+                                <div class="col-md-12">
+                                    @if (Model.TempUseradded == true)
+                                    {
+                                        <div class="widget">
+                                            <div class="widget-title">
+                                                <h3 class="title"><i class="icon-mobile9"></i>User Account</h3>
+                                            </div>
+                                            <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                                                <thead>
+                                                    <tr style="font-size: 12px;">
+
+                                                        <th>Username</th>
+                                                        <th>Password</th>
+                                                        <th>Action</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.tempUser != null)
+                                                    {
+
+                                                        <tr style="font-size: 12px;">
+
+                                                            <td>@Model.tempUser.Tin</td>
+                                                            <td><span>***************</span> <span style="color:red">(Password is hidden for security purpose.)</span></td>
+                                                            <td>
+                                                                @Html.ActionLink("Change Password", "ChangePassword", new {Id = Model.Id }, new { @class = "btn-default btn-xs" })
+                                                            </td>
+
+
+
+                                                        </tr>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <tr>
+                                                            <td colspan="8">No Records Found!...</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+
+
+
+                                        </div>
+                                    }
+                                    else
+                                    { 
+                                    <div class="col-sm-5 col-md-5">
+                                        <div class="widget">
+                                            <div class="widget-title">
+                                                <p class="lead">Login Details</p>
+                                            </div>
+                                            <div>
+                                                @Html.LabelFor(model => model.accountForm.Username, new { @class = "required" })
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-icon">
+                                                    @Html.TextBoxFor(model => model.accountForm.Username, new { @class = "form-control", @readonly = true })
+                                                    @Html.ValidationMessageFor(model => model.accountForm.Username, null, new { @style = "color:red" })
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                @Html.LabelFor(model => model.accountForm.Password, new { @class = "required" })
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-icon">
+                                                    @Html.PasswordFor(model => model.accountForm.Password, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.accountForm.Password, null, new { @style = "color:red" })
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                @Html.LabelFor(model => model.accountForm.ConfirmPassword, new { @class = "required" })
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-icon">
+                                                    @Html.PasswordFor(model => model.accountForm.ConfirmPassword, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.accountForm.ConfirmPassword, null, new { @style = "color:red" })
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                    @*<div class="col-sm-7 col-md-7">
+                                            <div class="widget">
+                                                <div class="widget-title">
+                                                    <p class="lead">Systems to access </p>
+                                                </div>
+                                                <img src="~/Content/Frontend/light/img/loginicon.jpg" />
+
+
+
+                                            </div>
+                                        </div>*@
+                                    }
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div style="text-align: left;" class="col-md-6">
+
+                                        @Html.ActionLink("Back", "Document", new { Id = Model.Id }, new { @class = "btn btn-default pull-left", style = "color:white" })
+                                    </div>
+
+                                    <div style="text-align: right;" class="col-md-6">
+                                    @if (Model.TempUseradded == true)
+                                    {
+                                        @Html.ActionLink("Next", "Review", new { Id = Model.Id }, new { @class = "btn btn-sm btn-default", style = "color:white" })
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="Next" class="btn btn-sm btn-default" id="btn_submit" style="color:white">
+                                    }
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    
+                   
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script>
+        "use strict";
+        function DeleteConfirm() {
+            if (confirm("Are you sure want to remove this document?"))
+                return true;
+            else
+                return false;
+        }
+
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+
+
+}
+
+
+

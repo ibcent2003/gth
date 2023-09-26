@@ -1,0 +1,121 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Market Place";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Market Place</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Market Place</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Owl Stylesheets -->
+@section styles {
+    <style>
+        .owl-wrapper.leftMove {
+            width: 4320px;
+            left: 0px;
+            display: block;
+            transition: all 800ms ease 0s;
+            transform: translate3d(0px, 0px, 0px);
+        }
+
+        .owl-wrapper.rightMove {
+            width: 4320px;
+            left: 0px;
+            display: block;
+            transition: all 800ms ease 0s;
+            transform: translate3d(-810px, 0px, 0px);
+        }
+    </style>
+}
+
+
+<div class="portfolio-grid owl-carousel" data-pagination="true" data-items="5" data-autoplay="false" data-navigation="true">
+    @if (Model.ProductTypeList.Count != 0)
+    {
+        foreach (var item in Model.ProductTypeList.Distinct())
+        {
+ 
+            <div class="grids">
+                <div class="grid">
+                    <img src="/Content/Frontend/light/img/sections/MarketHub/@item.Photo" alt="Recent Work" class="img-responsive" />
+                    <div class="figcaption">
+                        <div class="caption-block">
+                            <a href="@Url.Action("MarketPlaceContact", "EServices", new {@Id=item.Id, area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                        </div>
+                    </div>
+                   
+                </div>
+                <br />
+                <strong style="text-align: center;">
+                    
+                    <a href="@Url.Action("MarketPlaceContact", "EServices", new {@Id=item.Id, area = "" })" style="text-align: center;" >@item.Name</a>
+                </strong>
+                <hr />
+            </div>
+        }
+    }
+
+
+ 
+  
+</div>
+
+
+
+    <br /><br /><br /><br />
+
+    @section Scripts{
+        <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+        <script>
+            var movingItems;
+            window.onload = function () {
+                $('.owl-wrapper-outer:nth-child(1)>.owl-wrapper').attr('id', 'mainScroller');
+            };
+
+            (function () {
+                Init();
+            })();
+
+
+
+
+            function Init() {
+                var counter = 0;
+
+                movingItems = setInterval(function () {
+                    if (counter % 2 == 0) {
+                        $('#mainScroller').removeClass('rightMove').addClass('leftMove');
+                    } else {
+                        $('#mainScroller').removeClass('leftMove').addClass('rightMove');
+                    }
+                    counter++;
+                }, 6000);
+            }
+
+            $(document).on('mouseover', '#mainScroller>.owl-item', function () {
+                clearInterval(movingItems);
+            });
+            $(document).on('mouseout', '#mainScroller>.owl-item', function () {
+                Init();
+            });
+
+        </script>
+
+
+
+
+    }

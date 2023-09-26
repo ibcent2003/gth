@@ -1,0 +1,423 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Business Areas";
+    var db = new Project.DAL.PROEntities();
+    var swdb = new GNSW.DAL.GNSWEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Business Areas</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Business Areas</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Business Areas
+                    </div>
+                    
+                        @using (Html.BeginForm("MembershipType", "StakeholderRegistration", FormMethod.Post))
+                        {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.Id)
+                        <div class="panel-body">
+
+                            <div class="col-md-12">
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="widget">
+                                        <div class="widget-title">
+                                            <p class="lead">Business Category</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @{
+                                                int i = 1;
+                                                var category = from index in Enumerable.Range(0, Model.CategoryList.Count)
+                                                               group Model.CategoryList[index] by index / 5;
+                                                string selectedcategory = "";
+                                            }
+                                            @foreach (var cate in category)
+                                            {
+                                                foreach (GNSW.DAL.Categories a in cate)
+                                                {
+                                                    var GetOrg = swdb.Organisation.Where(x => x.TINNumber == Model.Id).FirstOrDefault();
+                                                    if (GetOrg.Categories.Any())
+                                                    {
+                                                        selectedcategory = (Model.CategoryUsed.Contains(a.Id)) ? "Checked" : "";
+                                                    }
+                                                    else
+                                                    {
+                                                        selectedcategory = "";
+                                                    }
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="CategoryUsed" disabled="disabled"  onclick="GetAllCategory(@a.Id)" id="@a.Id" value="@a.Id" @selectedcategory />
+                                                            @a.Category
+                                                        </label>
+                                                    </div>
+                                                    i++;
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-md-6">
+                                        <div class="widget">
+                                            <div class="widget-title">
+                                                <p class="lead">Professional Membership</p>
+                                            </div>
+
+                                            <div class="show_dropdown">
+
+                                              
+
+                                                @{
+                                                    int catCount = 0;
+                                                }
+                                            @foreach (var cat in Model.CategoryUsed)
+                                            {
+                                                var GetCategory = swdb.Categories.Where(x => x.Id == cat).OrderByDescending(x => x.RequireMembership).ToList();
+                                                foreach (var getcat in GetCategory)
+                                                {
+                                                    if (getcat.RequireMembership == true)
+                                                    {
+                                                        @Html.DropDownListFor(m => Model.MembershipForm.MembershipId, new SelectList(Model.MembershipListModel.FirstOrDefault(x => x.Key == cat).Value, "Value", "Text"), new { @class = "form-control", @id = getcat.Id, name = getcat.Id })
+                                                        @Html.ValidationMessageFor(model => model.MembershipForm.MembershipId, null, new { @style = "color:red" })
+
+                                                        @Html.TextBoxFor(model => model.MembershipForm.MembershipNumber, new { @class = "form-control", @placeholder = "Please enter Membership Number", Id = getcat.Id })
+                                                        @Html.ValidationMessageFor(model => model.MembershipForm.MembershipNumber, null, new { @style = "color:red" })
+                                                    }
+
+                                                }
+
+                                                catCount++;
+                                            }
+
+
+                      
+
+                                            </div>
+                                            @*<div class="show_dropdown">
+
+                                                @{
+                                                    int ii = 1;
+                                                    var categoryy = from index in Enumerable.Range(0, Model.CategoryList.Count)
+                                                                    group Model.CategoryList[index] by index / 5;
+                                                    string selectedcategoryy = "";
+                                                }
+                                                @foreach (var catey in categoryy)
+                                                {
+                                                    foreach (GNSW.DAL.Categories b in catey)
+                                                    {
+                                                        selectedcategoryy = "";
+                                                        
+                                                        var GetOrg = swdb.Organisation.Where(x => x.TINNumber == Model.Id).FirstOrDefault();
+                                                        if (GetOrg.Categories.Any())
+                                                        {
+                                                            selectedcategoryy = (Model.CategoryUsed.Contains(b.Id)) ? "Checked" : "";
+                                                        }
+                                                        else
+                                                        {
+                                                            selectedcategoryy = "";
+                                                        }
+                                                        int cateId = b.Id;
+                                                        var display = selectedcategoryy == "" ? "none" : "block";
+                                                        <div id="@("bx_"+@b.Id)" style="display:@display">
+                                                            <select class="form-control" id="@("dp_"+@b.Id)" name="@("dp_"+@b.Id)"></select>
+
+                                                            <input type="text" id="@("txt_"+@b.Id)" name="@("txt_"+@b.Id)" class="form-control elt" placeholder="Please enter Membership Number" />
+                                                            <span id="@("span_"+@b.Id)" class="help-block" data-bv-for="@b.Id" data-bv-validator="notEmpty" data-bv-result="INVALID" style="display:none; color:red; text-align:right;">You must provide Membership Number</span>
+                                                        </div>
+
+                                                        ii++;
+
+                                                    }
+
+
+                                                }
+
+
+                                            </div>*@
+
+
+                                        </div>
+                                    </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div style="text-align: left;" class="col-md-6">
+                                    @Html.ActionLink("Back", "TypeOfBusiness", new { Id = Model.Id }, new { @class = "btn btn-sm btn-default pull-left", style = "color:white" })
+                                </div>
+                                <div style="text-align: right;" class="col-md-6">
+                                    <input type="submit" value="Next" class="btn btn-sm btn-default" style="color:white">
+                                    @*<input type="button" value="Next" class="btn btn-sm btn-default" onclick="SendData()" id="btn_submit" style="color:white">*@
+                                </div>
+                            </div>
+                        </div>
+                                                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        "use strict";
+        var ids = [];
+        (function () {
+            console.log('Hello')
+
+        })();
+        window.onload = function () {
+            console.log('Here again')
+            $.each($("input[name='CategoryUsed']:checked"), function () {
+                ids.push($(this).val());
+            });
+
+            for (var i = 0; i < ids.length; i++) {
+                console.log($("#dp_" + ids[i]).find('option'))
+                if ($("#dp_" + ids[i]).find('option').length > 0) {
+
+                    $("#bx_" + ids[i]).show();
+
+                    if ($("#txt_" + ids[i]).val() == "") {
+                        $("#span_" + ids[i]).show();
+                        $("#btn_submit").prop("disabled", true);
+                        return;
+                    }
+                } else {
+                    $("#bx_" + ids[i]).hide();
+                }
+                $("#span_" + ids[i]).hide();
+                $("#btn_submit").prop("disabled", false);
+            }
+        }
+        function getDistrict(e) {
+            var categoryId = e;
+            // console.log(stateId);
+            // Now execute the command using jQuery ajax.
+            var currentRequest = null;
+            var currentRequest = $.ajax({
+                url: '@Url.Action("GetCategoryList", "StakeholderRegistration")',
+                dataType: 'json',
+                type: 'POST',
+                data: { categoryId: categoryId },
+                beforeSend: function () {
+                    if (currentRequest != null) {
+                        currentRequest.abort();
+                    }
+                },
+                success: function (msg) {
+                    if (msg.length > 0) {
+                        $("#bx_" + e).show();
+                        $("#dp_" + categoryId).html("");
+                        $.each(msg, function (index, element) {
+                            $("#dp_" + categoryId).append('<option  value="' + element.Value + '">' + element.Text + '</option>');
+                        });
+
+                    }
+                    else {
+                        //alert("here");
+                    }
+
+
+                },
+                error: function (errmsg) {
+                    console.log(errmsg);
+                    return;
+                }, complete: function () {
+                    checkValue(ids);
+                }
+            });
+        }
+
+        function checkValue(vals) {
+
+            for (var i = 0; i < vals.length; i++) {
+                console.log($("#dp_" + vals[i]).find('option'))
+                if ($("#dp_" + vals[i]).find('option').length > 0) {
+                    if ($("#txt_" + vals[i]).val() == "") {
+                        $("#span_" + vals[i]).show();
+                        $("#btn_submit").prop("disabled", true);
+                        return;
+                    }
+                }
+                $("#span_" + vals[i]).hide();
+                $("#btn_submit").prop("disabled", false);
+            }
+
+        }
+
+        document.addEventListener('keyup', function (e) {
+            //var id = e.target.id;
+
+            //console.log($("#" + id).val())
+            checkValue(ids);
+        })
+        //$(document).on('keyup', '.elt', function (e) {
+        //    console.log(e.currentTarget.id);
+        //});
+        function GetAllCategory(e) {
+            var checkbox = document.getElementById(e);
+
+            if (checkbox.checked) {
+                getDistrict(e);
+                if (ids.indexOf(e) == -1) {
+                    ids.push(e);
+                }
+            } else {
+                $("#bx_" + e).hide();
+                var ind = ids.indexOf(e);
+
+                if (ind > -1) {
+                    ids.splice(ind, 1);
+                }
+
+                checkValue(ids);
+            }
+            return;
+
+
+        }
+        function getMembershipList(vals) {
+            var result = [];
+            for (var i = 0; i < ids.length; i++) {
+                var currentId = $("#dp_" + vals[i] + " option:selected").val();
+                if (typeof(currentId) == 'undefined') {
+
+                } else {
+                    result.push({ 'Value': currentId, 'Text': $("#txt_" + vals[i] + "").val() });
+                }
+            }
+
+            return result;
+        }
+        //$("#btn_submit").on("click", function () {
+        //    SendData();
+        //})
+        var SendData = function () {
+            var members = getMembershipList(ids);
+            var toSave = {
+                'CategoryUsed': ids,
+                'MembershipList': members
+            }
+
+            console.log(toSave)
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AreaOfBusiness")',
+                data: JSON.stringify(toSave),
+                contentType: 'application/json',
+                success: function (data) {
+                    //console.log(data);
+                    window.location.href = "../Document/" + '@Model.Id';
+
+
+
+                },
+                error: function () { }
+            });
+        }
+
+
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+
+
+
+
+
+

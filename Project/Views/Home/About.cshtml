@@ -1,0 +1,73 @@
+﻿@*@model SecurityGuard.ViewModels.LogOnViewModel*@
+@{
+    ViewBag.Title = "About Us";
+    //Layout = "~/Views/Shared/_AuthenticationLayout.cshtml";
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">About Us</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">About Us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- page-header -->
+<section id="about-us" class="page-section">
+    <div class="container">
+        <div class="row text-center top-pad-30">
+            <div class="col-md-3">
+                <div class="section-title text-center">
+                    <img src="~/Content/Frontend/light/img/gra.jpg" alt="" title="" width="150" height="150">
+                </div>
+            </div>
+            <div class="col-md-9 text-left bottom-pad-20">
+                <!-- Text -->
+                <blockquote><em><p>The Ghana’s Trading Hub Portal is the hub that provides information and tools relating to the trade supply chain (export, transit and import) in Ghana. You will find information such as <a href="~/EServices/ImportSpecificCommodities" target="_blank" style="color:blue"> trade procedures </a>, <a href="~/Organisation/Index" target="_blank" style="color:blue"> stakeholders  involved in trade </a>  and regulatory requirements to be fulfilled to carry out international trade in Ghana. </p>
+<p>The Ghana's Trading Hub portal is managed by Ghana Revenue Authority (Customs division) as part of its drive to facilitate trade, increase transparency and provide up to date information on international trade activities in Ghana.</p>
+<p>We hope you will find the portal very informative and useful. Please do not hesitate to <a href="~/ContactUs/Index" target="_blank" style="color:blue"> contact us </a> (export, transit and import) for inquiries and support.</p>
+
+
+</em></blockquote>
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-sm-4 col-md-4">
+                <img class="bottom-pad-20" alt="" src="img/sections/charity-1.jpg" width="500" height="319">
+                <h4 class="text-left">Child care</h4>
+                <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus facilisis cvallis.</p>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <img class="bottom-pad-20" alt="" src="img/sections/charity-2.jpg" width="500" height="319">
+                <h4 class="text-left">Tree Planting</h4>
+                <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus facilisis cvallis.</p>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <img class="bottom-pad-20" alt="" src="img/sections/charity-3.jpg" width="500" height="319">
+                <h4 class="text-left">Fund Rising</h4>
+                <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus facilisis cvallis.</p>
+            </div>
+        </div>*@
+    </div>
+</section>
+
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+
+}

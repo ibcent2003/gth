@@ -1,0 +1,10 @@
+C:\Vhost\New GTH\Project\Classification.DAL\bin\Debug\Classification.DAL.dll.config
+C:\Vhost\New GTH\Project\Classification.DAL\bin\Debug\Classification.DAL.dll
+C:\Vhost\New GTH\Project\Classification.DAL\bin\Debug\Classification.DAL.pdb
+C:\Vhost\New GTH\Project\Classification.DAL\bin\Debug\EntityFramework.dll
+C:\Vhost\New GTH\Project\Classification.DAL\bin\Debug\EntityFramework.xml
+C:\Vhost\New GTH\Project\Classification.DAL\obj\Debug\Classification.DAL.csprojAssemblyReference.cache
+C:\Vhost\New GTH\Project\Classification.DAL\obj\Debug\Classification.DAL.csproj.CoreCompileInputs.cache
+C:\Vhost\New GTH\Project\Classification.DAL\obj\Debug\Classification.DAL.csproj.CopyComplete
+C:\Vhost\New GTH\Project\Classification.DAL\obj\Debug\Classification.DAL.dll
+C:\Vhost\New GTH\Project\Classification.DAL\obj\Debug\Classification.DAL.pdb

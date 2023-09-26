@@ -1,0 +1,99 @@
+﻿@model Project.Models.DutyCalculatorModel
+
+@{
+    ViewBag.Title = "Used Vehicle Result";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">General Goods Duty Calculator</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "DutyCalculator", new {area = "" })" style="color:white">Duty Calculator</a>
+                </li>
+
+                <li class="active" style="color:white">Used Vehicle Result</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 post-list">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">General Cargo</h3>
+                    </div>
+                 
+                  
+                    <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                        <thead>
+                            <tr style="font-size: 12px;">
+                                <th>S/N</th>
+                                <th>HSCode</th>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Year</th>
+                                <th>CC</th>
+                                <th>HDV</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.VehicleList != null)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.VehicleList)
+                                {
+                                    ++i;
+                                    <tr style="font-size: 12px;">
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>@item.AssessedHSCode</td>
+                                        <td>@item.Make</td>
+                                        <td>@item.Model</td>
+                                        <td>@item.ManufactureYear</td>
+                                        <td>@item.EngineCapacity</td>
+                                        <td>@item.HDV</td>
+
+
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="8">No Records Found!...</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+            </div>
+            <div class="sidebar col-sm-12 col-md-4">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Used Vehicle</h3>
+                    </div>
+
+                 
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,10 @@
+C:\Vhost\New GTH\Project\CHAMS.DAL\bin\Debug\CHAMS.DAL.dll.config
+C:\Vhost\New GTH\Project\CHAMS.DAL\bin\Debug\CHAMS.DAL.dll
+C:\Vhost\New GTH\Project\CHAMS.DAL\bin\Debug\CHAMS.DAL.pdb
+C:\Vhost\New GTH\Project\CHAMS.DAL\bin\Debug\EntityFramework.dll
+C:\Vhost\New GTH\Project\CHAMS.DAL\bin\Debug\EntityFramework.xml
+C:\Vhost\New GTH\Project\CHAMS.DAL\obj\Debug\CHAMS.DAL.csprojAssemblyReference.cache
+C:\Vhost\New GTH\Project\CHAMS.DAL\obj\Debug\CHAMS.DAL.csproj.CoreCompileInputs.cache
+C:\Vhost\New GTH\Project\CHAMS.DAL\obj\Debug\CHAMS.DAL.csproj.CopyComplete
+C:\Vhost\New GTH\Project\CHAMS.DAL\obj\Debug\CHAMS.DAL.dll
+C:\Vhost\New GTH\Project\CHAMS.DAL\obj\Debug\CHAMS.DAL.pdb

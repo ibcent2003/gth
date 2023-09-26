@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PAARv2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Week" Type="date" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HSCodeTariff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HSCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StandardUnitOfQuantity" Type="nvarchar" MaxLength="10" />
+          <Property Name="ImportDuty" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImportVAT" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImportNHIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeUnitOfQuantity" Type="nvarchar" MaxLength="10" />
+          <Property Name="ImportExcise" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AfricanUnionImportlevy" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CasseteLevy" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EnvironmentalExcise" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProcessingFee" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ImportLevy" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GetFund" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ImportVatAmended" Type="nvarchar" MaxLength="255" />
+          <Property Name="GetFund1" Type="nvarchar" MaxLength="10" />
+          <Property Name="GetFund2" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sid_FreightRates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleCategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="FreightRate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="MinimumCC" Type="int" />
+          <Property Name="MaximumCC" Type="int" />
+        </EntityType>
+        <EntityType Name="sid_VehicleCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sid_VehicleTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="VehicleCategoryId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TariffBenchmark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HSCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="255" />
+          <Property Name="Country" Type="nvarchar" MaxLength="255" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProductValue" Type="float" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="255" />
+          <Property Name="Packaging" Type="nvarchar" MaxLength="255" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="SUOM" Type="nvarchar" MaxLength="255" />
+          <Property Name="UnitFOB" Type="decimal" Precision="20" Scale="4" />
+        </EntityType>
+        <EntityType Name="ValuationTPD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Importer" Type="varchar" MaxLength="50" />
+          <Property Name="ImporterTIN" Type="varchar" MaxLength="50" />
+          <Property Name="Exporter" Type="varchar" MaxLength="200" />
+          <Property Name="DeclarationDate" Type="datetime" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="Make" Type="varchar" MaxLength="50" />
+          <Property Name="ChassisNo" Type="varchar" MaxLength="50" />
+          <Property Name="AssessedHSCode" Type="varchar" MaxLength="50" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="SpecialFeatures" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfDoors" Type="int" />
+          <Property Name="ManufactureYear" Type="varchar" MaxLength="50" />
+          <Property Name="EngineCapacity" Type="varchar" MaxLength="50" />
+          <Property Name="HDV" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleType" Type="varchar" MaxLength="50" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+          <Property Name="PAARNo" Type="varchar" MaxLength="50" />
+          <Property Name="PAARIssueDate" Type="date" />
+          <Property Name="SeatingCapacity" Type="int" />
+          <Property Name="FuelType" Type="varchar" MaxLength="20" />
+          <Property Name="Colour" Type="varchar" MaxLength="30" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PAARv2.dbo.ExchangeRateView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExchangeRateView">
+          <Key>
+            <PropertyRef Name="CurrencyCode" />
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="Rate" />
+          </Key>
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Week" Type="date" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sid_FreightRates_sid_FreightRates">
+          <End Role="sid_VehicleCategory" Type="Self.sid_VehicleCategory" Multiplicity="1" />
+          <End Role="sid_FreightRates" Type="Self.sid_FreightRates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sid_VehicleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sid_FreightRates">
+              <PropertyRef Name="VehicleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sid_VehicleTypes_sid_VehicleCategory">
+          <End Role="sid_VehicleCategory" Type="Self.sid_VehicleCategory" Multiplicity="0..1" />
+          <End Role="sid_VehicleTypes" Type="Self.sid_VehicleTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sid_VehicleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sid_VehicleTypes">
+              <PropertyRef Name="VehicleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAARv2ModelStoreContainer">
+          <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HSCodeTariff" EntityType="Self.HSCodeTariff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sid_FreightRates" EntityType="Self.sid_FreightRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sid_VehicleCategory" EntityType="Self.sid_VehicleCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sid_VehicleTypes" EntityType="Self.sid_VehicleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TariffBenchmark" EntityType="Self.TariffBenchmark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValuationTPD" EntityType="Self.ValuationTPD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeRateView" EntityType="Self.ExchangeRateView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ExchangeRateView].[CurrencyCode] AS [CurrencyCode], 
+[ExchangeRateView].[CurrencyName] AS [CurrencyName], 
+[ExchangeRateView].[Week] AS [Week], 
+[ExchangeRateView].[Rate] AS [Rate]
+FROM [dbo].[ExchangeRateView] AS [ExchangeRateView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_sid_FreightRates_sid_FreightRates" Association="Self.FK_sid_FreightRates_sid_FreightRates">
+            <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+            <End Role="sid_FreightRates" EntitySet="sid_FreightRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sid_VehicleTypes_sid_VehicleCategory" Association="Self.FK_sid_VehicleTypes_sid_VehicleCategory">
+            <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+            <End Role="sid_VehicleTypes" EntitySet="sid_VehicleTypes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAARv2Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PAARv2Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ExchangeRate" EntityType="PAARv2Model.ExchangeRate" />
+          <EntitySet Name="ExchangeRateView" EntityType="PAARv2Model.ExchangeRateView" />
+          <EntitySet Name="ValuationTPD" EntityType="PAARv2Model.ValuationTPD" />
+          <EntitySet Name="sid_FreightRates" EntityType="PAARv2Model.sid_FreightRates" />
+          <EntitySet Name="sid_VehicleCategory" EntityType="PAARv2Model.sid_VehicleCategory" />
+          <AssociationSet Name="FK_sid_FreightRates_sid_FreightRates" Association="PAARv2Model.FK_sid_FreightRates_sid_FreightRates">
+            <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+            <End Role="sid_FreightRates" EntitySet="sid_FreightRates" />
+          </AssociationSet>
+          <EntitySet Name="sid_VehicleTypes" EntityType="PAARv2Model.sid_VehicleTypes" />
+          <AssociationSet Name="FK_sid_VehicleTypes_sid_VehicleCategory" Association="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory">
+            <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+            <End Role="sid_VehicleTypes" EntitySet="sid_VehicleTypes" />
+          </AssociationSet>
+          <EntitySet Name="HSCodeTariff" EntityType="PAARv2Model.HSCodeTariff" />
+          <EntitySet Name="TariffBenchmark" EntityType="PAARv2Model.TariffBenchmark" />
+        </EntityContainer>
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Week" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ExchangeRateView">
+          <Key>
+            <PropertyRef Name="CurrencyCode" />
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="Rate" />
+          </Key>
+          <Property Type="String" Name="CurrencyCode" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CurrencyName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Week" Nullable="false" Precision="0" />
+          <Property Type="Decimal" Name="Rate" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="ValuationTPD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Importer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImporterTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Exporter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DeclarationDate" Type="DateTime" Precision="3" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChassisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssessedHSCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialFeatures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfDoors" Type="Int32" />
+          <Property Name="ManufactureYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EngineCapacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HDV" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAARNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAARIssueDate" Type="DateTime" Precision="0" />
+          <Property Name="SeatingCapacity" Type="Int32" />
+          <Property Name="FuelType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="sid_FreightRates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FreightRate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MinimumCC" Type="Int32" />
+          <Property Name="MaximumCC" Type="Int32" />
+          <NavigationProperty Name="sid_VehicleCategory" Relationship="PAARv2Model.FK_sid_FreightRates_sid_FreightRates" FromRole="sid_FreightRates" ToRole="sid_VehicleCategory" />
+        </EntityType>
+        <EntityType Name="sid_VehicleCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sid_FreightRates" Relationship="PAARv2Model.FK_sid_FreightRates_sid_FreightRates" FromRole="sid_VehicleCategory" ToRole="sid_FreightRates" />
+          <NavigationProperty Name="sid_VehicleTypes" Relationship="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory" FromRole="sid_VehicleCategory" ToRole="sid_VehicleTypes" />
+        </EntityType>
+        <Association Name="FK_sid_FreightRates_sid_FreightRates">
+          <End Type="PAARv2Model.sid_VehicleCategory" Role="sid_VehicleCategory" Multiplicity="1" />
+          <End Type="PAARv2Model.sid_FreightRates" Role="sid_FreightRates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sid_VehicleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sid_FreightRates">
+              <PropertyRef Name="VehicleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sid_VehicleTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleCategoryId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="sid_VehicleCategory" Relationship="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory" FromRole="sid_VehicleTypes" ToRole="sid_VehicleCategory" />
+        </EntityType>
+        <Association Name="FK_sid_VehicleTypes_sid_VehicleCategory">
+          <End Type="PAARv2Model.sid_VehicleCategory" Role="sid_VehicleCategory" Multiplicity="0..1" />
+          <End Type="PAARv2Model.sid_VehicleTypes" Role="sid_VehicleTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sid_VehicleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sid_VehicleTypes">
+              <PropertyRef Name="VehicleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HSCodeTariff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSCode" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StandardUnitOfQuantity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ImportDuty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImportVAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImportNHIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeUnitOfQuantity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ImportExcise" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AfricanUnionImportlevy" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CasseteLevy" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EnvironmentalExcise" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ProcessingFee" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ImportLevy" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="GetFund" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ImportVatAmended" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GetFund1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GetFund2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TariffBenchmark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProductValue" Type="Double" />
+          <Property Name="Unit" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Packaging" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="SUOM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UnitFOB" Type="Decimal" Precision="20" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PAARv2ModelStoreContainer" CdmEntityContainer="PAARv2Entities">
+          <EntitySetMapping Name="ExchangeRate">
+            <EntityTypeMapping TypeName="PAARv2Model.ExchangeRate">
+              <MappingFragment StoreEntitySet="ExchangeRate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeRateView">
+            <EntityTypeMapping TypeName="PAARv2Model.ExchangeRateView">
+              <MappingFragment StoreEntitySet="ExchangeRateView">
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValuationTPD">
+            <EntityTypeMapping TypeName="PAARv2Model.ValuationTPD">
+              <MappingFragment StoreEntitySet="ValuationTPD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+                <ScalarProperty Name="SeatingCapacity" ColumnName="SeatingCapacity" />
+                <ScalarProperty Name="PAARIssueDate" ColumnName="PAARIssueDate" />
+                <ScalarProperty Name="PAARNo" ColumnName="PAARNo" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="HDV" ColumnName="HDV" />
+                <ScalarProperty Name="EngineCapacity" ColumnName="EngineCapacity" />
+                <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+                <ScalarProperty Name="NoOfDoors" ColumnName="NoOfDoors" />
+                <ScalarProperty Name="SpecialFeatures" ColumnName="SpecialFeatures" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="AssessedHSCode" ColumnName="AssessedHSCode" />
+                <ScalarProperty Name="ChassisNo" ColumnName="ChassisNo" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="DeclarationDate" ColumnName="DeclarationDate" />
+                <ScalarProperty Name="Exporter" ColumnName="Exporter" />
+                <ScalarProperty Name="ImporterTIN" ColumnName="ImporterTIN" />
+                <ScalarProperty Name="Importer" ColumnName="Importer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sid_FreightRates">
+            <EntityTypeMapping TypeName="PAARv2Model.sid_FreightRates">
+              <MappingFragment StoreEntitySet="sid_FreightRates">
+                <ScalarProperty Name="MaximumCC" ColumnName="MaximumCC" />
+                <ScalarProperty Name="MinimumCC" ColumnName="MinimumCC" />
+                <ScalarProperty Name="FreightRate" ColumnName="FreightRate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VehicleCategoryId" ColumnName="VehicleCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sid_VehicleCategory">
+            <EntityTypeMapping TypeName="PAARv2Model.sid_VehicleCategory">
+              <MappingFragment StoreEntitySet="sid_VehicleCategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sid_VehicleTypes">
+            <EntityTypeMapping TypeName="PAARv2Model.sid_VehicleTypes">
+              <MappingFragment StoreEntitySet="sid_VehicleTypes">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="VehicleCategoryId" ColumnName="VehicleCategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HSCodeTariff">
+            <EntityTypeMapping TypeName="PAARv2Model.HSCodeTariff">
+              <MappingFragment StoreEntitySet="HSCodeTariff">
+                <ScalarProperty Name="GetFund2" ColumnName="GetFund2" />
+                <ScalarProperty Name="GetFund1" ColumnName="GetFund1" />
+                <ScalarProperty Name="ImportVatAmended" ColumnName="ImportVatAmended" />
+                <ScalarProperty Name="GetFund" ColumnName="GetFund" />
+                <ScalarProperty Name="ImportLevy" ColumnName="ImportLevy" />
+                <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+                <ScalarProperty Name="EnvironmentalExcise" ColumnName="EnvironmentalExcise" />
+                <ScalarProperty Name="CasseteLevy" ColumnName="CasseteLevy" />
+                <ScalarProperty Name="AfricanUnionImportlevy" ColumnName="AfricanUnionImportlevy" />
+                <ScalarProperty Name="ImportExcise" ColumnName="ImportExcise" />
+                <ScalarProperty Name="TradeUnitOfQuantity" ColumnName="TradeUnitOfQuantity" />
+                <ScalarProperty Name="ImportNHIL" ColumnName="ImportNHIL" />
+                <ScalarProperty Name="ImportVAT" ColumnName="ImportVAT" />
+                <ScalarProperty Name="ImportDuty" ColumnName="ImportDuty" />
+                <ScalarProperty Name="StandardUnitOfQuantity" ColumnName="StandardUnitOfQuantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TariffBenchmark">
+            <EntityTypeMapping TypeName="PAARv2Model.TariffBenchmark">
+              <MappingFragment StoreEntitySet="TariffBenchmark">
+                <ScalarProperty Name="UnitFOB" ColumnName="UnitFOB" />
+                <ScalarProperty Name="SUOM" ColumnName="SUOM" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Packaging" ColumnName="Packaging" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ProductValue" ColumnName="ProductValue" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

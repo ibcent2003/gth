@@ -1,0 +1,7 @@
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Release\GNSW.DAL.dll.config
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Release\GNSW.DAL.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Release\GNSW.DAL.pdb
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Release\EntityFramework.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\bin\Release\EntityFramework.xml
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Release\GNSW.DAL.dll
+C:\Vhost\New GTH\Project\GNSW.DAL\obj\Release\GNSW.DAL.pdb

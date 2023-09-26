@@ -1,0 +1,93 @@
+﻿@model Project.Areas.Admin.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.IsGreetings = "true";
+}
+@section Crumbs{
+    <div class="crumbs">
+
+        <ul class="breadcrumb" id="breadcrumbs">
+            <li> <i class="icon-home"></i> <a href="@Url.Action("Index", "Dashboard", new { area="Admin"})">Dashboard</a> </li>
+
+        </ul>
+    </div>
+}
+
+
+<div class="row row-bg">
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual cyan"><i class="icon-file-text"></i></div>
+                <div class="title">Duty Calculator Feedback</div>
+                <div class="value">@String.Format("{0:n0}", Model.TotalDutyFeedback)</div>
+                <a class="more" href="@Url.Action("DutyFeedback", "FeedbackMessage", new { area="Setup"})">View More <i class="pull-right icon-angle-right"></i></a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual green"><i class="icon-repeat"></i></div>
+                <div class="title">GTH Users Feedback</div>
+                <div class="value">@String.Format("{0:n0}", Model.TotalUserFeedback)</div>
+                <a class="more" href="@Url.Action("Feedback", "FeedbackMessage", new { area="Setup"})">View More <i class="pull-right icon-angle-right"></i></a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual yellow"><i class="icon-building"></i></div>
+                <div class="title">Downloadable Documents</div>
+                <div class="value">@String.Format("{0:n0}", Model.TotalDocument)</div>
+                <a class="more" href="@Url.Action("Index", "DocumentUpload", new { area="Setup"})">View More <i class="pull-right icon-angle-right"></i></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3 hidden-xs">
+        <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+                <div class="visual red"><i class="icon-building"></i></div>
+                <div class="title">
+                    No Of News Uploaded
+                </div>
+                <div class="value">@String.Format("{0:n0}", Model.TotalNews)</div>
+                <a class="more" href="@Url.Action("Index", "NewsManagement", new { area="Setup"})">View More <i class="pull-right icon-angle-right"></i></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i>GTH Statistics</h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse">
+                            <i class="icon-angle-down"></i>
+                        </span>
+                    </div>
+                </div>
+            </div> <div class="widget-content">
+            </div>
+            <div class="divider">
+            </div>
+            <div class="widget-content">
+             <ul class="stats"> 
+                <li> 
+                 <strong>@String.Format("{0:n0}", Model.NoOfUsedDuty)</strong> 
+                 <small>Total Used Vehicle Duty Calculator Used</small> </li> 
+                <li class="light hidden-xs"> <strong>@String.Format("{0:n0}", Model.NoOfGeneralGoods)</strong> <small>Total Used of General Goods Duty Calculator</small> </li> <li> <strong>@String.Format("{0:n0}", Model.TotalUsersVisit)</strong> <small>Total Visitor on GTH</small> </li> <li class="light hidden-xs"> <strong>@String.Format("{0:n0}", Model.TotalConsigmentUsed)</strong> <small>Total Number of Consigment Tracker Used</small> </li> </ul> </div>
+        </div>
+    </div>
+</div>

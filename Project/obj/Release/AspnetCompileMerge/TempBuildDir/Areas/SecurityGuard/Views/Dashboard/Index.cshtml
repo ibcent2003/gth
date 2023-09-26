@@ -1,0 +1,54 @@
+@model SecurityGuard.ViewModels.DashboardViewModel
+@{
+    ViewBag.Title = "Manage Users and Roles";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Header = "Manage Users and Roles";
+}
+
+@section statbox{
+      <div class="row row-bg">
+          
+       <div class="col-sm-6 col-md-3 hidden-xs">
+          <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+              <div class="visual green"> <i class="icon-group"></i> </div>
+              <div class="title">Total Users</div>
+              <div class="value">@Model.TotalUserCount</div>
+              <a class="more" href="@Url.Action("Index", "Membership", new { area="SecurityGuard"})">Manage User Account <i class="pull-right icon-angle-right"></i></a> </div>
+          </div>
+        </div> 
+          <div class="col-sm-6 col-md-3 hidden-xs">
+          <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+              <div class="visual yellow"> <i class="icon-male"></i> </div>
+              <div class="title">Users Online</div>
+              <div class="value">@Model.TotalUsersOnlineCount</div>
+              <a class="more" href="@Url.Action("CreateUser", "Membership", new { area="SecurityGuard"})">Create User Account <i class="pull-right icon-angle-right"></i></a> </div>
+          </div>
+        </div>
+           <div class="col-sm-6 col-md-3 hidden-xs">
+          <div class="statbox widget box box-shadow">
+            <div class="widget-content">
+              <div class="visual red"> <i class="icon-shield"></i> </div>
+              <div class="title">Total Roles</div>
+              <div class="value">@Model.TotalRolesCount</div>
+              <a class="more" href="@Url.Action("Index", "Role", new { area="SecurityGuard"})">Manage Roles <i class="pull-right icon-angle-right"></i></a> </div>
+          </div>
+        </div>
+      </div>
+    }
+
+<div class="row">
+    
+     <div class="col-md-6">
+          <div class="widget">
+            <div class="widget-header">
+              <h4><i class="icon-calendar"></i> Calendar</h4>
+            </div>
+            <div class="widget-content">
+              <div id="calendar"></div>
+            </div>
+          </div>
+        </div>
+</div>
+

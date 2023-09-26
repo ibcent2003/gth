@@ -1,0 +1,176 @@
+﻿@model Project.Models.EServicesViewModel
+@using System.Globalization;
+@{
+    ViewBag.Title = "MarketPlace Contact";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">MarketPlace Contact</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("MarketPlace", "EServices", new {area = "" })" style="color:white">MarketPlace</a>
+                </li>
+
+                <li class="active" style="color:white">MarketPlace Contact</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+          
+            <div class="col-sm-9 col-md-9">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-mobile9"></i>@Model.product.ProductType.Name - <span class="">@Model.product.Name</span></h3>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+
+                    <div class="widget">
+                        <div id="MainMenu2">
+                            <div class="list-group panel">
+                                @foreach (var item in Model.ProductList.Distinct())
+                                {
+
+                                    string s = new CultureInfo("en-US").TextInfo.ToTitleCase(item.Name);                                 
+                                    <a href="@Url.Action("MarketPlaceContact", "EServices", new { ProductTypeId = item.ProductType.Id, ProductId = item.Id, area = "" })" class="list-group-item">@s </a>
+                                }
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+
+
+
+                <div class="col-sm-9 col-md-9">
+                   
+                    <!-- Image -->
+                  
+                    <img src="@Url.Content("~/Content/Frontend/light/img/sections/MarketHub/"+Model.product.ProductType.Photo)" class="pull-right" width="120" height="90" alt="" />
+                   
+                    @if(Model.product.Description != null)
+                    {
+                         <p><strong>@Model.ProductName</strong>:- @Model.product.Description</p>
+                    }
+                    else
+                    {
+                        <p> <strong>@Model.ProductName</strong>:- Lorem ipsum dolor sit amet, consectetur adipisicing elit.consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.Lorem ipsum dolor sit amet, consectetur.</p>
+                    }
+
+                    
+
+                    <br />
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h3 class="title"><i class="icon-mobile9"></i>Exporter Information</h3>
+                        </div>
+
+                        <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable" id="fees">
+                            <thead>
+                                <tr style="font-size: 12px;">
+                                    <th>S/N</th>
+                                    <th>Exporter Name</th>
+                                    <th>Email Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.ExporterProductList.Count != 0)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.ExporterProductList)
+                                {
+                                    ++i;
+                            <tr style="font-size: 12px;">
+                                <td>
+                                    @i
+                                </td>
+                                <td>@item.ExporterName</td>
+                                <td><span>support@ghanastradinghub.gov.gh</span></td>
+
+
+                            </tr>
+                                }
+                            }
+                            else
+                            {
+                            <tr>
+                                <td colspan="8">No Records Found!...</td>
+                            </tr>
+                            }
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+           
+
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-code"></i> More Products</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            @foreach (var item in Model.ProductTypeList.Distinct())
+                            {
+                                 var GetProduct = db.Product.Where(o => o.ProductTypeId == item.Id).FirstOrDefault();
+                                <a href="@Url.Action("MarketPlaceContact", "EServices", new {ProductTypeId=item.Id,ProductId=GetProduct.Id, area = "" })" class="list-group-item">@item.Name</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Styles {
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/jquery.dataTables.css")
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css")
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/jquery.dataTables.js")
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js")
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+    <script>
+        var oTable1 =
+            $('#fees')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .DataTable({
+                    bAutoWidth: false,
+                    bServerSide: true,
+                    sAjaxSource: "@Url.Action("Search")",
+                    bProcessing: false,
+                    aoColumns: [
+                        { mData: "ProcessName" },
+                        { mData: "FeesPurpose" },
+                        { mData: "AmountInDollar" },
+                         { mData: "AmountIdCedis" }
+                    ]
+                });
+    </script>
+}
+
+

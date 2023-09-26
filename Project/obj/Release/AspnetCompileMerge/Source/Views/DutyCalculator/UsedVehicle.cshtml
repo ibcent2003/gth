@@ -1,0 +1,401 @@
+﻿@model Project.Models.DutyCalculatorModel
+@{
+    ViewBag.Title = "Used Vehicle Duty Calculator";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">General Goods Duty Calculator</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new { area = "" })" style="color:white">Home</a>
+                </li>
+                <li style="color:white">
+                    <a href="@Url.Action("Index", "DutyCalculator", new { area = "" })" style="color:white">Used Vehicle Duty Calculator</a>
+                </li>
+
+                <li class="active" style="color:white">Used Vehicle Duty Calculator</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+      
+        <section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+          
+
+            <div class="container">   
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }      
+                <div class="widget-title">
+                    <h6 class="title">
+
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked onclick="show1();" > Get HDV using Make, Model, and Year
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onclick="show2();" > Get HDV using Chassis No
+                        </label>
+                    </h6>
+                </div>
+
+                <div class="row">
+                    <div  >
+                        <div class="col-sm-12 col-md-8 post-list">
+                            <div class="widget" id="make">
+                                <div class="widget-title">
+                                    <h3 class="title">Vehicle Information</h3>
+                                </div>
+                                
+                                  @using (Ajax.BeginForm("UsedVehicle", "DutyCalculator", null, new { @class = "form-inline" }))
+                                  {
+
+                                    <div class="form-group has-success has-feedback">
+                                        <label class="control-label" for="inputGroupSuccess3">Make</label>
+                                        <div class="input-group">
+                                            @*@Html.DropDownListFor(m => Model.VehicleTypeform.MakeId, new SelectList(Model.VehicleTypeMake, "Value", "Text"), "Select a Make", new { @class = "form-control", onChange = "GetAllDistrict(this)" })*@
+                                            @Html.DropDownListFor(x => x.MakeNames, Model.MakeNames, "Select a Make", new { @id = "ddlMake", @class = "form-control" })
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group has-success has-feedback">
+                                        <label class="control-label" for="inputGroupSuccess3">Model</label>
+                                        <div class="input-group">
+                                            @*@Html.DropDownListFor(m => Model.ModelNames, new List<SelectListItem>(), "Select a Model", new { @class = "form-control" })*@                                            
+                                            @*@Html.DropDownListFor(m => Model.VehicleTypeform.ModelId, new SelectList(Model.VehicleModel, "Value", "Text"), "Select a Model", new { @class = "form-control" })*@                                                                                   
+                                            @Html.DropDownListFor(x => x.ModelNames, new List<SelectListItem>(), "Select a Model", new { @id = "ddlModel", @class = "form-control" })
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group has-success has-feedback">
+                                        <label class="control-label" for="inputGroupSuccess3">Year</label>
+                                        <div class="input-group">
+
+                                            @Html.TextBoxFor(model => model.VehicleTypeform.Year, new { @class = "form-control", @placeholder = "Eg. 2018" })
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group has-success has-feedback">
+                                        <div class="input-group">
+                                            <button type="button" id="btnmake" class="btn btn-default btn-xs" style="color:white">Find</button>
+                                        </div>
+
+                                    </div>
+
+                                  }
+
+
+                            </div>
+
+                            <div class="widget" id="chassis">
+                                <div class="widget-title">
+                                    <h3 class="title">Used Chassis to Get Duty</h3>
+                                </div>
+                                @using (Ajax.BeginForm("UsedVehicle", "DutyCalculator", null, new { @class = "form-inline" }))
+                                {
+                                    <div class="form-group has-success has-feedback">
+                                        <label class="control-label" for="inputGroupSuccess3">Chassis No</label>
+                                        <div class="input-group">
+
+                                            @Html.TextBoxFor(model => model.ChassisNo, new { @class = "form-control" })
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group has-success has-feedback">
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-default btn-xs" id="btnchassis" style="color:white">Decode</button>
+                                        </div>
+
+                                    </div>
+                                }
+
+                            </div>
+                            <br />
+                            <div id="wait" style="display:none;width:150px;height:89px;position:absolute;top:100%;left:50%;padding:5px;z-index:1000">
+                                <img src="~/Content/loading.gif" />
+                            </div>
+                            <div id="vresult">
+                 
+                           </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="sidebar col-sm-12 col-md-4">
+                           
+                          
+                            <div class="widget">
+                                <div class="widget-title">
+                                    <h3 class="title">Cant Find My Vehicle?</h3> 
+                                </div>
+                                @*@using (Html.BeginForm(new { @class = "form-inline" }))*@
+                               @using (Html.BeginForm("AddFeedback", "DutyCalculator", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "contact-form" }))                              
+                                {
+                                    @Html.ValidationSummary(true)
+                                    
+                                <div class="input-text form-group">
+                                    @Html.TextBoxFor(model => model.contactusform.fullname, new { @class = "form-control", @placeholder = "Enter Full Name" })
+                                    @Html.ValidationMessageFor(model => model.contactusform.fullname)
+                                </div>
+
+                                <div class="input-text form-group">
+                                    @Html.TextBoxFor(model => model.contactusform.MobileNumber, new { maxlength = 10, @class = "form-control", @placeholder = "Enter Mobile Number" })
+                                    @Html.ValidationMessageFor(model => model.contactusform.MobileNumber)
+                                </div>
+
+                                <div class="input-text form-group">
+                                    @Html.TextBoxFor(model => model.contactusform.EmailAddress, new { @class = "form-control", @placeholder = "Enter Email Address" })
+                                    @Html.ValidationMessageFor(model => model.contactusform.EmailAddress)
+                                    </div>
+
+                                    <div class="input-text form-group">
+                                        @Html.TextAreaFor(model => model.contactusform.Message, new { @class = "form-control", placeholder = "Please give us a feedback on how to improve this tool or if you cant find your vehicle details please provide us with the details." })
+                                        @Html.ValidationMessageFor(model => model.contactusform.Message)
+                                        </div>                                       
+                                        <input type="submit" class="btn btn-default btn-xs" value="Submit" onclick="return validate();" style="color:white"  />
+                                        <div id="content">
+                                          
+                                        </div>
+
+
+                                }
+                                        </div>
+
+
+
+
+
+
+                            </div>
+                     
+                        </div>
+                  
+                </div>
+            </div>
+</section>
+
+
+        
+        @section Scripts{
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+            @Scripts.Render("~/Content/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js")
+            <script>
+                "use strict";
+                $(document).ready(function () {
+
+                    (function () {
+                        $('#chassis').hide();
+                    })();
+
+                    $(document).ajaxStart(function () {
+                        $("#wait").css("display", "block");
+                                          
+                    });
+                    $(document).ajaxComplete(function () {
+                        $("#wait").css("display", "none");                     
+                    });
+                    $("btnmake").click(function () {
+                        $("#vresult").load("demo_ajax_load.asp");
+                      
+                    });
+
+
+
+
+                    $('#ddlMake').change(function () {
+                        $.ajax({
+                            type: "post",
+                            url: "/DutyCalculator/GetModelNames",
+                            data: { mId: $('#ddlMake').val() },
+                            datatype: "json",
+                            traditional: true,
+                            success: function (data) {
+                                var district = "<select id='ddlModel'>";
+                                district = district + '<option value="">Select a Model</option>';
+                                for (var i = 0; i < data.length; i++) {
+                                    district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                                }
+                                district = district + '</select>';
+                                $('#ddlModel').html(district);
+                            }
+                        });
+                    });
+
+                });
+
+               
+                function show1() {
+                    document.getElementById('chassis').style.display = 'none';
+                    document.getElementById('make').style.display = 'block';
+                    inlineRadioOptions.show1();
+
+                }
+                function show2() {
+                    document.getElementById('chassis').style.display = 'block';
+
+                    document.getElementById('make').style.display = 'none';
+                    inlineRadioOptions.show2();
+                }
+
+
+
+                $(document).on('click', '#btnmake', function () {                   
+                    $.ajax({
+                        url: '@Url.Action("GetResult", "DutyCalculator")',
+                        type: 'POST',                     
+                        cache: false,
+                        async: true,
+                        data: { 'VehicleMake': $('#ddlMake').val(), 'VehicleModel': $('#ddlModel').val(), 'VehicleYear': $('#VehicleTypeform_Year').val() },
+                        success: function (data) {
+                            $("#vresult").empty().append(data);
+                        }
+                    });
+                 
+                });
+
+
+
+                // for chassis no
+                $(document).on('click', '#btnchassis', function () {
+                    $.ajax({
+                        url: '@Url.Action("GetChassis", "DutyCalculator")',
+                        type: 'POST',                     
+                        cache: false,
+                        async: true,
+                        data: { 'chassis': $('#ChassisNo').val() },
+                        success: function (data) {
+                            $("#vresult").empty().append(data);
+                        }
+                    });
+                 
+                });
+
+
+
+
+                $(document).ready(function () {
+                    $("#feedbackbtn").click(function () {
+                        $("#content").html("<b>Please Wait...</b>");
+ 
+                        var dataObject = {
+                            FullName: $("#Dutyfeedbacform_FullName").val(),
+                            EmailAddress: $("#Dutyfeedbacform_EmailAddress").val(),
+                            Message: $("#Dutyfeedbacform_Message").val()
+                        };
+ 
+                        $.ajax({
+                            url: "@Url.Action("AddFeedback", "DutyCalculator")",
+                            type: "POST",
+                        data: dataObject,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.toString() == "Successfully Saved!") {
+                                $("#Dutyfeedbacform_FullName").val('');
+                                $("#Dutyfeedbacform_EmailAddress").val('');
+                                $("#Dutyfeedbacform_Message").val('');
+
+
+                                $("#content").html("<div class='success'>"+data+"</div>");
+                            }
+                            else {
+                                $("#content").html("<div class='failed'>" + data + "</div>");
+                            }
+                        },
+                        error: function () {
+                            $("#content").html("<div class='failed'>Error! Please try again</div>");
+                        }
+                    });
+ 
+                });
+                });
+
+
+             
+            </script>
+
+
+
+                
+        }
+
+
+
+<script type="text/javascript">
+    function validate() {
+
+
+        if (document.getElementById("contactusform_fullname").value == "") {
+             alert("Please enter your full name!");
+             document.getElementById("contactusform_fullname").focus();
+             return false;
+        }
+
+        if (document.getElementById("contactusform_MobileNumber").value == "") {
+            alert("Please enter your Mobile Number!");
+            document.getElementById("contactusform_MobileNumber").focus();
+            return false;
+        }
+        if (document.getElementById("contactusform_EmailAddress").value == "") {
+            alert("Please enter your email address!");
+            document.getElementById("contactusform_EmailAddress").focus();
+             return false;
+        }
+
+
+        if (document.getElementById("contactusform_Message").value == "") {
+            alert("Please enter your message");
+            document.getElementById("contactusform_Message").focus();
+            return false;
+        }        
+
+         return true;
+    }   
+</script>
+<style>
+
+    body {
+  font-family: arial;
+}
+.hide {
+  display: none;
+}
+p {
+  font-weight: bold;
+}
+
+
+
+
+
+
+                 /*.success {
+                    border:solid 1px rgb(13,109,0);
+                    width:300px;
+                    padding:5px;
+                    background-color:rgb(215,255,218);
+                }
+                .failed {
+        
+ 
+                    border:solid 1px red;
+                    width:300px;
+                    padding:5px;
+                    background-color:rgb(255,229,229);
+                }*/
+</style>

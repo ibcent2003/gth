@@ -1,0 +1,8 @@
+C:\Vhost\New GTH\Project\PAARS.DAL\bin\Release\PAARS.DAL.dll.config
+C:\Vhost\New GTH\Project\PAARS.DAL\bin\Release\PAARS.DAL.dll
+C:\Vhost\New GTH\Project\PAARS.DAL\bin\Release\PAARS.DAL.pdb
+C:\Vhost\New GTH\Project\PAARS.DAL\bin\Release\EntityFramework.dll
+C:\Vhost\New GTH\Project\PAARS.DAL\bin\Release\EntityFramework.xml
+C:\Vhost\New GTH\Project\PAARS.DAL\obj\Release\PAARS.DAL.dll
+C:\Vhost\New GTH\Project\PAARS.DAL\obj\Release\PAARS.DAL.pdb
+C:\Vhost\New GTH\Project\PAARS.DAL\obj\Release\PAARS.DAL.csprojResolveAssemblyReference.cache

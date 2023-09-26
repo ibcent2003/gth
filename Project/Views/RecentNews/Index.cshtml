@@ -1,0 +1,222 @@
+﻿@model Project.Models.RecentNewsViewModel
+@{
+    ViewBag.Title = "News";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">News</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">News</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<section class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 post-list">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Latest News </h3>
+                    </div>
+
+                    @if (Model.NewsList.Count != 0)
+                    {
+                        foreach (var item in Model.NewsList.OrderByDescending(x => x.Id).Take(10))
+                        {
+
+                            <div class="post-item">
+                                <div class="post-image pull-left">
+                                    <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">
+                                        <img src="@Url.Content(Model.PicturePath+item.Photo)" width="320" height="282" alt="" title="" />
+                                    </a>
+                                </div>
+                                <h4 class="post-title"><a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">@item.NewsHeadline.ToLower()<br /></a> </h4>
+                                <div class="post-content">@Html.Raw(item.NewsContent.Substring(0, 400))<a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">..read more</a></div>
+
+                                <div class="post-meta">
+
+                                    <!-- Meta Date -->
+
+                                    <span class="time">
+                                        <i class="fa fa-calendar"></i>Posted On @item.CreatedDate.ToShortDateString()
+                                    </span>
+                                    <!-- Category -->
+                                 
+                                    <span class="category pull-right">
+                                        <i class="glyphicon glyphicon-eye-open"></i> @item.NoOfView
+
+                                       
+
+                                    </span>
+
+                                    <br /><br />
+
+                                </div>
+                            </div>
+
+                        }
+
+
+
+
+
+                    }
+
+
+
+
+                </div>
+            </div>
+           
+           
+            <div class="sidebar col-sm-12 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Popular News</h3>
+                    </div>
+
+                    <div>
+                        @if (Model.NewsList.Count != 0)
+                        {
+                            foreach (var item in Model.NewsList.OrderByDescending(x => x.NoOfView).Take(5))
+                            {
+                                <ul class="latest-posts">
+                                    <li>
+                                        <div class="post-thumb">
+                                            <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">
+                                                <img class="img-rounded" src="@Url.Content(Model.PicturePath+item.Photo)" alt="" title="" width="84" height="84">
+                                            </a>
+                                        </div>
+                                        <div class="post-details">
+                                            <div class="description">
+
+                                                @Html.Raw(item.NewsHeadline.Substring(0, 20).ToLower()) <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">..read more</a>
+                                            </div>
+                                            <div class="meta">
+                                                <span class="time">
+                                                    <i class="fa fa-calendar"></i> @item.CreatedDate.ToShortDateString()
+                                                </span>
+                                                <span class="category pull-right">
+                                                    <i class="glyphicon glyphicon-eye-open"></i> @item.NoOfView
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <hr />
+                            }
+                        }
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sidebar col-sm-12 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">News Subscription</h3>
+                    </div>
+
+                    <div>
+                        <p>Get the latest updates in your email box automatically.</p>
+                        <input class="form-control" name="name" placeholder="Enter your email address" type="text">
+                        <button id="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="sidebar col-sm-12 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">News Archive</h3>
+                    </div>
+
+                    <div>
+                        @if (Model.newslist.Count != 0)
+                        {
+                            foreach (var item in Model.newslist)
+                            {
+                                <div id="MainMenu2">
+                                    <div class="list-group panel">                                        
+                                        <a href="#" class="list-group-item">@Convert.ToDateTime(item).ToString("Y")</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="sidebar col-sm-12 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">News Categories</h3>
+                    </div>
+                    <div>
+                        @if (Model.newsCategory.Count != 0)
+                        {
+                            foreach (var item in Model.newsCategory)
+                            {
+                                var GetId = db.NewsCategory.Where(x => x.Name == item).FirstOrDefault();
+                                <div id="MainMenu2">
+                                    <div class="list-group panel">
+
+                                        <a href="@Url.Action("NewsByCategory", "RecentNews", new {Id=GetId.Id , area=""} )" class="list-group-item">@item</a>
+                                      
+</div>
+                                </div>
+                            }
+                        }
+
+
+
+                    </div>
+                
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+
+@section Scripts{ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+
+
+
+

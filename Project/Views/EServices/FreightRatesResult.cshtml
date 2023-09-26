@@ -1,0 +1,98 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = Model.CountryName +" Freight Rate";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">@Model.CountryName Freight Rates</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("FreightRates", "EServices", new {area = "" })" style="color:white">Freight Rates</a>
+                </li>
+
+                <li class="active" style="color:white">@Model.CountryName Freight Rates</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 post-list">
+               
+                <a class="btn btn-danger btn-sm" href="@Url.Action("FreightRates", "EServices", new {area = "" })"><i class="glyphicon glyphicon-chevron-left"></i>Back</a>
+                <br />
+                <div class="widget">
+
+                 
+                   
+                    <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable">
+                        <thead>
+                            <tr style="font-size: 12px;">
+                                <th>S/N</th>
+                                <th>Location/Port</th>
+                                <th>Cargo</th>
+                                <th>20 Footer(USD)</th>
+                                <th>40 Footer(USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.FreightRateList.Count != 0)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.FreightRateList)
+                                {
+                                    ++i;
+                                    <tr style="font-size: 12px;">
+                                        <td>
+                                            @i
+                                        </td>
+                                        <td>@item.Port</td>
+                                        <td>@item.CargoType.Name</td>
+                                        <td>@item.footer1</td>
+                                        <td>@item.footer2</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="8">No Records Found!...</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+</section>
+@if (Model.FreightRateList.Count != 0)
+{
+<div role="alert" class="alert alert-warning" >
+<strong>Disclaimer! </strong>Ghana Revenue Authority further does not warrant the accuracy or completeness of the information, text, graphics,links or other items contained within these materials. The information above are subject to changes without prior notification.
+    </div>
+}
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+

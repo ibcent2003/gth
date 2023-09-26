@@ -1,0 +1,129 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Feedback";
+    var db = new Project.DAL.PROEntities();
+    var swdb = new GNSW.DAL.GNSWEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Feedback</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Feedback</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="active">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Feedback
+                    </div>
+
+
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.AntiForgeryToken()
+                        <div class="panel-body">
+
+                            <div class="col-md-12">
+                              @Html.Raw(@TempData["Feedback"])
+                            </div>
+
+
+                        </div>
+
+
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div style="text-align: left;" class="col-md-6">
+
+                                      
+                                    </div>
+
+                                    <div style="text-align: right;" class="col-md-6">
+                                        @*@Html.ActionLink("Finish", "Classic", new { @class = "btn btn-sm btn-default", style = "color:white" })*@
+                                        @Html.ActionLink("Finish", "Classic","Home" , new {@Area="" }, new { @class = "btn btn-sm btn-default", style = "color:white" })
+                                    </div>
+
+                                </div>
+                            </div>
+                    
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

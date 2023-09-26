@@ -1,0 +1,84 @@
+﻿@model Project.Areas.Setup.Models.UsedVehicleManagementViewModel
+@{
+    ViewBag.Title = "New Vehicle Entry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.IsGreetings = "true";
+}
+@section Scripts{
+    <script>
+        "use strict";
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                defaultDate: +7,
+                showOtherMonths: true,
+                autoSize: true,
+                appendText: '<span class="help-block">(yyyy-mm-dd)</span>',
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+}
+@section Crumbs{
+    <div class="crumbs">
+
+        <ul class="breadcrumb" id="breadcrumbs">
+            <li><i class="icon-home"></i><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Dashboard</a> </li>
+            <li><i class="current"></i><a href="javascript: return void(0)">New Vehicle Entry</a> </li>
+
+
+        </ul>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>
+                    <i class="icon-reorder"></i>
+                    New Vehicle Entry
+                </h4>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Edit", "UsedVehicleManagement", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal row-border" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.Label("Name", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.VehicleManagementform.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.VehicleManagementform.Name)
+                            @Html.HiddenFor(x=>x.VehicleManagementform.Id)
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        @Html.ActionLink("<< Back to List", "Index", null, new { @class = "btn btn-success" })
+                        <input type="submit" class="btn btn-warning pull-right" value="Save" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

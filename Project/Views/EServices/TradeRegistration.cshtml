@@ -1,0 +1,59 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Stakeholder Registration - Guidelines ";
+    var db = new Project.DAL.PROEntities();
+}
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+</style>
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Stakeholder Registration - Guidelines</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+                <li class="active" style="color:white">Stakeholder Registration - Guidelines</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+              
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Guidelines for @Model.msg.ApprovalWorkFlow.ProcessName
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-9">
+                            @Html.Raw(@TempData["Guideline"])
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div style="text-align: right;">                            
+                            <a href="@Url.Action("Login","SGAccount", new { Area = "" })" class="btn btn-sm btn-default" style="color:white">Next</a>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}

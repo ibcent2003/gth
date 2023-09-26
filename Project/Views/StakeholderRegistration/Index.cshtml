@@ -1,0 +1,122 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Stakeholder Registration - Guidelines ";
+    var db = new Project.DAL.PROEntities();
+}
+<style>
+    .disabledTab{
+    pointer-events: none;
+}
+</style>
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Stakeholder Registration - Guidelines</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                @*<li style="color:white">
+                        <a href="@Url.Action("AgencyFees", "EServices", new {area = "" })" style="color:white">Agencies Fees & Charges</a>
+                    </li>*@
+
+                <li class="active" style="color:white">Stakeholder Registration - Guidelines</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="active">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                        Guidelines
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-9">
+                            <h5><strong>Welcome to the Ghana Trade Hub (National Single Window).</strong></h5>
+                            <p class="MsoNormal">Before you can make use of GTH National Single Window Portal for single submission, you must register on the portal by providing the following information:</p><ol>
+                                <li>Your Company Name</li>
+                                <li>Your Business Registration Certificate Number issued by Registrar General Department</li>
+                                <li>Your TIN issued to you by Ghana Revenue Authority (GRA)</li>
+                                <li>Your Head Office Address</li>
+                                <li>The detail of your registration contact person information.</li>
+                                <li>Scan and attach your Business Registration Certificate (preferably in PDF format)</li>
+                                <li>Scan and attach your Certificate to Commence Business (preferably in PDF format)</li>
+                                <li>Scan and attach your TIN Certificate (preferably in PDF format)</li>
+                            </ol>
+                            <p class="MsoNormal">On successful submission, a notification will be sent to you confirming your company registration contact information.</p>
+                            <p class="MsoNormal">Click on the Next Button to proceed.</p>
+                            <p class="MsoNormal"><strong>Thank you.</strong></p>
+                        </div>
+                        <div class="col-lg-2">
+                            <a class="btn btn-danger" target="_blank" href="~/Content/Frontend/light/img/sections/Documents/guide.pdf" style="color:white"> DOWNLOAD <BR />USER REGISTRATION GUIDE </a>
+                            </div>
+                        </div>
+                    <div class="panel-footer">
+                        <div style="text-align: right;">
+                            <a href="@Url.Action("CompanyInformation")" class="btn btn-sm btn-default" style="color:white">Next</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <h4>Ghana Customs IATA Cargo XML Registration </h4>
+                <p class="alert alert-warning">
+                    <b>Carrier or Authorised 3rd Party</b><br />
+                    To register as a Carrier or  Authorised 3rd Party click on <b>IATA Cargo XML Registration</b>.
+                    <a class="btn btn-danger" target="_blank" href="https://manifest.ghanastradinghub.com/cargoxml/filerregistration/create"> IATA Cargo XML Registration </a>
+                </p>
+                <p class="alert alert-info">
+                    <b>Freight Forwarder or Authorized 3rd Party</b><br />
+                    To register as a Freight Forwarder or Authorized 3rd Party, please read the Guidelines below and click on Next to proceed.
+                </p>
+                <hr />
+            </div>
+        </div>
+</div>
+</section>
+
+
+@section Scripts
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}

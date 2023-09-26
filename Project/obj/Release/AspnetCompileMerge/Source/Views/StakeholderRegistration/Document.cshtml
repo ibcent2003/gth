@@ -1,0 +1,316 @@
+﻿@model Project.Models.StakeholderRegistrationModel
+@{
+    ViewBag.Title = "Supporting Documents";
+    var db = new Project.DAL.PROEntities();
+    var swdb = new GNSW.DAL.GNSWEntities();
+}
+
+
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Supporting Documents</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+
+                <li class="active" style="color:white">Supporting Documents</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .disabledTab {
+        pointer-events: none;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+
+
+<section class="page-section animated fadeInUp visible" data-animation="fadeInUp">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+                    <div class="alert @alertType fade in">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        @Html.Raw(TempData["Message"])
+                    </div>
+                }
+
+                <div id="tabbed_widget" class="tabbable" style="display:;">
+                    <ul class="nav nav-tabs" style="margin: 0 0 20px 0;">
+                        <li class="disabled disabledTab">
+                            <a href="#">Guidelines</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 1: Verification</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 2: Company Details</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 3: Business Areas</a>
+                        </li>
+
+                        <li class="active">
+                            <a href="#">Step 4: Supporting Docs</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 5: Account Info</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Step 6:Review</a>
+                        </li>
+                        <li class="disabled disabledTab">
+                            <a href="#">Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel panel-primary" id="tabbed_widget_panel">
+                    <div class="panel-heading" style="background-color: #143856;border-color: #143856;">
+                       Supporting Documents
+                    </div>
+                    @using (Html.BeginForm("Document", "StakeholderRegistration", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.AntiForgeryToken()
+                        <div class="panel-body">
+
+                            <div class="col-md-12">
+
+
+
+
+
+
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="widget">
+                                        <div class="widget-title">
+                                            <p class="lead">Documents to upload</p>
+                                        </div>
+
+                                      
+                                        <table class="table table-striped table-condensed table-bordered">
+                                            <tbody>
+                                                @{
+                                                    int DocCount = 0;
+                                                    int d = 0;
+                                                }
+                                                @foreach (var doc in Model.RequiredDocs)
+                                                {
+                                                    <tr>
+                                                        <td>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label class="RequiredField" for="@doc.Id">@doc.Name  </label>
+                                                                    <input id="@doc.Id" name="documents" type="file" class="" />
+                                                                </div>                                                             
+                                                              
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    DocCount++;
+                                                }
+
+                                            </tbody>
+
+                                        </table>
+
+                                        @if (Model.DocumentsUploaded == false)
+                                        {
+                                        <div class="form-actions">                                           
+                                            <button type="submit" class="btn btn-default pull-right" style="color:white">Upload</button>
+                                        </div>
+                                        }
+                                    
+                                      
+                                        <div>
+                                            <br />
+                                            <p style="color: #ff6a00;">Uploaded Documents</p>
+                                            <table class="table table-striped table-bordered table-hover table-checkable table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            NO.
+                                                        </th>
+                                                        <th>
+                                                            Document Name
+                                                        </th>
+                                                        @*<th>
+                                                            Issued Date
+                                                        </th>*@
+                                                      
+                                                        <th>
+                                                            Action
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.UploadedDoc.Count != 0)
+                                                    {
+
+
+
+                                                        int l = 0;
+                                                        foreach (var item in Model.UploadedDoc)
+                                                        {
+                                                            ++l;
+
+
+                                                            var hrefstr = Url.Content("~/Documents/OrganisationDocuments/" + item.Path);
+                                                            if (null != item.IsLink)
+                                                            {
+                                                                hrefstr = Url.Content(item.Path);
+                                                            }
+                                                            // var classn = "error";
+
+                                                            <tr>
+                                                                <td>
+                                                                    @l
+                                                                </td>
+                                                                <td>
+                                                                    @item.DocumentType.Name
+                                                                </td>
+                                                                @*<td>
+                                                                    @item.IssuedDate.Value.ToShortDateString()
+                                                                </td>*@
+
+                                                               
+
+                                                                <td>
+
+                                                                    @Html.ActionLink("Remove", "RemoveDocument", new { DocId = item.Id, Id = Model.Id }, new { @class = "btn-default btn-xs", onclick = " return DeleteConfirm()" })
+                                                                    <a target="_blank" href="@Url.Action("DocumentsUploadedPath", new { Path = (Model.newDocumentPath) + item.Path })"><i class="icon-download"></i></a>                                                     
+                                                                    @Html.HiddenFor(m => item.Id)
+
+                                                                </td>
+
+
+                                                            </tr>
+
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <tr>
+                                                            <td colspan="99">No Records Found!...</td>
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="widget">
+                                        <div class="widget-title">
+                                            <p class="lead">Guidelines for uploading documents </p>
+                                        </div>
+                                        <p>
+                                            Please use the following guidelines when uploading your supporting documents.
+                                            Up until the application deadline.
+
+                                           
+                                        </p>
+
+
+                                        <ul>
+                                            <li>
+                                                <p>Upload scans of the <strong>original documents</strong>, i.e. the documents given to you by the issuing institution.</p>
+                                            </li>
+                                            <li>
+                                                <p>The preferred document format is <strong>PDF. </strong>Do not upload ZIP, RAR or other compressed files as these cannot be opened in our document viewer.</p>
+                                            </li>
+                                            <li>
+                                                <p>The Maximum File size is 500kb</p>
+                                            </li>
+                                            <li>
+                                                <p>Submit only what is requested. Submitted documents that are not requested will not be taken into consideration and will only complicate the evaluation of your application.</p>
+                                            </li>
+                                            <li>
+                                                <p>Scanned documents must be clear and legible. They must appear&nbsp;‘right-side up’ when seen in a standard document viewer. Also make sure that the entire document,&nbsp;&nbsp;including the reverse side, is included in the scan.</p>
+                                            </li>
+                                            <li>
+                                                <p>If all of your documents are available, please upload them at the same time. This gives us a better overview when processing your application.</p>
+                                            </li>
+                                        </ul>                                      
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div style="text-align: left;" class="col-md-6">
+                                   
+                                    @Html.ActionLink("Back", "TypeOfBusiness", new { Id = Model.Id }, new { @class = "btn btn-default pull-left" , style = "color:white" })
+                                </div>
+@if (Model.DocumentsUploaded == true)
+{
+                                <div style="text-align: right;" class="col-md-6">
+                  
+                                    @Html.ActionLink("Next", "AccountInformation", new { Id = Model.Id }, new { @class = "btn btn-default pull-right", style = "color:white" })
+                                </div>
+}
+                            </div>
+                        </div>
+
+                                                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script>
+        "use strict";
+        function DeleteConfirm() {
+            if (confirm("Are you sure want to remove this document?"))
+                return true;
+            else
+                return false;
+        }
+
+
+ 
+
+    </script>
+
+
+}

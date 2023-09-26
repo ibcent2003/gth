@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PAARv2ModelStoreContainer" CdmEntityContainer="PAARv2Entities">
+    <EntitySetMapping Name="ExchangeRate">
+      <EntityTypeMapping TypeName="PAARv2Model.ExchangeRate">
+        <MappingFragment StoreEntitySet="ExchangeRate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExchangeRateView">
+      <EntityTypeMapping TypeName="PAARv2Model.ExchangeRateView">
+        <MappingFragment StoreEntitySet="ExchangeRateView">
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ValuationTPD">
+      <EntityTypeMapping TypeName="PAARv2Model.ValuationTPD">
+        <MappingFragment StoreEntitySet="ValuationTPD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+          <ScalarProperty Name="SeatingCapacity" ColumnName="SeatingCapacity" />
+          <ScalarProperty Name="PAARIssueDate" ColumnName="PAARIssueDate" />
+          <ScalarProperty Name="PAARNo" ColumnName="PAARNo" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="HDV" ColumnName="HDV" />
+          <ScalarProperty Name="EngineCapacity" ColumnName="EngineCapacity" />
+          <ScalarProperty Name="ManufactureYear" ColumnName="ManufactureYear" />
+          <ScalarProperty Name="NoOfDoors" ColumnName="NoOfDoors" />
+          <ScalarProperty Name="SpecialFeatures" ColumnName="SpecialFeatures" />
+          <ScalarProperty Name="Condition" ColumnName="Condition" />
+          <ScalarProperty Name="AssessedHSCode" ColumnName="AssessedHSCode" />
+          <ScalarProperty Name="ChassisNo" ColumnName="ChassisNo" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="DeclarationDate" ColumnName="DeclarationDate" />
+          <ScalarProperty Name="Exporter" ColumnName="Exporter" />
+          <ScalarProperty Name="ImporterTIN" ColumnName="ImporterTIN" />
+          <ScalarProperty Name="Importer" ColumnName="Importer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sid_FreightRates">
+      <EntityTypeMapping TypeName="PAARv2Model.sid_FreightRates">
+        <MappingFragment StoreEntitySet="sid_FreightRates">
+          <ScalarProperty Name="MaximumCC" ColumnName="MaximumCC" />
+          <ScalarProperty Name="MinimumCC" ColumnName="MinimumCC" />
+          <ScalarProperty Name="FreightRate" ColumnName="FreightRate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VehicleCategoryId" ColumnName="VehicleCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sid_VehicleCategory">
+      <EntityTypeMapping TypeName="PAARv2Model.sid_VehicleCategory">
+        <MappingFragment StoreEntitySet="sid_VehicleCategory">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sid_VehicleTypes">
+      <EntityTypeMapping TypeName="PAARv2Model.sid_VehicleTypes">
+        <MappingFragment StoreEntitySet="sid_VehicleTypes">
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="VehicleCategoryId" ColumnName="VehicleCategoryId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HSCodeTariff">
+      <EntityTypeMapping TypeName="PAARv2Model.HSCodeTariff">
+        <MappingFragment StoreEntitySet="HSCodeTariff">
+          <ScalarProperty Name="GetFund2" ColumnName="GetFund2" />
+          <ScalarProperty Name="GetFund1" ColumnName="GetFund1" />
+          <ScalarProperty Name="ImportVatAmended" ColumnName="ImportVatAmended" />
+          <ScalarProperty Name="GetFund" ColumnName="GetFund" />
+          <ScalarProperty Name="ImportLevy" ColumnName="ImportLevy" />
+          <ScalarProperty Name="ProcessingFee" ColumnName="ProcessingFee" />
+          <ScalarProperty Name="EnvironmentalExcise" ColumnName="EnvironmentalExcise" />
+          <ScalarProperty Name="CasseteLevy" ColumnName="CasseteLevy" />
+          <ScalarProperty Name="AfricanUnionImportlevy" ColumnName="AfricanUnionImportlevy" />
+          <ScalarProperty Name="ImportExcise" ColumnName="ImportExcise" />
+          <ScalarProperty Name="TradeUnitOfQuantity" ColumnName="TradeUnitOfQuantity" />
+          <ScalarProperty Name="ImportNHIL" ColumnName="ImportNHIL" />
+          <ScalarProperty Name="ImportVAT" ColumnName="ImportVAT" />
+          <ScalarProperty Name="ImportDuty" ColumnName="ImportDuty" />
+          <ScalarProperty Name="StandardUnitOfQuantity" ColumnName="StandardUnitOfQuantity" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TariffBenchmark">
+      <EntityTypeMapping TypeName="PAARv2Model.TariffBenchmark">
+        <MappingFragment StoreEntitySet="TariffBenchmark">
+          <ScalarProperty Name="UnitFOB" ColumnName="UnitFOB" />
+          <ScalarProperty Name="SUOM" ColumnName="SUOM" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Packaging" ColumnName="Packaging" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ProductValue" ColumnName="ProductValue" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

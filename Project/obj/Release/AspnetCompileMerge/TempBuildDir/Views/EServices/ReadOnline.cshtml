@@ -1,0 +1,27 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Read Document";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Read Documents</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("DocumentsList", "EServices", new {area = "", Id=Model.Documentinfo.DocumentCategoryId })" style="color:white">Documents List</a>
+                </li>
+
+                <li class="active" style="color:white">Read Documents</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<iframe src="@Model.Documentinfo.ExtentalLink" id="myframe" width="100%" height="700px"> <p>Your browser does not support iframes.</p> </iframe>
+

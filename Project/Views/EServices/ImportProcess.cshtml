@@ -1,0 +1,587 @@
+﻿@model Project.Models.EServicesViewModel
+@using System.Globalization;
+@{
+    ViewBag.Title = "Import Procedures";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Import Procedures</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Import Procedures</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="schedule" class="page-section schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                        
+                @if (Model.importexportProceedure.Description != null)
+                {
+                    @Model.importexportProceedure.Description
+                }
+                else
+
+                {
+                    <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit.consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit.Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora.</P>
+                }
+            </div>
+        </div>
+ <br />
+        <div class="row">
+            <div class="col-md-12">
+                <i class="fa fa-file-pdf-o" style="font-size:15px;color:red"></i> <a target="_blank" href="~/Content/Frontend/light/img/Sections/ImportProcess/ImportProcess.pdf">Download PDF Version</a>
+                <br /><br />
+                <div class="tabs">                   
+                    <div class="tab-content schedule-tab">
+                        <div class="tab-pane active fade in" id="day1">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Import Registration Process
+                                              
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                <h5 class="text-color speaker-title">Importer Registration </h5>
+                                                <div class="widget">                                                 
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">FDA Importer Registration</p>
+                                                            <p class="list-group-item">GSA Importer Registration</p>
+                                                            <p class="list-group-item">NACOB Importer Registration</p>
+                                                            <p class="list-group-item">PPRSD Importer Registration </p>
+                                                            <p class="list-group-item">VSD Importer Registration </p>
+                                                            <p class="list-group-item">EPA Pesticide Registration </p>
+                                                            <p class="list-group-item">PPRSD Fertilizer Registration</p>
+                                                            <p class="list-group-item">PPRSD Seed Dealer Registration </p>
+                                                            <p class="list-group-item">PPRSD Producer Registration  </p>
+                                                            <p class="list-group-item">GRA Customs Manufacturer Reg.</p>
+                                                            <p class="list-group-item">Vehicle DVLA Registration </p>
+                                                            <p class="list-group-item">GPHA Business Registration </p>
+                                                            <p class="list-group-item">PPRSD Seed Dealer Registration </p>
+                                                            <p class="list-group-item">Registration of a Free Zone</p>
+                                                            <p class="list-group-item">Bonded Warehouse Registration </p>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                            <div class="col-sm-6 col-md-6">
+                                            
+                                                <h5 class="text-color speaker-title">FDA Import Product Registration </h5>
+
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Registration of Imported Allopathic Medicinal Products (human and Veterinary) </p>
+                                                            <p class="list-group-item">Registration of Tobacco and tobacco Products</p>
+                                                            <p class="list-group-item">Registration of Imported Cosmetics and Household Chemical Substance </p>
+                                                            <p class="list-group-item">Registration of Imported Medical Devices  </p>
+                                                            <p class="list-group-item">Registration of Food Supplement  </p>
+
+                                                            <p class="list-group-item">Registration of Herbal Homeopathic Medicines  </p>
+                                                            <p class="list-group-item">Registration of Biological Products   </p>
+                                                            <p class="list-group-item">Registration of Food Products   </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                         
+                                         
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                License /Permit/ Certificate/Other Processes
+                                                
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Application for Permit to Import</p>
+                                                            <p class="list-group-item">CHAMS New </p>
+                                                            <p class="list-group-item">CHAMS Renewal </p>
+                                                            <p class="list-group-item">Temporary Vehicle Importation (TVI)  </p>
+                                                            <p class="list-group-item">Authorization to operate Oil Depot  </p>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">MOTI Exemption Application </p>
+                                                            <p class="list-group-item">MOF Exemption Application</p>
+                                                            <p class="list-group-item">Application for IDF Form</p>
+                                                            <p class="list-group-item">Allocation of Containers</p>
+                                                            <p class="list-group-item">EPA Importer/Distributor License</p>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">EPA Transporter Licensing  </p>
+                                                            <p class="list-group-item">EPA Retailer Licensing  </p>
+                                                            <p class="list-group-item">EPA Commercial App. of Pesticides  </p>
+                                                            <p class="list-group-item">Warehousing of Imported goods</p>
+                                                            <p class="list-group-item">EPA Supplementary Permit  </p>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-2">
+
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                 
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">App for Bonded Warehouse License Cert.  </p>
+                                                            <p class="list-group-item">App for Storage Facility License</p>
+                                                            <p class="list-group-item">EPA Environmental Assessment Permitting </p>
+                                                            <p class="list-group-item">EPA Warehouse Licensing/Permitting </p>
+                                                            <p class="list-group-item">EPA Supplementary annual Permit   </p>
+
+                                                            <p class="list-group-item">EPA Annual Permit- Master consignment </p>
+                                                            <p class="list-group-item">EPA Temporary Permit </p>
+                                                            <p class="list-group-item">Permit App for Mercury License   </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                               
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">FDA Import Permit for General Product and Non Controlled Substance </p>
+                                                            <p class="list-group-item">FDA Permit Application for Controlled Drugs </p>
+                                                            <p class="list-group-item">APD Permit to Import </p>
+                                                            <p class="list-group-item">GSA Permit to Import African Textile Print Import Authorization  </p>
+                                                            <p class="list-group-item">NACOB Permit to Clear    </p>
+                                                            <p class="list-group-item">PPRSD Permits for the Importation of regulated articles, Plant and Plant Products PPRSD Fertilizer </p>
+                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">VSD Permit to Clear  </p>
+                                                            <p class="list-group-item">GRA-Customs Exemptions  </p>
+                                                            <p class="list-group-item">Shipper Notification  </p>
+                                                            <p class="list-group-item">Statistical Reporting   </p>
+                                                            <p class="list-group-item">EPA Manufacturing | Repackaging | Reformulation License</p>
+                                                            <p class="list-group-item">State Warehousing Process </p>
+                                                            <p class="list-group-item">Auction   </p>
+                                                            <p class="list-group-item">Imports Permits  </p>
+                                                            <p class="list-group-item">GCNET Approval  </p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Inspection
+                                               
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">FDA Import Inspection </p>
+                                                            <p class="list-group-item">APD Goods Inspection </p>                                                         
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                           
+                                                            <p class="list-group-item">GSA Import Inspection </p>
+                                                            <p class="list-group-item">PPRSD Goods Inspection  </p>
+                                                          
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-4 col-md-4">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">                                                            
+                                                            <p class="list-group-item">PPRSD Inspection and Cert. of Seeds  </p>
+                                                            <p class="list-group-item">VSD Goods Inspection  </p>
+                                                            <p class="list-group-item">Customs Lab Analysis </p>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingfour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                                Payment Methods & Goods Release
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+                                                <h5 class="text-color speaker-title">Payment Methods</h5>
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Open account  </p>
+                                                            <p class="list-group-item">Advance Payment  </p>
+                                                            <p class="list-group-item">Letter of credit </p>
+                                                            <p class="list-group-item">Bill of Collection </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>   
+
+                                            <div class="col-sm-3 col-md-3">
+
+                                                <h5 class="text-color speaker-title">Goods Release</h5>
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">NACOB Chemical Release</p>                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div> 
+                                            
+                                            
+                                                                          
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingfive">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                               Vessel Management
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsefive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfive">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Vessel Booking  </p>
+                                                            <p class="list-group-item">Berth Allocation  </p>
+                                                            <p class="list-group-item">Vessel At Anchorage </p>
+                                                            <p class="list-group-item">Vessel Berthing </p>
+                                                            <p class="list-group-item">Shifting from Berth to Berth </p>
+                                                            <p class="list-group-item">Shifting from Berth to Anchorage </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingsix">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                                Manifest Process
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapsesix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsix">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Seaport Manifest Submission</p>
+                                                            <p class="list-group-item">Seaport Manifest Amendment  </p>
+                                                            <p class="list-group-item">Consolidator Authorization </p>
+                                                            <p class="list-group-item">Airport Manifest Submission </p>
+                                                            <p class="list-group-item">Airport Manifest Amendment </p>
+                                                            </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading7">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                                Clearance
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Bond process</p>
+                                                            <p class="list-group-item">Parcel Post Courier Seat eadload  </p>
+                                                            <p class="list-group-item">Normal Cargo Process at Frontier </p>
+                                                            <p class="list-group-item">Boarding Seat Clearance </p>
+                                                            <p class="list-group-item">Ship Inward Clearance </p>
+                                                            <p class="list-group-item"> Ship Outward Clearance  </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Landing Seat Process</p>
+                                                            <p class="list-group-item">Goods Tallying  </p>
+                                                            <p class="list-group-item">Pre-entry Clearance </p>
+                                                            <p class="list-group-item">Pre- Clearance process </p>
+                                                            <p class="list-group-item">CHAMS Reg. in PAARS </p>
+                                                            <p class="list-group-item">Issuance of CCVR</p>                                                                                                                      
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3 col-md-3">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                         
+                                                            <p class="list-group-item">Physical Inspection</p>
+                                                            <p class="list-group-item">Non/Intrusive /Scanning  </p>
+                                                            <p class="list-group-item">Preventive </p>
+                                                            <p class="list-group-item">Vehicle clearance </p>
+                                                            <p class="list-group-item">Premises Examination </p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                       
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading8">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                                Cargo Clearance/Delivery
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-5 col-md-5">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Payment of Terminal Charges</p>
+                                                            <p class="list-group-item">Devanning  </p>
+                                                            <p class="list-group-item">Delivery from Devanning Area </p>
+                                                            <p class="list-group-item">Delivery from the CFS Shed </p>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-5 col-md-5">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            
+                                                            <p class="list-group-item">Clearance at Depot 10 </p>
+                                                            <p class="list-group-item"> Scan Clearance at Depot 10 </p>
+                                                            <p class="list-group-item"> Transfer of Overstayed (UCL) Vehicles </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+	
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading9">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                               Cargo Handling
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="col-sm-5 col-md-5">
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">Unloading/Discharging of General Cargo/Break bulk</p>
+                                                            <p class="list-group-item">Unloading/Discharging of RORO Cargo  </p>
+                                                            <p class="list-group-item">Unloading/Discharging of Containerized Cargo </p>
+                                                            <p class="list-group-item">Unloading/Discharging of Dry Bulk Cargo </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}

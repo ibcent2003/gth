@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAARv2Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PAARv2Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ExchangeRate" EntityType="PAARv2Model.ExchangeRate" />
+    <EntitySet Name="ExchangeRateView" EntityType="PAARv2Model.ExchangeRateView" />
+    <EntitySet Name="ValuationTPD" EntityType="PAARv2Model.ValuationTPD" />
+    <EntitySet Name="sid_FreightRates" EntityType="PAARv2Model.sid_FreightRates" />
+    <EntitySet Name="sid_VehicleCategory" EntityType="PAARv2Model.sid_VehicleCategory" />
+    <AssociationSet Name="FK_sid_FreightRates_sid_FreightRates" Association="PAARv2Model.FK_sid_FreightRates_sid_FreightRates">
+      <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+      <End Role="sid_FreightRates" EntitySet="sid_FreightRates" />
+    </AssociationSet>
+    <EntitySet Name="sid_VehicleTypes" EntityType="PAARv2Model.sid_VehicleTypes" />
+    <AssociationSet Name="FK_sid_VehicleTypes_sid_VehicleCategory" Association="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory">
+      <End Role="sid_VehicleCategory" EntitySet="sid_VehicleCategory" />
+      <End Role="sid_VehicleTypes" EntitySet="sid_VehicleTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ExchangeRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Week" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ExchangeRateView">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="Rate" />
+    </Key>
+    <Property Type="String" Name="CurrencyCode" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CurrencyName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Week" Nullable="false" Precision="0" />
+    <Property Type="Decimal" Name="Rate" Nullable="false" Precision="10" Scale="4" />
+  </EntityType>
+  <EntityType Name="ValuationTPD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Importer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImporterTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Exporter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DeclarationDate" Type="DateTime" Precision="3" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChassisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AssessedHSCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SpecialFeatures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfDoors" Type="Int32" />
+    <Property Name="ManufactureYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EngineCapacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HDV" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PAARNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PAARIssueDate" Type="DateTime" Precision="0" />
+    <Property Name="SeatingCapacity" Type="Int32" />
+    <Property Name="FuelType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Colour" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="sid_FreightRates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FreightRate" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="MinimumCC" Type="Int32" />
+    <Property Name="MaximumCC" Type="Int32" />
+    <NavigationProperty Name="sid_VehicleCategory" Relationship="PAARv2Model.FK_sid_FreightRates_sid_FreightRates" FromRole="sid_FreightRates" ToRole="sid_VehicleCategory" />
+  </EntityType>
+  <EntityType Name="sid_VehicleCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sid_FreightRates" Relationship="PAARv2Model.FK_sid_FreightRates_sid_FreightRates" FromRole="sid_VehicleCategory" ToRole="sid_FreightRates" />
+    <NavigationProperty Name="sid_VehicleTypes" Relationship="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory" FromRole="sid_VehicleCategory" ToRole="sid_VehicleTypes" />
+  </EntityType>
+  <Association Name="FK_sid_FreightRates_sid_FreightRates">
+    <End Type="PAARv2Model.sid_VehicleCategory" Role="sid_VehicleCategory" Multiplicity="1" />
+    <End Type="PAARv2Model.sid_FreightRates" Role="sid_FreightRates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sid_VehicleCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sid_FreightRates">
+        <PropertyRef Name="VehicleCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sid_VehicleTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleCategoryId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="sid_VehicleCategory" Relationship="PAARv2Model.FK_sid_VehicleTypes_sid_VehicleCategory" FromRole="sid_VehicleTypes" ToRole="sid_VehicleCategory" />
+  </EntityType>
+  <Association Name="FK_sid_VehicleTypes_sid_VehicleCategory">
+    <End Type="PAARv2Model.sid_VehicleCategory" Role="sid_VehicleCategory" Multiplicity="0..1" />
+    <End Type="PAARv2Model.sid_VehicleTypes" Role="sid_VehicleTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sid_VehicleCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="sid_VehicleTypes">
+        <PropertyRef Name="VehicleCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

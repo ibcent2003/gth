@@ -1,0 +1,126 @@
+﻿@model Project.Areas.Setup.Models.UploadDocumentViewModel
+@{
+    ViewBag.Title = "Edit Document Entry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.IsGreetings = "true";
+}
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/vendors/tinymce/tinymce.min.js")
+    <script>
+
+
+        "use strict";
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                defaultDate: +7,
+                showOtherMonths: true,
+                autoSize: true,
+                appendText: '<span class="help-block">(yyyy-mm-dd)</span>',
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+}
+@section Crumbs{
+    <div class="crumbs">
+
+        <ul class="breadcrumb" id="breadcrumbs">
+            <li><i class="icon-home"></i><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Dashboard</a> </li>
+            <li><i class="current"></i><a href="javascript: return void(0)">Edit Document Entry</a> </li>
+
+
+        </ul>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>
+                    <i class="icon-reorder"></i>
+                  Edit Document Entry
+                </h4>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Edit", "DocumentUpload", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal row-border" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.documentform.Id)
+
+
+                    <div class="form-group">
+                        @Html.Label("Name", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(m => Model.documentform.DocumentCategoryId, new SelectList(Model.DocumentCategoryList, "Value", "Text"), "Please select Document Category", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.documentform.DocumentCategoryId)
+                        </div>
+                    </div><div class="form-group">
+                        @Html.Label("Name", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.documentform.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.documentform.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Extental Link", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.documentform.ExtentalLink, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.documentform.ExtentalLink)
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        @Html.Label("Website Link", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.documentform.WebSiteLink, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.documentform.WebSiteLink)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.Label("Document Sample", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-3">
+                            <a target="_blank" href="~/Content/Frontend/light/img/sections/Documents/@Model.path"><i class="icon-download"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.documentform.document, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => Model.documentform.document, new { type = "file" })
+                            @Html.ValidationMessageFor(m => m.documentform.document)
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        @Html.ActionLink("<< Back to List", "Index", null, new { @class = "btn btn-success" })
+                        <input type="submit" class="btn btn-warning pull-right" value="Save" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

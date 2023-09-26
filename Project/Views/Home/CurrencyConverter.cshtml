@@ -1,0 +1,148 @@
+﻿@model Project.Models.IndexViewModel
+@{
+    ViewBag.Title = "Currency Converter";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Currency Converter</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Currency Converter</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 post-list">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Currency Converter</h3>
+                    </div>
+
+
+                    <fieldset>
+
+            <div class="editor-label">
+              @Html.LabelFor(x => x.CurrencyConverterForm.Country)
+            </div>
+            <div class="editor-field">
+                  @Html.DropDownListFor(x => x.CurrencyConverterForm.Country, Model.Currencies,"Select Currency", new { @class = "form-control", onchange="CurrencyChange()" })
+                @Html.ValidationMessageFor(x => x.CurrencyConverterForm.Country)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(x => x.CurrencyConverterForm.Amount)
+            </div>
+            <div class="editor-field">
+               @Html.TextBoxFor(x => x.CurrencyConverterForm.Amount, new { @class = "form-control",onkeyup="CurrencyChange()" })
+            </div>
+              <h3 class="post-title">
+                Rate: GH₵ <span id="rate">0.00</span>
+                  <br /><br />
+                Total: GH₵ <span id="totalAmount">0.00</span>  
+            </h3>
+        </fieldset>
+
+
+
+                </div>
+            </div>
+            <div class="sidebar col-sm-12 col-md-5">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Currency Rates based on Bank of Ghana</h3>
+                    </div>
+
+                    <div>
+                        <table class="table table-striped table-bordered table-hover table-checkable datatable dataTable">
+                            <thead>
+                                <tr style="font-size: 12px;">
+                                    <th>S/N</th>
+                                    <th>Country</th>                                    
+                                    <th>Currency Code</th>
+                                    <th>Rate</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.CurrencyList.Count != 0)
+                                {
+                                    int i = 0;
+                                    foreach (var item in Model.CurrencyList)
+                                    {
+                                        ++i;
+                                        <tr style="font-size: 12px;">
+                                            <td>
+                                                @i
+                                            </td>
+                                            <td >@item.CurrencyName </td>                                           
+                                            <td>@item.CurrencyCode</td>
+                                            <td>@item.Rate</td>                                            
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="8">No Records Found!...</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script>
+         
+        var calculate = function () {
+            var rate = Number($("#CurrencyConverterForm_Country").val().trim());
+            var amount = Number($("#CurrencyConverterForm_Amount").val().trim());
+            var total =amount * rate;
+
+            if (isNaN(amount)) {
+                alert("Fill amount input with digits");
+            }
+
+          $("#totalAmount").html(total.toFixed(2));
+        }
+
+
+        var CurrencyChange = function () {
+            calculate();
+            $("#rate").html($("#CurrencyConverterForm_Country").val());
+        }
+
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+
+
+
+}
+
+
+
+

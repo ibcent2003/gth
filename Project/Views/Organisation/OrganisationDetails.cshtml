@@ -1,0 +1,159 @@
+﻿@model Project.Models.OrganisationViewModel
+@{
+    ViewBag.Title =  Model.organisation.Name +"Details";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">@Model.organisation.Name </h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li style="color:white">
+                    <a href="@Url.Action("OrganisationList", "Organisation", new {area = "", Id=Model.organisation.OrganizationGroupId })" style="color:white">Organisation</a>
+                </li>
+
+                <li class="active" style="color:white">@Model.organisation.Name</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="addition-info" class="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-9">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-mobile9"></i>@Model.organisation.Name (@Model.organisation.ShortName)</h3>
+                    </div>
+                </div>
+                <!-- Image -->
+
+                <img src="/Content/Frontend/light/img/sections/Logo/@Model.organisation.Logo" class="pull-right" width="120" height="90" alt="" />
+                <p>@Html.Raw(@Model.organisation.Description)</p>   
+                
+                @*<div class="row">
+                    <div class="col-md-8">
+                        <div role="tabpanel">
+                           
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#home1" aria-controls="home" role="tab" data-toggle="tab">
+                                        <i class="fa fa-home"></i> Home
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab">
+                                        <i class="fa fa-user"></i> Profile
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#messages1" aria-controls="messages" role="tab" data-toggle="tab">
+                                        <i class="fa fa-comment"></i> Messages
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#settings1" aria-controls="settings" role="tab" data-toggle="tab">
+                                        <i class="fa fa-cogs"></i> Settings
+                                    </a>
+                                </li>
+                            </ul>
+                          
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home1">
+                                    <h5>Home</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.</p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile1">
+                                    <h5>Profile</h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages1">
+                                    <h5>Message</h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="settings1">
+                                    <h5>Settings</h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora. Adipisci ea commodi unde nam placeat cupiditate quasi a ducimus rem consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+                           
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-code"></i> Organisation Types</h3>
+                    </div>
+
+                    <div id="MainMenu2">
+                        <div class="list-group panel">
+                            @foreach (var item in Model.OrganizationTypeList.Distinct())
+                            {
+                                <a href="@Url.Action("OrganisationList", "Organisation", new {Id=item.Id, area = "" })" class="list-group-item">@item.Name</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+           
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+@section Styles {
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/jquery.dataTables.css")
+    @Styles.Render("~/Content/Backend/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css")
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/jquery.dataTables.js")
+    @Scripts.Render("~/Content/Backend/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js")
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+
+    <script>
+        var oTable1 =
+            $('#fees')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .DataTable({
+                    bAutoWidth: false,
+                    bServerSide: true,
+                    sAjaxSource: "@Url.Action("Search")",
+                    bProcessing: false,
+                    aoColumns: [
+                        { mData: "ProcessName" },
+                        { mData: "FeesPurpose" },
+                        { mData: "AmountInDollar" },
+                         { mData: "AmountIdCedis" }
+                    ]
+                });
+
+
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+<script src="https://www.letzchat.com/plugin/firebase.js"></script>
+<script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+}
+
+
+
+
+
+
+

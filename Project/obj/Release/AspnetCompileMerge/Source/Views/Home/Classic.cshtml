@@ -1,0 +1,550 @@
+﻿@model Project.Models.IndexViewModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+
+<!-- Owl Stylesheets -->
+@section styles {
+    <style>
+        .owl-wrapper.leftMove {
+            width: 4320px;
+            left: 0px;
+            display: block;
+            transition: all 800ms ease 0s;
+            transform: translate3d(0px, 0px, 0px);
+        }
+
+        .owl-wrapper.rightMove {
+            width: 4320px;
+            left: 0px;
+            display: block;
+            transition: all 800ms ease 0s;
+            transform: translate3d(-810px, 0px, 0px);
+        }
+         div#get-quote{
+            padding: 0;
+        }
+    </style>
+}
+
+<section id="works" class="page-section top-pad-50 bottom-pad-20">
+    <div class="image-bg content-in fixed" data-background="@Model.masterURL/Content/Frontend/light/img/gthbg.jpg">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="portfolio-grid owl-carousel" data-pagination="true" data-items="5" data-autoplay="false" data-navigation="true">
+
+        <div class="grids">
+            <div class="grid">
+                <img src="@Url.Content("~/Content/Frontend/light/img/sections/portfolio/charges1.jpg")" alt="Recent Work" class="img-responsive" />
+              
+                <div class="figcaption">
+                    <div class="caption-block">                       
+                        <a href="@Url.Action("AgencyFees", "EServices", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/classic1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="@Url.Action("ImportClassification", "Home", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/duty1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="@Url.Action("Index", "DutyCalculator", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/curencyconverter1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="@Url.Action("CurrencyConverter", "Home", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/cpc1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="@Url.Action("CpcList", "Home", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/freight1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="@Url.Action("FreightRates", "EServices", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/data1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">
+                        <a href="https://wits.worldbank.org/trade-visualization.aspx" target="_blank" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grids">
+            <div class="grid">
+                <img src="~/Content/Frontend/light/img/sections/portfolio/physical1.jpg" alt="Recent Work" class="img-responsive" />
+                <div class="figcaption">
+                    <div class="caption-block">                        
+                        <a href="@Url.Action("PhysicalExamintation", "EServices", new {area = "" })" class="btn btn-link" style="color:white"><i class="glyphicon glyphicon-eye-open"></i>View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+@if (Model.HasNewEvent == true)
+{
+    <div id="get-quotes" class="bg-color get-a-quote white text-center" style="padding:0px 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="font-size:smaller">
+                 
+                    <div class="row bottom-pad-1 event-shedule">
+
+                        <div data-appear-animation="fadeInUp" class="col-sm-4 col-md-3 text-center">
+                            <div class="box" style="font-size:smaller"> 
+                                <!-- Icon -->
+                                <i class="icon-arrow-right4" style="font-size:smaller"></i>
+                                <!-- Title -->
+                                <div class="box-inner" style="font-size:smaller">
+                                   
+                                    <h4 style="font-size:smaller">Upcoming Event</h4>
+                                    <p style="font-size:smaller">@Model.EventInformation.Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Box 1 -->
+                        <div data-appear-animation="fadeInUp" class="col-sm-4 col-md-3 text-center">
+                            <div class="box" style="font-size:smaller">
+                                <!-- Icon -->
+                                <i class="fa fa-map-marker" style="font-size:smaller"></i>
+                                <!-- Title -->
+                                <div class="box-inner" style="font-size:smaller">
+                                    <h4 style="font-size:smaller">Location</h4>
+                                    <p style="font-size:smaller">@Model.EventInformation.Venue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Box 2 -->
+                        <div data-appear-animation="fadeInUp" class="col-sm-4 col-md-3 text-center">
+                            <div class="box" style="font-size:smaller">
+                                <!-- Icon -->
+                                <i class="fa fa-calendar-o" style="font-size:smaller"></i>
+                                <!-- Title -->
+                                <div class="box-inner" style="font-size:smaller">
+                                    <h4 style="font-size:smaller">Date</h4>
+                                    <p style="font-size:smaller">@Model.EventInformation.EventDate.ToLongDateString()</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Box 3 -->
+                        <div data-appear-animation="fadeInUp" class="col-sm-4 col-md-3 text-center">
+                            <div class="box" style="font-size:smaller">
+                                <!-- Icon -->
+                                <i class="icon-clock15" style="font-size:smaller"></i>
+                                <!-- Title -->
+                                <div class="box-inner" style="font-size:smaller">
+                                    <h4 style="font-size:smaller">Time</h4>
+                                    <p style="font-size:smaller">@Model.EventInformation.EventTime</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Box 4 -->                      
+                       
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div id="get-quotes" class="bg-color get-a-quote white text-center" style="padding:0px 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                    <div class="row bottom-pad-1 event-shedule" style="text-align:center" >                  
+                        <div data-appear-animation="fadeInUp" class="col-sm-6 col-md-6 text-right">
+                            <a href="@Url.Action("Classic", "Home", new { area = "" })">
+                                <img src="@Model.masterURL/Content/Frontend/light/img/claasic1.png" width="100" height="50" />
+                                </a>
+                                </div>
+
+                        <div data-appear-animation="fadeInUp" class="col-sm-6 col-md-6 text-left">  
+                            <a href="@Url.Action("Index", "Home", new { area = "" })">
+                                <img src="@Model.masterURL/Content/Frontend/light/img/modern1.png" width="100" height="50" />
+                                </a>
+</div>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<section class="page-section  animated fadeInUp visible" data-animation="fadeInUp"">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-9 post-list">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title">Latest News </h3>
+                    </div>
+
+                    @if (Model.NewsList.Count != 0)
+                    {
+                        foreach (var item in Model.NewsList.OrderByDescending(x => x.Id).Take(2))
+                        {
+
+                            <div class="post-item">
+                                <div class="post-image pull-left">
+                                    <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">
+                                        <img src="@Url.Content(Model.PicturePath+item.Photo)" width="320" height="282" alt="" title="" />
+                                    </a>
+                                </div>
+                                <h4 class="post-title">@item.NewsHeadline<br /> </h4>
+                                <div class="post-content">                             
+                                    @Html.Raw(item.NewsContent.Substring(0, 400))
+                                <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">..read more</a></div>
+                               
+                                 <div class="post-meta">
+                                   
+                                    <!-- Meta Date -->
+
+                                    <span class="time">
+                                        <i class="fa fa-calendar"></i>Posted Date @item.CreatedDate.ToShortDateString()
+                                    </span>
+                                    <!-- Category -->
+                                     @*<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Share on Twitter</a>*@
+                                    <span class="category pull-right">
+                                        <i class="glyphicon glyphicon-eye-open"></i> @item.NoOfView
+
+                                        <a href="@Url.Action("Index", "RecentNews", new {area = "" })" class="btn btn-link btn-xs">View more News</a>
+
+                                    </span>
+                                   
+                                     <br /><br />
+
+                                </div>
+                            </div>
+                           
+                        }
+
+                       
+                           
+           
+
+                    }
+                    
+                       
+                  
+
+                </div>
+                    </div>
+                    <div class="sidebar col-sm-12 col-md-3">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h3 class="title">Recent News</h3>
+                            </div>
+
+                            <div>
+                                @if (Model.NewsList.Count != 0)
+                                {
+                                    foreach (var item in Model.NewsList.OrderBy(x=>x.Id).Take(2))
+                                    {
+                                        <ul class="latest-posts">
+                                            <li>
+                                                <div class="post-thumb">
+                                                    <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">
+                                                        <img class="img-rounded" src="@Url.Content(Model.PicturePath+item.Photo)" alt="" title="" width="84" height="84">
+                                                        </a>
+</div>
+                                                <div class="post-details">
+                                                    <div class="description">
+
+                                                        @Html.Raw(item.NewsHeadline.Substring(0, 35)) <a href="@Url.Action("ViewNews", "Home", new {Id=item.Id, area = "" })">..read more</a>
+                                                    </div>
+                                                    <div class="meta">
+                                                        <span class="time">
+                                                            <i class="fa fa-calendar"></i> @item.CreatedDate.ToShortDateString()
+                                                        </span>
+
+                                                        <span class="category pull-right">
+                                                            <i class="glyphicon glyphicon-eye-open"></i> @item.NoOfView
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    
+                                    }
+                                }
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="sidebar col-sm-12 col-md-3">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h3 class="title">Import/Export Procedures</h3>
+                            </div>
+
+                            <div id="MainMenu2">
+                                <div class="list-group panel">
+                                    <a href="@Url.Action("ImportSpecificCommodities", "EServices", new { area = "" })" class="list-group-item">Rice Import Procedure</a>
+                                    <a href="@Url.Action("MedicineInDosesImportProcess", "EServices", new { area = "" })" class="list-group-item">Medicine In Doses Import Procedur</a>
+                                    <a href="@Url.Action("AutoSparePartImportProcess", "EServices", new { area = "" })" class="list-group-item">Auto Spare Parts Import Procedure </a>
+                                    <a href="@Url.Action("VehicleImportProcedure", "EServices", new { area = "" })" class="list-group-item">Vehicle/Trucks Import Procedure  </a>
+                                    <a href="@Url.Action("VegetablePalmOilImportProcedure", "EServices", new { area = "" })" class="list-group-item">Vegetable/Palm Oil Import Procedure  </a>
+
+                                    <a href="@Url.Action("ExportSpecificCommodities", "EServices", new { area = "" })" class="list-group-item">Fish Export Procedure</a>
+                                    <a href="@Url.Action("CashewNutsExportProcedure", "EServices", new { area = "" })" class="list-group-item">Cashew Export Procedure </a>
+                                    <a href="@Url.Action("CocoaBeanExportProcedure", "EServices", new { area = "" })" class="list-group-item">Cocoa Bean Export Procedure  </a>
+                                    <a href="@Url.Action("GoldExportProcedure", "EServices", new { area = "" })" class="list-group-item">Gold Export Procedure  </a>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+        </div>
+
+</section>
+
+
+<section id="testimonials" class="page-section testimonails" style="padding:0px 0px 40px 0px; margin-top:-3%; margin-bottom:5%">
+    <div class="container">
+    
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget" id="make">
+                    <div class="widget-title">
+                        <h3 class="title">Testimonials</h3>
+                    </div>
+                </div>
+                <div class="owl-carousel pagination-1 dark-switch text-center" data-pagination="true" data-autoplay="true" data-navigation="false" data-items="3">
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">Am so glad to be on this platform,kudos to all you all for making importation and clearance simple. But on the side of  vehicle duty result the country whence imported is important and helps in the duty calculation. Thanks. </blockquote>
+
+                        </div>
+                        <div class="client-details text-center">
+                            <div class="client-details">
+                                <strong class="text-color">Isaac kwaku Antwi</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">
+                                Hello guys. good job the first I saw this website. I was soo happy that my country Ghana has finally come up with a Web that we car dealers can check the duty just a seconds before buying the car.
+                                Good luck with your hard work please keep it.
+                            </blockquote>
+
+
+                        </div>
+                        <div class="client-details text-center">
+                            <div class="client-details">
+                                <strong class="text-color">Baffour owusu</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">
+                                It's okay.
+                                It's helpful. I think more people should get to know. It is helpful.
+                                I think blinks which occur during filling of details should be worked on.
+                                I love its results oriented nature.
+                                Proud to be a Ghanaian
+                            </blockquote>
+
+
+                        </div>
+                        <div class="client-details text-center">
+                            <div class="client-details">
+                                <strong class="text-color">David Kudiabor</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">Well I'm happy there's an app to get me informed about the estimated cost of duty</blockquote>
+                           
+                        </div>
+                        <div class="client-details text-center">
+                          
+                            <div class="client-details">
+                                <!-- Name -->
+                                <strong class="text-color">Sharif Alhassan</strong>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">This is an amazing and beautiful tool. I love it so much. I was not able to find the year of manufacture for my FORD 150- Super Cab. Mine says 2009 and your tool has 2010. Good job. Keep updating with current year vehicles.</blockquote>
+                            
+                        </div>
+                        <div class="client-details text-center">                           
+                            <div class="client-details">
+                                <!-- Name -->
+                                <strong class="text-color">Delah Azumah</strong>
+                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">I am really impressed with the Vehicle Duty Calculator Result. I was able know how much Duty I have to pay on the vehicle I wish to bring home. KUDOS !!!</blockquote>
+                          
+                        </div>
+                        <div class="client-details text-center">                          
+                            <div class="client-details">
+                                <!-- Name -->
+                                <strong class="text-color">STEPHEN AMISSAH-AGGREY</strong>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item col-md-4 col-sm-6">
+                        <div class="desc-border bottom-arrow quote">
+                            <blockquote class="small-text">This is a very good tool to give an idea on how much to budget for duties and taxes for clearing a vehicle in Ghana.</blockquote>
+                           
+                        </div>
+                        <div class="client-details text-center">                        
+                            <div class="client-details">                                
+                                <strong class="text-color">Joseph Amaglo</strong>                                
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <hr />
+      
+    </div>
+</section>
+
+
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+        var movingItems;
+        window.onload = function () {
+            $('.owl-wrapper-outer:nth-child(1)>.owl-wrapper').attr('id', 'mainScroller');
+        };
+
+        (function () {
+            Init();
+        })();
+        var calculate = function () {
+            var rate = Number($("#CurrencyConverterForm_Country").val().trim());
+            var amount = Number($("#CurrencyConverterForm_Amount").val().trim());
+            var total = amount * rate;
+
+            if (isNaN(amount)) {
+                alert("Fill amount input with digits");
+            }
+
+            $("#totalAmount").html(total.toFixed(2));
+        }
+
+
+        var CurrencyChange = function () {
+            calculate();
+            $("#rate").html($("#CurrencyConverterForm_Country").val());
+        }
+
+
+
+        function Init() {
+            var counter = 0;
+
+            movingItems = setInterval(function () {
+                if (counter % 2 == 0) {
+                    $('#mainScroller').removeClass('rightMove').addClass('leftMove');
+                } else {
+                    $('#mainScroller').removeClass('leftMove').addClass('rightMove');
+                }
+                counter++;
+            }, 6000);
+        }
+
+        $(document).on('mouseover', '#mainScroller>.owl-item', function () {
+            clearInterval(movingItems);
+        });
+        $(document).on('mouseout', '#mainScroller>.owl-item', function () {
+            Init();
+        });
+
+    </script>
+
+
+
+
+}

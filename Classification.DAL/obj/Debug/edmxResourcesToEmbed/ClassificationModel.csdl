@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClassificationToolsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ClassificationToolsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DutyCalculatorFeedback" EntityType="ClassificationToolsModel.DutyCalculatorFeedback" />
+    <EntitySet Name="HitCounter" EntityType="ClassificationToolsModel.HitCounter" />
+    <EntitySet Name="HSCodes" EntityType="ClassificationToolsModel.HSCodes" />
+    <EntitySet Name="ExchangeRate" EntityType="ClassificationToolsModel.ExchangeRate" />
+    <EntitySet Name="v_FreightOverage" EntityType="ClassificationToolsModel.v_FreightOverage" />
+    <EntitySet Name="v_VehicleType" EntityType="ClassificationToolsModel.v_VehicleType" />
+    <EntitySet Name="V_VehicleValue" EntityType="ClassificationToolsModel.V_VehicleValue" />
+    <AssociationSet Name="FK_HSCodes_HSCodes" Association="ClassificationToolsModel.FK_HSCodes_HSCodes">
+      <End Role="HSCodes" EntitySet="HSCodes" />
+      <End Role="HSCodes1" EntitySet="HSCodes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DutyCalculatorFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HitCounter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Counter" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HSCodes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Chapter" Type="Int32" Nullable="false" />
+    <Property Name="ImportDuty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NHIL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ImportExcise" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OveragePenalty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ExportDuty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StandardUOQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsChapter" Type="Boolean" Nullable="false" />
+    <Property Name="IsSubChapter" Type="Boolean" Nullable="false" />
+    <Property Name="SectionId" Type="Int32" />
+    <Property Name="IsSubHeader" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HSCodes1" Relationship="ClassificationToolsModel.FK_HSCodes_HSCodes" FromRole="HSCodes" ToRole="HSCodes1" />
+    <NavigationProperty Name="HSCodes2" Relationship="ClassificationToolsModel.FK_HSCodes_HSCodes" FromRole="HSCodes1" ToRole="HSCodes" />
+  </EntityType>
+  <EntityType Name="ExchangeRate">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="Rate" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Week" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_FreightOverage">
+    <Key>
+      <PropertyRef Name="typename" />
+    </Key>
+    <Property Name="typename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="overagename" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="OverAgeRate" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="MinimumAge" Type="Int32" />
+    <Property Name="MaximumAge" Type="Int32" />
+    <Property Name="freightname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="freightrate" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="minimumcc" Type="Int32" />
+    <Property Name="maximumcc" Type="Int32" />
+    <Property Name="hscode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_VehicleType">
+    <Key>
+      <PropertyRef Name="typename" />
+    </Key>
+    <Property Name="typename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="enginecapacity" Type="Int32" />
+    <Property Name="assessedhscode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_VehicleValue">
+    <Key>
+      <PropertyRef Name="vModel" />
+    </Key>
+    <Property Name="vModel" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="vMake" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="vYear" Type="Int32" />
+    <Property Name="EngineCapacity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="HDV" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Id" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_HSCodes_HSCodes">
+    <End Type="ClassificationToolsModel.HSCodes" Role="HSCodes" Multiplicity="0..1" />
+    <End Type="ClassificationToolsModel.HSCodes" Role="HSCodes1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HSCodes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HSCodes1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

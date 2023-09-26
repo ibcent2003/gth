@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CHAMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AlertNotification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sender" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Receiver" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BBC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AlertType" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="EndDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityContainer Name="CHAMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AlertNotification" EntityType="Self.AlertNotification" />
+    <EntitySet Name="Alert" EntityType="CHAMSModel.Alert" />
+  </EntityContainer>
+  <EntityType Name="Alert">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkFlowId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CCSms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CCEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CCNotification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectSms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectNotification" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Sms" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="EndDate" Type="DateTime" Precision="7" />
+  </EntityType>
+</Schema>

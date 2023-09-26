@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CHAMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkFlowId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CCSms" Type="varchar" MaxLength="50" />
+          <Property Name="CCEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CCNotification" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectSms" Type="varchar" MaxLength="50" />
+          <Property Name="SubjectEmail" Type="varchar" MaxLength="150" />
+          <Property Name="SubjectNotification" Type="varchar" MaxLength="150" />
+          <Property Name="Sms" Type="nvarchar" MaxLength="160" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Notification" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="AlertNotification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sender" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Receiver" Type="varchar(max)" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="SentDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CC" Type="varchar(max)" />
+          <Property Name="BBC" Type="varchar(max)" />
+          <Property Name="Attachments" Type="varchar(max)" />
+          <Property Name="AlertType" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="EndDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="CHAMSModelStoreContainer">
+          <EntitySet Name="Alert" EntityType="Self.Alert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlertNotification" EntityType="Self.AlertNotification" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CHAMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlertNotification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sender" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Receiver" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BBC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlertType" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="EndDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="CHAMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlertNotification" EntityType="Self.AlertNotification" />
+          <EntitySet Name="Alert" EntityType="CHAMSModel.Alert" />
+        </EntityContainer>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkFlowId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCSms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CCNotification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectSms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectNotification" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Sms" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndDate" Type="DateTime" Precision="7" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CHAMSModelStoreContainer" CdmEntityContainer="CHAMSEntities">
+          <EntitySetMapping Name="AlertNotification">
+            <EntityTypeMapping TypeName="CHAMSModel.AlertNotification">
+              <MappingFragment StoreEntitySet="AlertNotification">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="BBC" ColumnName="BBC" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alert">
+            <EntityTypeMapping TypeName="CHAMSModel.Alert">
+              <MappingFragment StoreEntitySet="Alert">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Notification" ColumnName="Notification" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sms" ColumnName="Sms" />
+                <ScalarProperty Name="SubjectNotification" ColumnName="SubjectNotification" />
+                <ScalarProperty Name="SubjectEmail" ColumnName="SubjectEmail" />
+                <ScalarProperty Name="SubjectSms" ColumnName="SubjectSms" />
+                <ScalarProperty Name="CCNotification" ColumnName="CCNotification" />
+                <ScalarProperty Name="CCEmail" ColumnName="CCEmail" />
+                <ScalarProperty Name="CCSms" ColumnName="CCSms" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WorkFlowId" ColumnName="WorkFlowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

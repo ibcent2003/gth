@@ -1,0 +1,100 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Transit Procedures";
+    var db = new Project.DAL.PROEntities();
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Transit Procedures</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Transit Procedures</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section id="schedule" class="page-section schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. consequuntur ex eligendi minima voluptatem assumenda voluptas quidem sit maiores odio velit voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit iste exercitationem praesentium deleniti nostrum laborum rem id nihil tempora.</div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <i class="fa fa-file-pdf-o" style="font-size:15px;color:red"></i> <a target="_blank" href="~/Content/Frontend/light/img/Sections/TransitProcess/TransitProcess.pdf">Download PDF Version</a>
+                <br /><br />
+                <div class="tabs">
+                    <div class="tab-content schedule-tab">
+                        <div class="tab-pane active fade in" id="day1">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Transit Process
+
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <div class="col-sm-2">
+                                                <img src="~/Content/Frontend/light/img/sections/ImportProcess/ImportProcess.jpg" width="140" height="140" class="img-responsive" alt="">
+                                            </div>
+
+                                            <div class="col-sm-5 col-md-5">
+
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">
+                                                            <p class="list-group-item">NACOB Re-Exportation Permit</p>
+                                                            <p class="list-group-item">Application for Transit Clearance</p>
+                                                            <p class="list-group-item">Receiving and Delivery of Loaded Trucks</p>                                                        
+                                                          
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-5 col-md-5">
+
+                                                <div class="widget">
+                                                    <div id="MainMenu2">
+                                                        <div class="list-group panel">                                                           
+                                                            <p class="list-group-item">Delivery of Vehicle</p>
+                                                            <p class="list-group-item">Transit Cargo Registration</p>
+                                                            <p class="list-group-item">Transhipment </p>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

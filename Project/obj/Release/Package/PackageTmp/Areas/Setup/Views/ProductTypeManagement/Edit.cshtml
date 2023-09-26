@@ -1,0 +1,104 @@
+﻿@model Project.Areas.Setup.Models.ProductTypeViewModel
+@{
+    ViewBag.Title = "Edit Product Type";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.IsGreetings = "true";
+}
+@section Scripts{
+    <script>
+      
+
+        "use strict";
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                defaultDate: +7,
+                showOtherMonths: true,
+                autoSize: true,
+                appendText: '<span class="help-block">(yyyy-mm-dd)</span>',
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+}
+@section Crumbs{
+    <div class="crumbs">
+
+        <ul class="breadcrumb" id="breadcrumbs">
+            <li><i class="icon-home"></i><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Dashboard</a> </li>            
+            <li><i class="current"></i><a href="javascript: return void(0)">Edit Product Type</a> </li>
+
+
+        </ul>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4>
+                    <i class="icon-reorder"></i>
+                    Edit Product Type
+                </h4>
+            </div>
+            <div class="widget-content">
+                @using (Html.BeginForm("Edit", "ProductTypeManagement", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal row-border" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.producttypeform.Id)
+
+                    <div class="form-group">
+                        @Html.Label("Headline", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.producttypeform.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.producttypeform.Name)
+                        </div>
+                    </div>                                  
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.producttypeform.Description, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.producttypeform.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.producttypeform.Description)
+                        </div>
+                    </div>                  
+
+                    <div class="form-group">
+                        @Html.Label("Existing Picture", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-3">
+                            <img src="@Model.PicturePath@Model.producttypeform.picture" height="100" width="100" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.producttypeform.Photo, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(x => Model.producttypeform.Photo, new { type = "file" })
+                        </div>
+                    </div>                 
+
+                    <div class="form-actions">
+                        @Html.ActionLink("<< Back to List", "Index", null, new { @class = "btn btn-success" })
+                        <input type="submit" class="btn btn-warning pull-right" value="Save" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

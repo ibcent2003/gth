@@ -1,0 +1,157 @@
+﻿@model Project.Models.EServicesViewModel
+@{
+    ViewBag.Title = "Consigment Tracker";
+}
+
+<div class="page-header page-title-left mini">
+    <div class="image-bg content-in" data-background="@Url.Content("~/Content/Frontend/light/img/gthbg.jpg")" data-stellar-background-ratio="0.5" style="background-image: @Url.Content("~/Content/Frontend/light/img/sections/slider/backmenu.jpg"); background-position: 50% 0%;"></div>
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="title" style="color:white">Consigment Tracker</h1>
+            <ul class="breadcrumb" style="color:white">
+                <li style="color:white">
+                    <a href="@Url.Action("Classic", "Home", new {area = "" })" style="color:white">Home</a>
+                </li>
+
+                <li class="active" style="color:white">Consigment Tracker</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<style>
+  
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+<section id="schedule" class="page-section schedule">
+    <div class="container">
+        @if (TempData["Message"] != null)
+            {
+                var alertType = (TempData["MessageType"] != null) ? TempData["MessageType"] : "alert-info";
+            <div class="alert @alertType fade in">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                @Html.Raw(TempData["Message"])
+            </div>
+        }
+        <div class="row">
+
+
+            <div class="col-sm-4 col-md-4">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-help-with-circle"></i>Track Consigment</h3>
+                    </div>
+
+                    <fieldset>
+                        @using (Html.BeginForm("ConsigmentTracking", "EServices", FormMethod.Post))
+                        {
+                            <div class="editor-label">
+                                @Html.LabelFor(x => x.MobileTrackingform.Tin, new { @class = "required" })
+                            </div>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(x => x.MobileTrackingform.Tin, new { @class = "form-control", placeholder = "Enter your Tin" })
+                                @Html.ValidationMessageFor(x => x.MobileTrackingform.Tin, null, new { @style = "color:red" })
+
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(x => x.MobileTrackingform.UCRNo, new { @class = "required" })
+                            </div>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(x => x.MobileTrackingform.UCRNo, new { @class = "form-control", placeholder = "Enter your URC No" })
+                                @Html.ValidationMessageFor(x => x.MobileTrackingform.UCRNo, null, new { @style = "color:red" })
+                            </div>
+                            <h4 class="post-title">
+                                <input type="submit" value="Cancel" class="btn btn-warning">
+                                <input type="submit" value="Search" class="btn btn-success">
+
+                            </h4>
+                        }
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            @if (Model.hasSearch == true)
+            {
+
+
+            @*<div class="col-sm-8 col-md-8">
+                <div class="widget">
+                    <div class="widget-title">
+                        <h3 class="title"><i class="icon-help"></i>Search Result</h3>
+                    </div>
+                </div>
+
+
+                <ul class="timeliner blog right">
+        @if (Model.UCRList.Count != 0)
+        {
+            int i = 0;
+            foreach (var item in Model.UCRList.ToList())
+            {
+                ++i;
+
+                <li>
+                    <div class="timeline-icon">
+
+                        <div class="date">
+                        <br />
+                            <span style="font-size:x-small">@i</span> 
+                        </div>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-body">
+                            <div class="post-item">
+                                <div class="post-content">
+
+                                    Date: @item.Data
+                                    <br />
+                                    @item.Data.Details
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        }
+
+                </ul>
+
+             
+
+            </div>*@
+            }
+
+
+        </div>
+
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js"></script>
+    <script src="https://www.letzchat.com/plugin/firebase.js"></script>
+    <script type="text/javascript" src="https://www.letzchat.com/ghana/translate.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
